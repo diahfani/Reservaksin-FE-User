@@ -1,0 +1,34 @@
+{
+    "tataCara": [
+        {
+            "no": 1,
+            "desc": "Klik tombol register pada halaman utama",
+            "icon": "smart_button"
+        },
+        {
+            "no": 2,
+            "desc": "Lengkapi data pribadi seperti NIK dan KK dengan benar",
+            "icon": "app_registration"
+        },
+        {
+            "no": 3,
+            "desc": "Daftarkan anggota keluarga dengan NIK dan KK yang valid",
+            "icon": "groups"
+        },
+        {
+            "no": 4,
+            "desc": "Cek jadwal kegiatan vaksinasi di fasilitas kesehatan terdekat",
+            "icon": "schedule"
+        },
+        {
+            "no": 5,
+            "desc": "Reservasi vaksinasi yang terdsedia",
+            "icon": "book_online"
+        },
+        {
+            "no": 6,
+            "desc": "Jika reservasi berhasil, nomor antrian serta jadwal vaksinasi akan tersedia",
+            "icon": "check_circle"
+        }
+    ]
+}
