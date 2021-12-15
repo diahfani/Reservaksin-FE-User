@@ -132,7 +132,7 @@ function LoginForm(props) {
           </label><a className="form-recovery" href="/">Lupa password?</a>
         </div>
       </form>
-      <div className="text-center btnact-container" style={{ borderTop: "1px solid #8f8d8d" }}>
+      <div className="text-center btnact-container">
         <button className="btn btn-primary w-100" type="submit">Login</button>
         <hr/>
         <p className="text-unregis">
