@@ -1,0 +1,82 @@
+.kriteria-vaksin {
+    background: linear-gradient(90deg, #00D2FF 0%, #3A7BD5 100%);
+    color: white;
+
+    h1 {
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    img {
+        width: 261px;
+    }
+
+    .form-select {
+        &:focus {
+            outline: none !important;
+            border: 1px solid #3A7BD5;
+            box-shadow: none;
+        }
+    }
+
+    table {
+        color: #0D5389;
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+
+        th {
+            text-align: left;
+            padding: 8px;
+            width: 100%;
+            border-right: 6px solid white;
+        }
+
+        td {
+            text-align: left;
+            padding: 8px;
+            width: 100%;
+            border-left: 6px solid white;
+        }
+
+        &.sinovac {
+            tr:nth-child(even) {
+                background-color: #E8EBF5;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #B1CBE9;
+            }
+        }
+
+        &.moderna {
+            tr:nth-child(even) {
+                background-color: #E8EBF5;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #e9b1d8;
+            }
+        }
+
+        &.astraZeneca {
+            tr:nth-child(even) {
+                background-color: #E8EBF5;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #e9b1b1;
+            }
+        }
+
+        &.pfizer {
+            tr:nth-child(even) {
+                background-color: #E8EBF5;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #b1e9b3;
+            }
+        }
+    }
+}
