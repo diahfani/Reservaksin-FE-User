@@ -16,7 +16,6 @@ export default function EfekVaksinSection() {
         <img
           className="mx-auto mt-5"
           src={Illustrations3}
-          style={{ width: "261px" }}
           alt=""
         />
         <p className="mt-5">

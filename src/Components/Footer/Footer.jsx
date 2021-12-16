@@ -1,10 +1,11 @@
 import React from "react";
-import LogoApp from "../../Assets/Images/Logo.png";
+import LogoApp from "Assets/Images/logo.svg";
 import { Link } from "react-router-dom";
+import "./Footer.scss"
 
 export default function Footer() {
   return (
-    <footer className="py-4" style={{ background: "white" }}>
+    <footer className="footer py-4">
       <div className="d-flex justify-content-between container">
         <div>
           <img className="img-fluid" src={LogoApp} alt="" />
@@ -58,7 +59,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="container text-center mt-4" style={{ fontSize: "14px" }}>
+      <div className="container copyright text-center mt-4">
         <hr />
         <p>
           Hak Cipta © 2022 Reservaksin. Seluruh Hak Cipta Dilindungi

@@ -10,4 +10,17 @@
     span.material-icons-outlined {
         color: #5caf08 !important;
     }
+
+    .list-syarat {
+        column-gap: 4%;
+        row-gap: 1rem;
+
+        .list-syarat-card {
+            border: 1px solid #4986CB;
+            border-radius: 5px;
+            width: 48%;
+            padding: 10px;
+            color: #0A3E66;
+        }
+    }
 }

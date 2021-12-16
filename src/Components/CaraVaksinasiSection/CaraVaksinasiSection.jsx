@@ -11,20 +11,12 @@ export default function CaraVaksinasiSection() {
           Tata Cara Reservasi <br /> Vaksinasi COVID-19
         </h1>
         <div
-          className="d-flex flex-wrap w-100 mt-5"
-          style={{ columnGap: "4%", rowGap: "1rem" }}
+          className="list-syarat d-flex flex-wrap w-100 mt-5"
         >
           {tataCara.map((item, key) => (
             <div
               key={key}
-              className="d-flex flex-column justify-content-between"
-              style={{
-                border: "1px solid #4986CB",
-                borderRadius: "5px",
-                width: "48%",
-                padding: "10px",
-                color: "#0A3E66",
-              }}
+              className="list-syarat-card d-flex flex-column justify-content-between"
             >
               <div>
                 <h4>{item.no}</h4>

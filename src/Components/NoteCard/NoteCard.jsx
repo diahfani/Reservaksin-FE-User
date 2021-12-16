@@ -29,9 +29,9 @@ export default function NoteCard({
   );
 }
 
-NoteCard.prototypes = {
-  data: PropTypes.array.isRequired,
-  roundCorner: PropTypes.string.isRequired,
-  borderColor: PropTypes.string.isRequired,
-  textColor: PropTypes.string.isRequired,
+NoteCard.propTypes = {
+  data: PropTypes.array,
+  roundCorner: PropTypes.string,
+  borderColor: PropTypes.string,
+  textColor: PropTypes.string,
 };

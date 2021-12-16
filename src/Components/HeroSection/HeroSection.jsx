@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./HeroSection.scss";
 import PropTypes from "prop-types";
 
-export default function HeroSection(props) {
+export default function HeroSection({ isLoggedIn }) {
   return (
     <section className="hero-section container gradient-blue py-5 mt-5">
       <div className="d-flex flex-column justify-content-center">
@@ -16,10 +16,15 @@ export default function HeroSection(props) {
           Cek syarat, tata cara, pendaftaran, jadwal vaksinasi dan reservasi
           vaksinasi anda disini
         </p>
-        {props.isLoggedIn ? (
-          <Link className="btn btn-outline-light mt-3" to="/reservasi">
-            Reservasi
-          </Link>
+        {isLoggedIn ? (
+          <>
+            <Link className="btn btn-outline-light mt-3" to="/reservasi">
+              Reservasi
+            </Link>
+            <Link className="btn btn-outline-light mt-3" to="/profile">
+              Profile
+            </Link>
+          </>
         ) : (
           <>
             <Link className="btn btn-outline-light mt-3" to="/login">
