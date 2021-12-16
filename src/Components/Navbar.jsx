@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 function Navbar() {
     return (
         <>
-            <body>
                 <nav className="navbar navbar-light bg-light fixed-top">
                     <div className="container-fluid">
                         <a className="navbar-brand" href="/">Reservaksin</a>
@@ -48,7 +47,6 @@ function Navbar() {
                         </div>
                     </div>
                 </nav>
-            </body>
         </>
     )
 }
