@@ -80,10 +80,9 @@ function LoginForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const validForm = Object.keys(form).filter(
-      // (key) => form[key] !== ""
-    (key) => console.log(form[key])
+      (key) => form[key] !== ""
     );
-
+    console.log(validForm);
     if (validForm.length === 2) {
       const loginData = {
         username: form.username,
@@ -136,9 +135,9 @@ function LoginForm(props) {
             <input type="checkbox"/> Ingat saya
           </label><a className="form-recovery" href="/">Lupa password?</a>
         </div>
+        <button className="btn btn-primary w-100" type="submit">Login</button>
       </form>
       <div className="text-center btnact-container">
-      <button className="btn btn-primary w-100" type="submit">Login</button>
         <hr/>
         <p className="text-unregis">
           Belum terdaftar?
