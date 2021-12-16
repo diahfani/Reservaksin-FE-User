@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './login.css';
+import {useDispatch} from "react-redux";
+import {login} from "../../Config/Redux/LoginSlice";
 
 function LoginForm(props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const formKosong = {
     username: "",
     password: "",
@@ -76,16 +80,17 @@ function LoginForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const validForm = Object.keys(form).filter(
-      (key) => form[key] !== ""
+      // (key) => form[key] !== ""
+    (key) => console.log(form[key])
     );
 
-    if (validForm.length >= 2) {
-      const newData = {
+    if (validForm.length === 2) {
+      const loginData = {
         username: form.username,
-        password: form.password,
-      };
-      console.log(newData)
-      //   dispatch(wasValidateData(newData));
+        login: true,
+      }
+      console.log("log in success")
+      dispatch(login(loginData))
       navigate("/profile");
     } else {
       validateOnSubmit();
@@ -133,7 +138,7 @@ function LoginForm(props) {
         </div>
       </form>
       <div className="text-center btnact-container">
-        <button className="btn btn-primary w-100" type="submit">Login</button>
+      <button className="btn btn-primary w-100" type="submit">Login</button>
         <hr/>
         <p className="text-unregis">
           Belum terdaftar?
