@@ -1,14 +1,16 @@
-import React from 'react';
-import LoginForm from '../../Components/LoginForm/LoginForm';
-import './login.css';
-import BrandLogo from '../../Components/BrandLogo/BrandLogo';
+import React from "react";
+import LoginForm from "../../Components/LoginForm/LoginForm";
+import "./Login.css";
+import "../Index.css";
+import BrandLogo from "../../Components/BrandLogo/BrandLogo";
 
 function Login() {
-    return (
-        <div className="container mx-auto" style={{maxWidth: '450px', backgroundColor: "white", minHeight: "100vh"}}>
-            <BrandLogo/>
-            <LoginForm/>
-        </div>
-    )}
+  return (
+    <div className="container mx-auto page-wrapper">
+      <BrandLogo />
+      <LoginForm />
+    </div>
+  );
+}
 
 export default Login;
