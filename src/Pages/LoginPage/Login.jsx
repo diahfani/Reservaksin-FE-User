@@ -1,7 +1,6 @@
 import React from "react";
 import LoginForm from "../../Components/LoginForm/LoginForm";
 import "./Login.css";
-import "../Index.css";
 import BrandLogo from "../../Components/BrandLogo/BrandLogo";
 
 function Login() {
