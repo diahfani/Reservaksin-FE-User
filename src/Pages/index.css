@@ -1,5 +1,5 @@
 .page-wrapper{
-    min-width: '450px';
-    background-color: "white";
-    min-height: "100vh";
+    max-width: 480px;
+    background-color: white;
+    min-height: 100vh;
 }
