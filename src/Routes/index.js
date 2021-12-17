@@ -12,11 +12,11 @@ function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/profile" element={<><UserProfilePage/></>}></Route>
+                <Route path="/profile" element={<><Navbar/><UserProfilePage/></>}></Route>
                 <Route path="/reservasi-vaksin" element={<><Reservation/></>}></Route>
                 <Route path="/my-reservation" element={<><MyReservation/></>}></Route>
                 <Route path="/login" element={<><Navbar/><Login/></>}></Route>
-                <Route path="/profile" element={<><Navbar/><PersonalData/></>}></Route>
+                <Route path="/profile/id/personal" element={<><Navbar/><PersonalData/></>}></Route>
             </Routes>
         </BrowserRouter>
     )
