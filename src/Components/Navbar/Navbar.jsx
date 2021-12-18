@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 export default function Navbar({ isLoggedIn }) {
   return (
     <nav className="navbar navbar-light bg-light fixed-top">
-      <div className="container">
+      <div className="container mt-0">
         <a className="navbar-brand d-flex align-items-center" href="/">
           <img src={LogoApp} alt="" />
           <p className="mb-0 ms-2">Reservaksin</p>
