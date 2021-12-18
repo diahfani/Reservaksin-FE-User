@@ -3,7 +3,7 @@ import "./Card.css";
 
 function Card({data}) {
   return (
-    <div className="card mb-3 card-hist-wrapper">
+    <div className="card mb-3 mt-4 card-hist-wrapper">
       <div className="card-body">
         <span className="float-end text-status">{data.status}</span>
         <p className="text-reservasi">Reservasi Vaksin</p>
