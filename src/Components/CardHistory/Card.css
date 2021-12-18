@@ -1,0 +1,35 @@
+.text-status{
+    color: rgb(0, 110, 0);
+    font-weight: 500;
+    background-color: rgb(114, 204, 114);
+    border-radius: 5px;
+    padding: 0.3rem 0.53rem;
+    font-size: 12px;
+}
+.text-reservasi{
+    color: #0A508D;
+    font-weight: 600;
+}
+.text-hist-loc{
+    font-weight: 400;
+    color: #072D4A;
+    font-size: 16px;
+}
+
+.text-hist-detail{
+    font-weight: 300;
+    color: gray;
+    font-size: 14px;
+}
+
+.text-hist-detail tr td{
+    padding: 0;
+}
+
+.card-hist-wrapper{
+    border-radius: 0.8rem;
+}
+
+.text-hist-name{
+    color: #031625;
+}
