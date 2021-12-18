@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.scss";
-import LogoApp from "Assets/Images/logo.svg";
+import "./Navbar.css";
+// import LogoApp from "Assets/Images/logo.svg";
 import PropTypes from "prop-types";
 
 export default function Navbar({ isLoggedIn }) {
   return (
     <nav className="navbar navbar-light bg-light fixed-top">
-      <div className="container">
+      <div className="container mt-0">
         <a className="navbar-brand d-flex align-items-center" href="/">
-          <img src={LogoApp} alt="" />
+          {/* <img src={LogoApp} alt="" /> */}
           <p className="mb-0 ms-2">Reservaksin</p>
         </a>
         <button
@@ -29,7 +29,7 @@ export default function Navbar({ isLoggedIn }) {
         >
           <div className="offcanvas-header border-bottom">
             <a className="navbar-brand d-flex align-items-center" href="/">
-              <img src={LogoApp} alt="" />
+              {/* <img src={LogoApp} alt="" /> */}
               <p className="mb-0 ms-2">Reservaksin</p>
             </a>
             <button

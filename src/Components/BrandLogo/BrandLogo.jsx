@@ -1,5 +1,5 @@
 import React from "react";
-import './brand.css';
+import './Brand.css';
 
 function BrandLogo() {
   return (
