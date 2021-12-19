@@ -8,7 +8,7 @@ export default function SyaratVaksinSection() {
   return (
     <section className="syarat-vaksin container py-5">
       <div className="d-flex flex-column justify-content-center">
-        <h1>
+        <h1 data-testid="title">
           Syarat Penerima <br /> Vaksin COVID-19
         </h1>
         <p>

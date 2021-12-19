@@ -18,19 +18,35 @@ export default function HeroSection({ isLoggedIn }) {
         </p>
         {isLoggedIn ? (
           <>
-            <Link className="btn btn-outline-light mt-3" to="/reservasi">
+            <Link
+              className="btn btn-outline-light mt-3"
+              to="/reservasi"
+              data-testid="button-reservasi"
+            >
               Reservasi
             </Link>
-            <Link className="btn btn-outline-light mt-3" to="/profile">
+            <Link
+              className="btn btn-outline-light mt-3"
+              to="/profile"
+              data-testid="button-profile"
+            >
               Profile
             </Link>
           </>
         ) : (
           <>
-            <Link className="btn btn-outline-light mt-3" to="/login">
+            <Link
+              className="btn btn-outline-light mt-3"
+              to="/login"
+              data-testid="button-login"
+            >
               Masuk
             </Link>
-            <Link className="btn btn-outline-light mt-3" to="/register">
+            <Link
+              className="btn btn-outline-light mt-3"
+              to="/register"
+              data-testid="button-register"
+            >
               Daftar
             </Link>
           </>
