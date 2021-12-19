@@ -11,18 +11,18 @@ import FamilyMember from '../Pages/FamilyMemberList/FamilyMember';
 import History from '../Pages/History/History';
 
 function Router() {
-    const isLogged = useSelector((state) => state)
-    console.log("isi use selector", isLogged)
+    const isLogged = useSelector((state) => state.auth.login)
+
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/profile" element={<><UserProfilePage/></>}></Route>
+                <Route path="/profile" element={<><Navbar isLoggedIn={isLogged}/><UserProfilePage/></>}></Route>
                 <Route path="/reservasi-vaksin" element={<><Reservation/></>}></Route>
                 <Route path="/my-reservation" element={<><MyReservation/></>}></Route>
-                <Route path="/login" element={<><Navbar/><Login/></>}></Route>
+                <Route path="/login" element={<><Navbar isLoggedIn={isLogged}/><Login/></>}></Route>
                 <Route path="/profile/id/personal" element={<><Navbar/><PersonalData/></>}></Route>
-                <Route path="/profile/id/family" element={<><FamilyMember/></>}></Route>
-                <Route path="/profile/id/history" element={<><Navbar/><History/></>}></Route>
+                <Route path="/profile/id/family" element={<><Navbar isLoggedIn={isLogged}/><FamilyMember/></>}></Route>
+                <Route path="/profile/id/history" element={<><Navbar isLoggedIn={isLogged}/><History/></>}></Route>
             </Routes>
         </BrowserRouter>
     )
