@@ -2,10 +2,21 @@ import React from "react";
 import "./Card.css";
 
 function Card({data}) {
+  let classStatus = "";
+  switch(data.status){
+    case "Menunggu":
+      classStatus = "st-waiting"
+      break;
+    case "Batal":
+      classStatus = "st-cancel"
+      break;
+    default:
+      classStatus="st-done"
+  }
   return (
     <div className="card mb-3 mt-4 card-hist-wrapper">
       <div className="card-body">
-        <span className="float-end text-status">{data.status}</span>
+        <span className={`text-status ${classStatus}`}>{data.status}</span>
         <p className="text-reservasi">Reservasi Vaksin</p>
         <h4 className="card-title text-hist-name">{data.nama}</h4>
         <h5 className="text-hist-loc">{data.lokasi}</h5>

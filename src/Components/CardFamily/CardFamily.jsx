@@ -1,10 +1,11 @@
 import React from "react";
 import { MdOutlineEdit, MdDelete } from "react-icons/md";
+import "./Card.css";
 
 function CardFamily({ data }) {
   return (
     <div>
-      <div class="card shadow mb-3">
+      <div class="card card-family mb-3">
         <div class="d-flex justify-content-between p-2">
           <div className="card-text p-3">
                 {data.nama}

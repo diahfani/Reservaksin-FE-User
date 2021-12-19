@@ -1,10 +1,23 @@
 .text-status{
-    color: rgb(0, 110, 0);
     font-weight: 500;
-    background-color: rgb(114, 204, 114);
     border-radius: 5px;
     padding: 0.3rem 0.53rem;
     font-size: 12px;
+    float: right;
+}
+
+.st-done{
+    color: rgb(0, 110, 0);
+    background-color: rgb(114, 204, 114);
+}
+.st-waiting{
+    color: rgb(255, 123, 0);
+    background-color: rgb(255, 225, 93);
+}
+
+.st-cancel{
+    color:  rgb(190, 33, 33);
+    background-color:rgb(255, 98, 119);
 }
 .text-reservasi{
     color: #0A508D;
