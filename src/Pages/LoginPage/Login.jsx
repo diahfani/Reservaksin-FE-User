@@ -1,11 +1,11 @@
 import React from 'react';
 import LoginForm from '../../Components/LoginForm/LoginForm';
-import './Login.css';
+import './Login.css'
 import BrandLogo from '../../Components/BrandLogo/BrandLogo';
 
 function Login() {
     return (
-        <div className="container mx-auto" style={{maxWidth: '450px', backgroundColor: "white", minHeight: "100vh"}}>
+        <div className="container mx-auto page-wrapper">
             <BrandLogo/>
             <LoginForm/>
         </div>

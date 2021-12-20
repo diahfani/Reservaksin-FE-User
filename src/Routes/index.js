@@ -20,7 +20,7 @@ function Router() {
                 <Route path="/reservasi-vaksin" element={<><Reservation/></>}></Route>
                 <Route path="/my-reservation" element={<><MyReservation/></>}></Route>
                 <Route path="/login" element={<><Navbar isLoggedIn={isLogged}/><Login/></>}></Route>
-                <Route path="/profile/id/personal" element={<><Navbar/><PersonalData/></>}></Route>
+                <Route path="/profile/id/personal" element={<><Navbar isLoggedIn={isLogged}/><PersonalData/></>}></Route>
                 <Route path="/profile/id/family" element={<><Navbar isLoggedIn={isLogged}/><FamilyMember/></>}></Route>
                 <Route path="/profile/id/history" element={<><Navbar isLoggedIn={isLogged}/><History/></>}></Route>
             </Routes>

@@ -25,20 +25,20 @@ function UserMenu(props) {
     <>
       <div className="container-fluid item-container">
         <div className="item-menu mb-3 p-3">
-          <Link to="/profile">
-            <BsFillPersonLinesFill />
+          <Link to="/profile/id/personal" className="text-decoration-none">
+            <BsFillPersonLinesFill size="20" color="#0A508D" />
             <span className="text-menu">Personal Data</span>
           </Link>
         </div>
         <div className="item-menu mb-3 p-3">
-          <Link to="/profile/id/family">
-            <TiGroupOutline />
+          <Link to="/profile/id/family" className="text-decoration-none">
+            <TiGroupOutline size="20" color="#0A508D"/>
             <span className="text-menu">Family Member</span>
           </Link>
         </div>
         <div className="item-menu mb-3 p-3">
-          <Link to="/profile/id/history">
-            <RiFolderHistoryLine />
+          <Link to="/profile/id/history" className="text-decoration-none">
+            <RiFolderHistoryLine size="20" color="#0A508D"/>
             <span className="text-menu">Histori</span>
           </Link>
         </div>
