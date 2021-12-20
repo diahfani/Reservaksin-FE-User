@@ -3,43 +3,34 @@ import { Link } from "react-router-dom";
 import "./Navbar.scss";
 import LogoApp from "Assets/Images/logo.svg";
 import PropTypes from "prop-types";
+import { Offcanvas, Navbar as NavbarBts } from "react-bootstrap";
 
 export default function Navbar({ isLoggedIn }) {
   return (
-    <nav className="navbar navbar-light bg-light fixed-top">
+    <NavbarBts fixed="top" bg="light" expand={false}>
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/">
           <img src={LogoApp} alt="" />
           <p className="mb-0 ms-2">Reservaksin</p>
         </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div
-          className="offcanvas offcanvas-end"
-          tabIndex={-1}
+        <NavbarBts.Toggle />
+        <NavbarBts.Offcanvas
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
+          placement="end"
         >
-          <div className="offcanvas-header border-bottom">
+          <Offcanvas.Header style={{ padding: "0.5rem 1.25rem" }} closeButton>
             <a className="navbar-brand d-flex align-items-center" href="/">
-              <img src={LogoApp} alt="" />
-              <p className="mb-0 ms-2">Reservaksin</p>
+              <img src={LogoApp} style={{ width: "2.4rem" }} alt="" />
+              <p
+                className="mb-0 ms-2"
+                style={{ fontWeight: 500, color: "#0A508D" }}
+              >
+                Reservaksin
+              </p>
             </a>
-            <button
-              type="button"
-              className="btn-close text-reset"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            />
-          </div>
-          <div className="offcanvas-body d-flex flex-column justify-content-between">
+          </Offcanvas.Header>
+          <Offcanvas.Body className="d-flex flex-column justify-content-between">
             <div>
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 {isLoggedIn ? (
@@ -90,10 +81,10 @@ export default function Navbar({ isLoggedIn }) {
                 081 534 920 200
               </Link>
             </div>
-          </div>
-        </div>
+          </Offcanvas.Body>
+        </NavbarBts.Offcanvas>
       </div>
-    </nav>
+    </NavbarBts>
   );
 }
 
