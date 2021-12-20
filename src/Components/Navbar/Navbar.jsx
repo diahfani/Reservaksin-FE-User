@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 function Navbar() {
     return (
         <>
-            <body>
-                <nav className="navbar navbar-light bg-light fixed-top">
-                    <div className="container-fluid">
+            {/* <body> */}
+                <nav className="navbar navbar-light bg-light">
+                    <div className="container">
                         <a className="navbar-brand" href="/">Reservaksin</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                             <span className="navbar-toggler-icon" />
@@ -48,7 +48,7 @@ function Navbar() {
                         </div>
                     </div>
                 </nav>
-            </body>
+            {/* </body> */}
         </>
     )
 }
