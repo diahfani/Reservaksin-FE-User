@@ -5,7 +5,7 @@ import BrandLogo from "../../Components/BrandLogo/BrandLogo";
 
 function Login() {
   return (
-    <div className="login-page d-flex flex-column mx-auto page-wrapper">
+    <div className="login-page d-flex flex-column py-5 page-wrapper">
       <BrandLogo />
       <LoginForm />
     </div>

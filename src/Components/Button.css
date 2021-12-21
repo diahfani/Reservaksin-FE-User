@@ -7,7 +7,7 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
   /* position: absolute; */
   width: 378px;
@@ -22,8 +22,6 @@ top: 710px; */
 }
 
 .btn-style-prev {
-  /* Auto Layout */
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -32,19 +30,13 @@ top: 710px; */
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
-  /* position: static; */
   width: 378px;
   height: 40px;
-  /* left: 0px;
-top: 55px; */
   color: #0a508d;
   justify-content: center;
-
   opacity: 0.8;
-  /* Primary 4 / 900 */
-
   border: 1px solid #0a508d;
   box-sizing: border-box;
   border-radius: 5px;

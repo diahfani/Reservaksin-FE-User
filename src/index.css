@@ -3,14 +3,22 @@
   background-color: white;
   min-height: 100vh;
   margin: 0 auto;
+  padding: 0 20px;
+  overflow: scroll;
+}
+
+.page-wrapper::-webkit-scrollbar {
+  width: 0px;
 }
 
 * {
   font-family: "Roboto", sans-serif;
 }
 
-.page-wrapper {
-  max-width: 450px;
-  background-color: white;
-  min-height: 100vh;
+.RFS-StepperContainer {
+  padding: 24px 0 !important;
+}
+
+.material-icons-outlined {
+  display: block;
 }
