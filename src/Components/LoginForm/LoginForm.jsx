@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../Config/Redux/LoginSlice";
-import  {Toaster} from "react-hot-toast";
-import { ToastError} from "../Toast/Toast";
+import { Toaster } from "react-hot-toast";
+import { ToastError } from "../Toast/Toast";
 
-function LoginForm(props) {
+function LoginForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -37,7 +37,10 @@ function LoginForm(props) {
         setErrMsg({ ...formError, username: "" });
       } else {
         if (isNaN(value)) {
-          setErrMsg({ ...formError, username: "email yang Anda masukkan salah" });
+          setErrMsg({
+            ...formError,
+            username: "email yang Anda masukkan salah",
+          });
         } else {
           setErrMsg({ ...formError, username: "NIK yang anda masukkan salah" });
         }
@@ -88,9 +91,9 @@ function LoginForm(props) {
     if (validForm.length < 2) {
       validateOnSubmit();
     } else {
-      console.log(errMsg)
-      if(errMsg.username !== "" || errMsg.password !== ""){
-        ToastError("masih ada data yg salah!")
+      console.log(errMsg);
+      if (errMsg.username !== "" || errMsg.password !== "") {
+        ToastError("masih ada data yg salah!");
         return;
       }
       const loginData = {
@@ -103,8 +106,8 @@ function LoginForm(props) {
   };
 
   return (
-    <div className="px-3">
-      <Toaster/>
+    <div>
+      <Toaster />
       <form className="form needs-validation pt-5" onSubmit={handleSubmit}>
         <div className="mb-3 has-validation">
           <label htmlFor="username" className="form-label">
@@ -152,9 +155,9 @@ function LoginForm(props) {
       <div className="text-center btnact-container">
         <hr />
         <p className="text-unregis">Belum terdaftar?</p>
-        <button className="btn btn-outline-primary mb-3 w-100">
+        <Link className="btn btn-outline-primary mb-3 w-100" to="/register">
           Daftar sekarang
-        </button>
+        </Link>
       </div>
     </div>
   );
