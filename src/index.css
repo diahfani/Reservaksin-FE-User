@@ -22,3 +22,18 @@
 .material-icons-outlined {
   display: block;
 }
+
+.page-wrapper{
+  max-width: 480px;
+  background-color: white;
+  min-height: 100vh;
+}
+.btn-primary{
+  background-color: #0A3E66 !important;
+  border-color: #0A3E66;
+  color: white;
+}
+
+.text-page-title{
+  font-weight: 400;
+}

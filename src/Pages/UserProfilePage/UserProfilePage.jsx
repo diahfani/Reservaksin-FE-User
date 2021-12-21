@@ -1,11 +1,16 @@
-import React from 'react'
-import Navbar from '../../Components/Navbar/Navbar'
+import React from 'react';
+import UserAvatar from '../../Components/Profile/UserAvatar';
+import UserMenu from '../../Components/Profile/UserMenu';
+import BackButton from '../../Components/Button/BackButton';
 
 function UserProfilePage() {
     return (
         <div className="container mx-auto page-wrapper">
-            <Navbar/>
-            <p>user profile page</p>
+            <br />
+            <BackButton/>
+            <h3 className="text-center text-page-title">Profile</h3>
+            <UserAvatar/>
+            <UserMenu/>
         </div>
     )
 }
