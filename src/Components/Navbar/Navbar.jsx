@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.scss";
+import "./Navbar.css";
 import LogoApp from "Assets/Images/logo.svg";
 import PropTypes from "prop-types";
 import { Offcanvas, Navbar as NavbarBts } from "react-bootstrap";
@@ -24,7 +24,11 @@ export default function Navbar({ isLoggedIn }) {
           aria-labelledby="offcanvasNavbarLabel"
           placement="end"
         >
-          <Offcanvas.Header className="border-bottom" style={{ padding: "0.5rem 1.25rem" }} closeButton>
+          <Offcanvas.Header
+            className="border-bottom"
+            style={{ padding: "0.5rem 1.25rem" }}
+            closeButton
+          >
             <a className="navbar-brand d-flex align-items-center" href="/">
               <img src={LogoApp} style={{ width: "2.4rem" }} alt="" />
               <p

@@ -23,24 +23,24 @@ function UserMenu(props) {
 
   return (
     <div className="mt-5">
-      <div className="item-menu mb-3 p-3">
-        <Link to="/profile/id/personal" className="text-decoration-none">
+      <Link to="/profile/id/personal" className="text-decoration-none">
+        <div className="item-menu mb-3 p-3">
           <BsFillPersonLinesFill size="20" color="#0A508D" />
           <span className="text-menu">Personal Data</span>
-        </Link>
-      </div>
-      <div className="item-menu mb-3 p-3">
-        <Link to="/profile/id/family" className="text-decoration-none">
+        </div>
+      </Link>
+      <Link to="/profile/id/family" className="text-decoration-none">
+        <div className="item-menu mb-3 p-3">
           <TiGroupOutline size="20" color="#0A508D" />
           <span className="text-menu">Family Member</span>
-        </Link>
-      </div>
-      <div className="item-menu mb-3 p-3">
-        <Link to="/profile/id/history" className="text-decoration-none">
+        </div>
+      </Link>
+      <Link to="/profile/id/history" className="text-decoration-none">
+        <div className="item-menu mb-3 p-3">
           <RiFolderHistoryLine size="20" color="#0A508D" />
           <span className="text-menu">Histori</span>
-        </Link>
-      </div>
+        </div>
+      </Link>
       <button className="btn btn-primary mt-5 w-100" onClick={onClick}>
         Logout
       </button>

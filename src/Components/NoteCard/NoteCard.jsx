@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import './NoteCard.scss'
+import './NoteCard.css'
 
 export default function NoteCard({
   data = [],

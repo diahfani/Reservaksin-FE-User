@@ -1,0 +1,11 @@
+.hero-section {
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: white;
+}
+.hero-section img {
+    height: 20rem;
+}
+.hero-section h1 {
+    font-size: 30px;
+    font-weight: 500;
+}

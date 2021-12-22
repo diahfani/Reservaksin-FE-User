@@ -20,7 +20,7 @@ function Card({data}) {
         <p className="text-reservasi">Reservasi Vaksin</p>
         <h4 className="card-title text-hist-name">{data.nama}</h4>
         <h5 className="text-hist-loc">{data.lokasi}</h5>
-        <table class="table table-borderless">
+        <table className="table table-borderless">
           <tbody className="text-hist-detail">
             <tr>
               <td>{data.tanggal}</td>

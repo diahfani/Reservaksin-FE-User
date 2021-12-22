@@ -1,6 +1,6 @@
 import React from "react";
 import Illustrations2 from "../../Assets/Images/illustration-2.svg";
-import "./SyaratVaksinSection.scss";
+import "./SyaratVaksinSection.css";
 import data from "./static.json";
 import NoteCard from "Components/NoteCard/NoteCard";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./LandingPage.scss";
+import "./LandingPage.css";
 import Navbar from "Components/Navbar/Navbar";
 import HeroSection from "Components/HeroSection/HeroSection";
 import SyaratVaksinSection from "Components/SyaratVaksinSection/SyaratVaksinSection";
@@ -27,31 +27,31 @@ export default function LandingPage() {
   window.addEventListener("scroll", toggleVisible);
 
   return (
-    <div
-      className="landing-page container p-0 page-wrapper"
-    >
+    <>
       <Navbar isLoggedIn={false} />
-      <HeroSection isLoggedIn={false} />
-      <SyaratVaksinSection />
-      <KriteriaVaksinSection />
-      <CaraVaksinasiSection />
-      <EfekVaksinSection />
-      <Footer />
-      <div className="container">
-        <button
-          onClick={scrollToTop}
-          style={{
-            position: "fixed",
-            bottom: 20,
-            right: 20,
-            opacity: visible ? 1 : 0,
-            transition: "opacity ease-out 0.5s"
-          }}
-          className="btn btn-primary"
-        >
-          <span className="material-icons-outlined">arrow_upward</span>
-        </button>
+      <div className="landing-page container p-0 page-wrapper">
+        <HeroSection isLoggedIn={false} />
+        <SyaratVaksinSection />
+        <KriteriaVaksinSection />
+        <CaraVaksinasiSection />
+        <EfekVaksinSection />
+        <Footer />
+        <div className="container">
+          <button
+            onClick={scrollToTop}
+            style={{
+              position: "fixed",
+              bottom: 20,
+              right: 20,
+              opacity: visible ? 1 : 0,
+              transition: "opacity ease-out 0.5s",
+            }}
+            className="btn btn-primary"
+          >
+            <span className="material-icons-outlined">arrow_upward</span>
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

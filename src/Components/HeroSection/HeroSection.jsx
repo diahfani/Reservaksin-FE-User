@@ -1,7 +1,7 @@
 import React from "react";
 import Illustrations1 from "../../Assets/Images/illustration-1.svg";
 import { Link } from "react-router-dom";
-import "./HeroSection.scss";
+import "./HeroSection.css";
 import PropTypes from "prop-types";
 
 export default function HeroSection({ isLoggedIn }) {
