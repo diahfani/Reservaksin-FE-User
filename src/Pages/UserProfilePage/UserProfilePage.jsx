@@ -1,18 +1,16 @@
-import React from 'react';
-import UserAvatar from '../../Components/Profile/UserAvatar';
-import UserMenu from '../../Components/Profile/UserMenu';
-import BackButton from '../../Components/Button/BackButton';
+import React from "react";
+import UserAvatar from "../../Components/Profile/UserAvatar";
+import UserMenu from "../../Components/Profile/UserMenu";
+import BackButton from "../../Components/BackButton/BackButton";
 
 function UserProfilePage() {
-    return (
-        <div className="container mx-auto page-wrapper">
-            <br />
-            <BackButton/>
-            <h3 className="text-center text-page-title">Profile</h3>
-            <UserAvatar/>
-            <UserMenu/>
-        </div>
-    )
+  return (
+    <div className="container py-4 page-wrapper">
+      <BackButton title="Profile"/>
+      <UserAvatar />
+      <UserMenu />
+    </div>
+  );
 }
 
-export default UserProfilePage
+export default UserProfilePage;
