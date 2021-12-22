@@ -16,7 +16,6 @@ function DataPribadiComponent({
   handleValidation,
   setFormData,
 }) {
-  console.log(formData);
   return (
     <div className="form">
       <div className="mb-3">
@@ -25,7 +24,7 @@ function DataPribadiComponent({
           placeholder="Masukkan no. KK"
           name="nokk"
           type="number"
-          value={formData.nokk}
+          value={formData?.nokk}
           onChange={handleInputData}
           onBlur={handleValidation}
           className="form-control"
@@ -37,7 +36,7 @@ function DataPribadiComponent({
         <input
           placeholder="Masukkan NIK"
           name="nik"
-          value={formData.nik}
+          value={formData?.nik}
           onChange={handleInputData}
           type="number"
           onBlur={handleValidation}
@@ -50,7 +49,7 @@ function DataPribadiComponent({
         <input
           placeholder="Masukkan nama lengkap"
           type="text"
-          value={formData.namalengkap}
+          value={formData?.namalengkap}
           onChange={handleInputData}
           name="namalengkap"
           onBlur={handleValidation}
@@ -67,7 +66,7 @@ function DataPribadiComponent({
               type="radio"
               name="jeniskelamin"
               value="Pria"
-              checked={formData.jeniskelamin === "Pria"}
+              checked={formData?.jeniskelamin === "Pria"}
               onBlur={handleValidation}
               onChange={handleInputData}
             />
@@ -79,7 +78,7 @@ function DataPribadiComponent({
               type="radio"
               name="jeniskelamin"
               value="Wanita"
-              checked={formData.jeniskelamin === "Wanita"}
+              checked={formData?.jeniskelamin === "Wanita"}
               onBlur={handleValidation}
               onChange={handleInputData}
             />
@@ -93,7 +92,7 @@ function DataPribadiComponent({
         <DatePicker
           className="form-control"
           name="tglLahir"
-          selected={formData.tglLahir}
+          selected={formData?.tglLahir}
           onChange={(date) => {
             setFormData({ ...formData, tglLahir: date });
             console.log(date);
@@ -109,7 +108,7 @@ function DataPribadiComponent({
         <select
           className="form-select"
           name="statusHubungan"
-          defaultValue={formData.statusHubungan}
+          defaultValue={formData?.statusHubungan}
           onChange={handleInputData}
           onBlur={handleValidation}
         >
