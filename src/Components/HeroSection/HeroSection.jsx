@@ -20,7 +20,7 @@ export default function HeroSection({ isLoggedIn }) {
           <>
             <Link
               className="btn btn-outline-light mt-3"
-              to="/reservasi"
+              to="/reservasi/cek-validasi"
               data-testid="button-reservasi"
             >
               Reservasi
