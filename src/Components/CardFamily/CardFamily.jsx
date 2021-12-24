@@ -5,8 +5,8 @@ import "./Card.css";
 function CardFamily({ data }) {
   return (
     <div>
-      <div class="card card-family mb-3">
-        <div class="d-flex justify-content-between p-2">
+      <div className="card card-family mb-3">
+        <div className="d-flex justify-content-between p-2">
           <div className="card-text p-3">
                 {data.nama}
             <span className="px-2">{data.status}</span>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RegisterPage from "./Register";
+import Register from "./Register";
 import DataPribadi from "./DataPribadi";
 import DataKeluarga from "./DataKeluarga";
 import DataAlamat from "./DataAlamat";
@@ -59,7 +59,7 @@ function RegistrePage() {
   switch (step) {
     case 1:
       return (
-        <RegisterPage
+        <Register
           nextStep={nextStep}
           handleInputData={handleInputData}
           formData={formData}

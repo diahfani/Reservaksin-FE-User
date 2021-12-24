@@ -1,7 +1,7 @@
 import NoteCard from "Components/NoteCard/NoteCard";
 import React, { useState } from "react";
 import data from "./static.json";
-import "./KriteriaVaksinSection.scss";
+import "./KriteriaVaksinSection.css";
 
 export default function KriteriaVaksinSection() {
   const [vaksin, setVaksin] = useState("sinovac");
