@@ -1,17 +1,17 @@
 import React from "react";
 import "./Card.css";
 
-function Card({data}) {
+function Card({ data }) {
   let classStatus = "";
-  switch(data.status){
+  switch (data.status) {
     case "Menunggu":
-      classStatus = "st-waiting"
+      classStatus = "st-waiting";
       break;
     case "Batal":
-      classStatus = "st-cancel"
+      classStatus = "st-cancel";
       break;
     default:
-      classStatus="st-done"
+      classStatus = "st-done";
   }
   return (
     <div className="card mb-3 mt-4 card-hist-wrapper">

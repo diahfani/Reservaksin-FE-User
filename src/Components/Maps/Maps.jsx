@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 
 import useGeolocation from "react-hook-geolocation";
 import MapsMarker from "./MapsMarker";
+import LeafletControlGeocoder from "./LeafletControlGeocode";
 
 export default function Maps() {
   const geolocation = useGeolocation({
@@ -24,13 +25,19 @@ export default function Maps() {
     <MapContainer
       center={{ lat: curLoc?.lat, lng: curLoc?.lng }}
       zoom={15}
-      style={{ height: "500px", width: "100wh" }}
+      style={{ height: "40rem", width: "100wh" }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       ></TileLayer>
       <MapsMarker position={curLoc}></MapsMarker>
+      <LeafletControlGeocoder></LeafletControlGeocoder>
     </MapContainer>
-  ) : null;
+  ) : (
+    <div className="d-flex flex-column align-items-center">
+      <div className="spinner-border" role="status"></div>
+      <p className="mt-3">Generate maps ... </p>
+    </div>
+  );
 }

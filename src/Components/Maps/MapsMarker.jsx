@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useRef } from "react";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
-import { Marker, Popup } from "react-leaflet";
+import { Marker, Popup, useMapEvents } from "react-leaflet";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -18,7 +18,14 @@ export default function MapsMarker(props) {
     }),
     []
   );
-  return (
+
+  useMapEvents({
+    click(e) {
+      setPosition(e.latlng);
+    },
+  });
+
+  return position !== null ? (
     <Marker
       draggable={true}
       eventHandlers={eventHandlers}
@@ -37,5 +44,5 @@ export default function MapsMarker(props) {
         </span>
       </Popup>
     </Marker>
-  );
+  ) : null;
 }

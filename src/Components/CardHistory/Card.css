@@ -1,48 +1,48 @@
-.text-status{
-    font-weight: 500;
-    border-radius: 5px;
-    padding: 0.3rem 0.53rem;
-    font-size: 12px;
-    float: right;
+.text-status {
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 0.3rem 0.53rem;
+  font-size: 12px;
+  float: right;
 }
 
-.st-done{
-    color: rgb(0, 110, 0);
-    background-color: rgb(114, 204, 114);
+.st-done {
+  color: rgb(0, 110, 0);
+  background-color: rgb(114, 204, 114);
 }
-.st-waiting{
-    color: rgb(255, 123, 0);
-    background-color: rgb(255, 225, 93);
-}
-
-.st-cancel{
-    color:  rgb(190, 33, 33);
-    background-color:rgb(255, 98, 119);
-}
-.text-reservasi{
-    color: #0A508D;
-    font-weight: 600;
-}
-.text-hist-loc{
-    font-weight: 400;
-    color: #072D4A;
-    font-size: 16px;
+.st-waiting {
+  color: rgb(255, 123, 0);
+  background-color: rgb(255, 225, 93);
 }
 
-.text-hist-detail{
-    font-weight: 300;
-    color: gray;
-    font-size: 14px;
+.st-cancel {
+  color: rgb(190, 33, 33);
+  background-color: rgb(255, 98, 119);
+}
+.text-reservasi {
+  color: #0a508d;
+  font-weight: 600;
+}
+.text-hist-loc {
+  font-weight: 400;
+  color: #072d4a;
+  font-size: 16px;
 }
 
-.text-hist-detail tr td{
-    padding: 0;
+.text-hist-detail {
+  font-weight: 300;
+  color: gray;
+  font-size: 14px;
 }
 
-.card-hist-wrapper{
-    border-radius: 0.8rem;
+.text-hist-detail tr td {
+  padding: 0;
 }
 
-.text-hist-name{
-    color: #031625;
+.card-hist-wrapper {
+  border-radius: 0.8rem;
+}
+
+.text-hist-name {
+  color: #031625;
 }

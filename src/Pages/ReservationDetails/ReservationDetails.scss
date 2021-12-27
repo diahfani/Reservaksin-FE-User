@@ -1,0 +1,21 @@
+.vaccine-ticket {
+    border-radius: 10px;
+
+    p,
+    h2 {
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+
+    .details-ticket {
+        padding: 1.25rem 0;
+
+        &:not(:last-child) {
+            border-bottom: 1px dashed navy;
+        }
+    }
+}

@@ -13,6 +13,8 @@ import ReservationCekLokasi from "Pages/ReservationPage/ReservationCekLokasi";
 import ReservationFaskes from "Pages/ReservationPage/ReservationFaskes";
 import ReservasitionPilihTanggal from "Pages/ReservationPage/ReservationPilihTanggal";
 import ReservationBerhasil from "Pages/ReservationPage/ReservationBerhasil";
+import MyReservation from "Pages/MyReservation/MyReservation";
+import ReservationDetails from "Pages/ReservationDetails/ReservationDetails";
 
 function Router() {
   return (
@@ -45,6 +47,14 @@ function Router() {
         <Route
           path="/reservasi-berhasil"
           element={<ReservationBerhasil />}
+        ></Route>
+        <Route
+          path="/my-reservation"
+          element={<MyReservation />}
+        ></Route>
+        <Route
+          path="/reservation-details/:id"
+          element={<ReservationDetails />}
         ></Route>
       </Routes>
     </BrowserRouter>

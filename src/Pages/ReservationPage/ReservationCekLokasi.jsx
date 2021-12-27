@@ -5,33 +5,14 @@ import { Link } from "react-router-dom";
 
 export default function ReservationCekLokasi() {
   return (
-    <div className="container py-4 page-wrapper">
-      <BackButton title="Input Lokasi" />
-      <div className="row mt-3">
-        <div className="">
-          <label htmlFor="search" className="form-label">
-            Cari Lokasi
-          </label>
-          <div className="input-group">
-            <input
-              className="form-control border-end-0 border"
-              type="search"
-              placeholder="search"
-              id="example-search-input"
-            />
-            <span className="input-group-append">
-              <button
-                className="btn btn-outline-secondary border-start-0 border ms-n5"
-                type="button"
-              >
-                <span className="material-icons-outlined">search</span>
-              </button>
-            </span>
-          </div>
+    <div className="container py-4 page-wrapper d-flex flex-column justify-content-between">
+      <div>
+        <BackButton title="Input Lokasi" />
+        <div className="row mt-3">
         </div>
-      </div>
-      <div className="mt-2">
-        <Maps />
+        <div className="mt-2">
+          <Maps />
+        </div>
       </div>
       <Link to="/reservasi/pilih-faskes">
         <button className="mt-5 btn btn-primary w-100">Simpan</button>
