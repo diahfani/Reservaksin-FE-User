@@ -55,7 +55,7 @@ export default function Navbar({ isLoggedIn }) {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link" to="/reservasi-vaksin">
+                      <Link className="nav-link" to="/reservasi/cek-validasi">
                         Reservasi Vaksin
                       </Link>
                     </li>
