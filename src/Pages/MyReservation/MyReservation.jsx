@@ -1,14 +1,15 @@
-import React from 'react'
-import Navbar from '../../Components/Navbar/Navbar'
+import React from "react";
+import BackButton from "Components/BackButton/BackButton";
+import Card from "Components/CardHistory/Card";
+import { DataHistory } from "./StaticData";
 
-
-function MyReservation() {
-    return (
-        <div>
-            <Navbar/>
-            <p>my reservation page</p>
-        </div>
-    )
+export default function MyReservation() {
+  return (
+    <div className="container py-4 page-wrapper">
+      <BackButton title="Reservasi" />
+      {DataHistory.map((item, idx) => (
+        <Card data={item} key={idx} />
+      ))}
+    </div>
+  );
 }
-
-export default MyReservation

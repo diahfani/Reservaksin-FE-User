@@ -1,11 +1,31 @@
-.user-profile{
-    background-color: blue;
-}
-
 .item-menu{
-    border: 1 px solid #0A508D ;
+    border: 1px solid #D4D4D4 ;
+    padding: auto;
+    border-radius: 10px;
+}
+.user-profile-pic{
+    width: 20%;
+}
+.text-name{
+    margin-left: 1.3rem;
+    color: #3F3F3F;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    }
+
+.item-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
 }
 
-.text-item-menu{
+.text-menu{
     color: #0A508D;
+    padding-left: 1rem;
+    font-weight: 500;
+    font-size: 16px;
 }

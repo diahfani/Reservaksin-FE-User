@@ -1,7 +1,7 @@
 import NoteCard from "Components/NoteCard/NoteCard";
 import React from "react";
 import Illustrations3 from "../../Assets/Images/illustration-3.svg";
-import "./EfekVaksinSection.scss";
+import "./EfekVaksinSection.css";
 import data from "./static.json";
 
 export default function EfekVaksinSection() {

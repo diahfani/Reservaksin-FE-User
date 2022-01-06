@@ -1,7 +1,7 @@
 import React from "react";
 import Illustrations1 from "../../Assets/Images/illustration-1.svg";
 import { Link } from "react-router-dom";
-import "./HeroSection.scss";
+import "./HeroSection.css";
 import PropTypes from "prop-types";
 
 export default function HeroSection({ isLoggedIn }) {
@@ -20,7 +20,7 @@ export default function HeroSection({ isLoggedIn }) {
           <>
             <Link
               className="btn btn-outline-light mt-3"
-              to="/reservasi"
+              to="/reservasi/cek-validasi"
               data-testid="button-reservasi"
             >
               Reservasi

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.scss";
+import "./Navbar.css";
 import LogoApp from "Assets/Images/logo.svg";
 import PropTypes from "prop-types";
 import { Offcanvas, Navbar as NavbarBts } from "react-bootstrap";
@@ -11,7 +11,12 @@ export default function Navbar({ isLoggedIn }) {
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/">
           <img src={LogoApp} alt="" />
-          <p className="mb-0 ms-2">Reservaksin</p>
+          <p
+            className="mb-0 ms-2"
+            style={{ fontWeight: 500, color: "#0A508D" }}
+          >
+            Reservaksin
+          </p>
         </a>
         <NavbarBts.Toggle />
         <NavbarBts.Offcanvas
@@ -19,7 +24,11 @@ export default function Navbar({ isLoggedIn }) {
           aria-labelledby="offcanvasNavbarLabel"
           placement="end"
         >
-          <Offcanvas.Header style={{ padding: "0.5rem 1.25rem" }} closeButton>
+          <Offcanvas.Header
+            className="border-bottom"
+            style={{ padding: "0.5rem 1.25rem" }}
+            closeButton
+          >
             <a className="navbar-brand d-flex align-items-center" href="/">
               <img src={LogoApp} style={{ width: "2.4rem" }} alt="" />
               <p
@@ -46,7 +55,7 @@ export default function Navbar({ isLoggedIn }) {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link" to="/reservasi-vaksin">
+                      <Link className="nav-link" to="/reservasi/cek-validasi">
                         Reservasi Vaksin
                       </Link>
                     </li>

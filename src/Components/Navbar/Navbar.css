@@ -1,0 +1,29 @@
+.navbar .container {
+  max-width: 450px;
+}
+.navbar .nav-link {
+  color: #4986cb !important;
+  font-size: 18px;
+  margin: 0.4rem 0;
+}
+.navbar .navbar-brand img {
+  width: 2.188rem;
+}
+.navbar .navbar-brand p {
+  font-weight: 600;
+}
+.navbar .btn-primary {
+  background-color: #0a508d;
+  box-shadow: none;
+}
+.navbar .navbar-toggler {
+  border: none !important;
+  border-radius: 0;
+  padding: 0;
+}
+.navbar .navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar .btn-close {
+  padding: 1rem;
+}

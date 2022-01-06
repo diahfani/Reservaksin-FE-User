@@ -1,5 +1,5 @@
 import React from "react";
-import "./CaraVaksinasiSection.scss";
+import "./CaraVaksinasiSection.css";
 import data from "./static.json";
 
 export default function CaraVaksinasiSection() {
