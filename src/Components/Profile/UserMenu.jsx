@@ -14,11 +14,12 @@ function UserMenu(props) {
 
   const onClick = () => {
     dispatch(logout());
-    if (window.location.pathname.includes("profile")) {
-      navigate("/");
-    } else {
-      window.location.reload();
-    }
+    navigate("/")
+    // if (window.location.pathname.includes("profile")) {
+    //   navigate("/");
+    // } else {
+    //   window.location.reload();
+    // }
   };
 
   return (

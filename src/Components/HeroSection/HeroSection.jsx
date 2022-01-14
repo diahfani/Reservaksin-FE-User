@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { useSelector } from 'react-redux'
 
 export default function HeroSection({ isLoggedIn }) {
-  isLoggedIn = useSelector((state) => state.login)
+  // isLoggedIn = useSelector((state) => state.auth.login)
 
   return (
     <section className="hero-section container gradient-blue py-5 mt-5">
