@@ -2,11 +2,14 @@ import React from "react";
 import { Stepper } from "react-form-stepper";
 import { Button } from "react-bootstrap";
 import BrandLogo from "Components/BrandLogo/BrandLogo";
+import { useNavigate } from "react-router-dom";
 
 function Submit({ nextStep, prevStep, formData, formdataAnggota }) {
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     console.log(formData);
     console.log(formdataAnggota);
+    navigate("/")
     e.preventDefault();
   };
   return (

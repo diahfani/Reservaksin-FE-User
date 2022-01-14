@@ -92,7 +92,7 @@ function LoginForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const validForm = Object.keys(form).filter((key) => form[key] !== "");
-    // var API_URL = 'https://reservaksin-be.herokuapp.com'
+    var API_URL = 'https://reservaksin-be.herokuapp.com'
     if (validForm.length < 2) {
       validateOnSubmit();
     } else {
@@ -100,7 +100,7 @@ function LoginForm() {
       console.log(form)
 
       axios
-        .post(`${process.env.REACT_APP_API_URL}/citizen/login`, form)
+        .post(`${API_URL}/citizen/login`, form)
 
         .then((resp) => {
           console.log("isi resp", resp)
