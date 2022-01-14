@@ -3,8 +3,11 @@ import Illustrations1 from "../../Assets/Images/illustration-1.svg";
 import { Link } from "react-router-dom";
 import "./HeroSection.css";
 import PropTypes from "prop-types";
+import { useSelector } from 'react-redux'
 
 export default function HeroSection({ isLoggedIn }) {
+  isLoggedIn = useSelector((state) => state.login)
+
   return (
     <section className="hero-section container gradient-blue py-5 mt-5">
       <div className="d-flex flex-column justify-content-center">

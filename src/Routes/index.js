@@ -24,7 +24,7 @@ function Router() {
         <Route path="/profile" element={<UserProfilePage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
-        <Route path="/profile" element={<UserProfilePage />}></Route>
+        {/* <Route path="/profile" element={<UserProfilePage />}></Route> */}
         <Route path="/profile/id/personal" element={<PersonalData />}></Route>
         <Route path="/profile/id/family" element={<FamilyMemberPage />}></Route>
         <Route path="/profile/id/history" element={<History />}></Route>

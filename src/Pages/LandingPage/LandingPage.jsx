@@ -28,7 +28,7 @@ export default function LandingPage() {
 
   return (
     <>
-      <Navbar isLoggedIn={true} />
+      <Navbar isLoggedIn={false} />
       <div className="landing-page container p-0 page-wrapper">
         <HeroSection isLoggedIn={false} />
         <SyaratVaksinSection />

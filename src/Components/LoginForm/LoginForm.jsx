@@ -2,26 +2,34 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useDispatch } from "react-redux";
-import { login } from "../../Config/Redux/LoginSlice";
+import { loginByEmail, loginByNIK } from "../../Config/Redux/LoginSlice";
 import { Toaster } from "react-hot-toast";
 import { ToastError } from "../Toast/Toast";
+import axios from 'axios'
+import jwt from 'jwt-decode';
 
 function LoginForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const formKosong = {
-    username: "",
+    email:"",
+    nik:"",
     password: "",
   };
   const formError = {
-    username: "",
+    username:"",
+    password: "",
+  };
+  const formNIK = {
+    nik:"",
     password: "",
   };
 
   //init state
   const [form, setForm] = useState(formKosong);
   const [errMsg, setErrMsg] = useState(formError);
+  const [error, setError] = useState([])
 
   //regex for validation
   const isEmail =
@@ -66,9 +74,8 @@ function LoginForm() {
     setErrMsg(() => {
       const errorMessageArr = Object.keys(errMsg).map((key) => {
         if (form[key] === "") {
-          const err = `${
-            key.charAt(0).toUpperCase() + key.slice(1)
-          } tidak boleh kosong`;
+          const err = `${key.charAt(0).toUpperCase() + key.slice(1)
+            } tidak boleh kosong`;
 
           return { [key]: err };
         }
@@ -87,21 +94,76 @@ function LoginForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const validForm = Object.keys(form).filter((key) => form[key] !== "");
-
+    var API_URL = 'https://reservaksin-be.herokuapp.com'
     if (validForm.length < 2) {
       validateOnSubmit();
+    } else if (isNaN(form.email)){
+      
+      console.log(form)
+
+      axios
+      .post(`${API_URL}/citizen/loginEmail`, form)
+
+      .then((resp)=> {
+        console.log("isi resp", resp)
+        if (resp.data.meta.status !== 200) {
+          setError(resp.data.meta.messages)
+        } else {
+          var user = jwt(resp.data.data.token)
+          dispatch(loginByEmail(({
+            email:form.email, 
+            login:true, 
+            token:resp.data.data.token, id:user.id})))
+          navigate("/")
+        }
+      })
+      .catch((e) => {
+        if (e.response) {
+          if (e.response.status === 400) {
+            ToastError("Username atau password salah!")
+          }
+        } else if (e.request) {
+          console.log("isi err req", e.request)
+        }
+      })
+      // // console.log(errMsg);
+      // // if (errMsg.username !== "" || errMsg.password !== "") {
+      // //   ToastError("masih ada data yg salah!");
+      //   return;
+      // }
+      // const loginData = {
+      //   username: form.username,
+      //   login: true,
+      // };
+      // dispatch(login(loginData));
+      // navigate("/profile");
     } else {
-      console.log(errMsg);
-      if (errMsg.username !== "" || errMsg.password !== "") {
-        ToastError("masih ada data yg salah!");
-        return;
-      }
-      const loginData = {
-        username: form.username,
-        login: true,
-      };
-      dispatch(login(loginData));
-      navigate("/profile");
+      axios
+      .post(`${API_URL}/citizen/loginNik`, form)
+      console.log(form)
+      .then((resp)=> {
+        console.log("isi resp", resp)
+        if (resp.data.meta.status !== 200) {
+          setError(resp.data.meta.messages)
+        } else {
+          var user = jwt(resp.data.data.token)
+          dispatch(loginByNIK(({
+            nik:form.nik, 
+            login:true, 
+            token:resp.data.data.token, 
+            id:user.id})))
+          navigate("/")
+        }
+      })
+      .catch((e) => {
+        if (e.response) {
+          if (e.response.status === 400) {
+            ToastError("Username atau password salah!")
+          }
+        } else if (e.request) {
+          console.log("isi err req", e.request)
+        }
+      })
     }
   };
 
@@ -114,8 +176,8 @@ function LoginForm() {
             Email atau NIK
           </label>
           <input
-            name="username"
-            value={form.username}
+            name="email"
+            value={isNaN ? form.email : form.nik}
             onChange={handleChange}
             type="text"
             className="form-control"
