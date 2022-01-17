@@ -9,7 +9,7 @@ function AccordionFormDataKeluarga({
   handleInputDataAnggota,
   handleInputTglLahirAnggota,
   formDataNoKK,
-  setFormData
+  setFormData,
 }) {
   return (
     <div className="container p-0 ">
@@ -31,17 +31,13 @@ function AccordionFormDataKeluarga({
           className="accordion-collapse collapse"
           aria-labelledby={`heading${idx + 1}`}
         >
-          <div
-            className="accordion-body"
-            style={{ paddingLeft: "0px", paddingRight: "0px" }}
-          >
+          <div className="accordion-body">
             <FormDataKeluarga
               formdataAnggota={formdataAnggota}
               id={id}
               handleInputDataAnggota={handleInputDataAnggota}
               handleInputTglLahirAnggota={handleInputTglLahirAnggota}
               formDataNoKK={formDataNoKK}
-              
               setFormData={setFormData}
             />
             <button

@@ -14,7 +14,6 @@ function DataPribadiComponent({
   errMsgTglLahir,
   errMsgStatusPerkawinan,
   handleValidation,
-  setFormData,
 }) {
   return (
     <div className="form">
@@ -90,7 +89,7 @@ function DataPribadiComponent({
       <div className="mb-3">
         <label className="form-label">Tanggal Lahir *</label>
         <input
-        type="date"
+          type="date"
           className="form-control"
           name="dateof_birth"
           selected={formData?.dateof_birth}

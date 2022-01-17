@@ -66,7 +66,6 @@ function FormRegisterAwal({ nextStep, handleInputData, formData }) {
   };
 
   const submitFormData = (e) => {
-    console.log(formData)
     e.preventDefault();
     if (
       errMsgEmail !== "" ||

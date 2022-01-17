@@ -5,9 +5,8 @@ import { useDispatch } from "react-redux";
 import { login } from "../../Config/Redux/LoginSlice";
 import { Toaster } from "react-hot-toast";
 import { ToastError } from "../Toast/Toast";
-import axios from 'axios'
-import jwt from 'jwt-decode';
-
+import axios from "axios";
+import jwt from "jwt-decode";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -15,7 +14,6 @@ function LoginForm() {
 
   const formKosong = {
     email_or_nik: "",
-    // nik:"",
     password: "",
   };
   const formError = {
@@ -26,7 +24,7 @@ function LoginForm() {
   //init state
   const [form, setForm] = useState(formKosong);
   const [errMsg, setErrMsg] = useState(formError);
-  const [error, setError] = useState([])
+  const [error, setError] = useState([]);
 
   //regex for validation
   const isEmail =
@@ -36,7 +34,7 @@ function LoginForm() {
 
   //validation function
   const validateFormValue = (name, value) => {
-    //validate username
+    //validate email or nik
     if (name === "email_or_nik") {
       if (isEmail.test(value) || isNIK.test(value)) {
         setErrMsg({ ...formError, username: "" });
@@ -66,14 +64,14 @@ function LoginForm() {
       [name]: value,
     });
   };
-  console.log(form)
 
   const validateOnSubmit = () => {
     setErrMsg(() => {
       const errorMessageArr = Object.keys(errMsg).map((key) => {
         if (form[key] === "") {
-          const err = `${key.charAt(0).toUpperCase() + key.slice(1)
-            } tidak boleh kosong`;
+          const err = `${
+            key.charAt(0).toUpperCase() + key.slice(1)
+          } tidak boleh kosong`;
 
           return { [key]: err };
         }
@@ -89,46 +87,43 @@ function LoginForm() {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const validForm = Object.keys(form).filter((key) => form[key] !== "");
-    var API_URL = 'https://reservaksin-be.herokuapp.com'
+    var API_URL = "https://reservaksin-be.herokuapp.com";
     if (validForm.length < 2) {
       validateOnSubmit();
     } else {
-
-      console.log(form)
-
-      axios
+      await axios
         .post(`${API_URL}/citizen/login`, form)
 
         .then((resp) => {
-          console.log("isi resp", resp)
           if (resp.data.meta.status !== 200) {
-            setError(resp.data.meta.messages)
+            setError(resp.data.meta.messages);
           } else {
-            var user = jwt(resp.data.data.token)
-            dispatch(login(({
-              email_or_nik: form.email_or_nik,
-              login: true,
-              token: resp.data.data.token, 
-              id: user.id
-            })))
-            navigate("/")
+            var user = jwt(resp.data.data.token);
+            dispatch(
+              login({
+                email_or_nik: form.email_or_nik,
+                login: true,
+                token: resp.data.data.token,
+                id: user.id,
+              })
+            );
+            navigate("/");
           }
         })
         .catch((e) => {
-          console.log(e)
           if (e.response) {
             if (e.response.status === 401) {
-              ToastError("email/nik atau password salah!")
+              ToastError("email/nik atau password salah!");
             }
           } else if (e.request) {
-            console.log("isi err req", e.request)
+            console.log("isi err req", e.request);
           }
-        })
-      
+        });
     }
+    console.log(error);
   };
 
   return (
