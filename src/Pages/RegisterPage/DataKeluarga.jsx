@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Stepper } from "react-form-stepper";
 import "index.css";
 import "./DataKeluarga.css";
@@ -12,7 +12,84 @@ function DataKeluarga({
   listAnggota,
   setListAnggota,
   dataAnggota,
+  formDataNoKK
 }) {
+  // const [errMsgNoKK, seterrMsgNoKK] = useState("");
+  // const [errMsgNIK, seterrMsgNIK] = useState("");
+  // const [errMsgNama, seterrMsgNama] = useState("");
+  // const [errMsgJeniKelamin, seterrMsgJeniKelamin] = useState("");
+  // const [errMsgStatusHubungan, seterrMsgStatusHubungan] = useState("");
+  // const [errMsgStatusPerkawinan, seterrMsgStatusPerkawinan] = useState("");
+  // const [errMsgTglLahir, seterrMsgTglLahir] = useState("");
+  const regexNIK =
+    /^(1[1-9]|21|[37][1-6]|5[1-3]|6[1-5]|[89][12])\d{2}\d{2}([04][1-9]|[1256][0-9]|[37][01])(0[1-9]|1[0-2])\d{2}\d{4}$/;
+
+  // const handleValidation = (e) => {
+  //   const name = e.target.name;
+  //   const value = e.target.value;
+
+  //   if (name === "no_kk") {
+  //     if (listAnggota.no_kk === 0 || listAnggota.no_kk === "") {
+  //       seterrMsgNoKK("No. KK tidak boleh kosong!");
+  //     } else {
+  //       seterrMsgNoKK("");
+  //     }
+  //   }
+
+  //   if (name === "nik") {
+  //     if (listAnggota.nik !== 0 || listAnggota.nik !== "") {
+  //       if (regexNIK.test(value)) {
+  //         seterrMsgNIK("");
+  //       } else {
+  //         seterrMsgNIK("NIK tidak sesuai!");
+  //       }
+  //     } else {
+  //       seterrMsgNIK("NIK tidak boleh kosong!");
+  //     }
+  //   }
+
+  //   if (name === "fullname") {
+  //     if (listAnggota.fullname !== "") {
+  //       seterrMsgNama("");
+  //     } else {
+  //       seterrMsgNama("Nama tidak boleh kosong!");
+  //     }
+  //   }
+
+  //   if (name === "gender") {
+  //     if (listAnggota.gender !== "") {
+  //       seterrMsgJeniKelamin("");
+  //     } else {
+  //       seterrMsgJeniKelamin("Pilih salah satu!");
+  //     }
+  //   }
+
+  //   if (name === "family_relationship") {
+  //     if (listAnggota.family_relationship !== "") {
+  //       seterrMsgStatusHubungan("");
+  //     } else {
+  //       seterrMsgStatusHubungan("Pilih salah satu!");
+  //     }
+  //   }
+
+  //   if (name === "marriage_status") {
+  //     if (listAnggota.marriage_status !== "") {
+  //       seterrMsgStatusPerkawinan("");
+  //     } else {
+  //       seterrMsgStatusPerkawinan("Pilih salah satu!");
+  //     }
+  //   }
+
+  //   if (name === "dateof_birth") {
+  //     if (listAnggota.dateof_birth !== "") {
+  //       seterrMsgTglLahir("");
+  //     } else {
+  //       seterrMsgTglLahir("Tanggal lahir harus diisi!");
+  //     }
+  //   }
+  // };
+
+
   const handleInputDataAnggota = (id, e) => {
     setListAnggota(
       listAnggota.map((item) => {
@@ -28,7 +105,7 @@ function DataKeluarga({
     setListAnggota(
       listAnggota.map((item) => {
         if (item.id === id) {
-          return { ...item, tglLahir: date };
+          return { ...item, dateof_birth: date };
         }
         return item;
       })
@@ -61,6 +138,9 @@ function DataKeluarga({
             handleInputDataAnggota={handleInputDataAnggota}
             handleInputTglLahirAnggota={handleInputTglLahirAnggota}
             handleDeleteAnggotaKeluarga={handleDeleteAnggotaKeluarga}
+            formDataNoKK={formDataNoKK}
+            setFormData={setListAnggota}
+
           />
         ))}
         <Button

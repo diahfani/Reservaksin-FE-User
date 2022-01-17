@@ -25,8 +25,8 @@ function DataPribadi({
     const name = e.target.name;
     const value = e.target.value;
 
-    if (name === "nokk") {
-      if (formData.nokk === 0 || formData.nokk === "") {
+    if (name === "no_kk") {
+      if (formData.no_kk === 0 || formData.no_kk === "") {
         seterrMsgNoKK("No. KK tidak boleh kosong!");
       } else {
         seterrMsgNoKK("");
@@ -45,40 +45,40 @@ function DataPribadi({
       }
     }
 
-    if (name === "namalengkap") {
-      if (formData.namalengkap !== "") {
+    if (name === "fullname") {
+      if (formData.fullname !== "") {
         seterrMsgNama("");
       } else {
         seterrMsgNama("Nama tidak boleh kosong!");
       }
     }
 
-    if (name === "jeniskelamin") {
-      if (formData.jeniskelamin !== "") {
+    if (name === "gender") {
+      if (formData.gender !== "") {
         seterrMsgJeniKelamin("");
       } else {
         seterrMsgJeniKelamin("Pilih salah satu!");
       }
     }
 
-    if (name === "statusHubungan") {
-      if (formData.statusHubungan !== "") {
+    if (name === "family_relationship") {
+      if (formData.family_relationship !== "") {
         seterrMsgStatusHubungan("");
       } else {
         seterrMsgStatusHubungan("Pilih salah satu!");
       }
     }
 
-    if (name === "statusPerkawinan") {
-      if (formData.statusPerkawinan !== "") {
+    if (name === "marriage_status") {
+      if (formData.marriage_status !== "") {
         seterrMsgStatusPerkawinan("");
       } else {
         seterrMsgStatusPerkawinan("Pilih salah satu!");
       }
     }
 
-    if (name === "tglLahir") {
-      if (formData.tglLahir !== "") {
+    if (name === "dateof_birth") {
+      if (formData.dateof_birth !== "") {
         seterrMsgTglLahir("");
       } else {
         seterrMsgTglLahir("Tanggal lahir harus diisi!");
@@ -88,7 +88,7 @@ function DataPribadi({
 
   const handleSubmit = (e) => {
     if (
-      errMsgNIK !== "" ||
+      errMsgNoKK !== "" ||
       errMsgNIK !== "" ||
       errMsgNama !== "" ||
       errMsgJeniKelamin !== "" ||
@@ -100,13 +100,13 @@ function DataPribadi({
     } else if (
       formData.nik === 0 ||
       formData.nik === "" ||
-      formData.nokk === 0 ||
-      formData.nokk === "" ||
-      formData.namalengkap === "" ||
-      formData.jeniskelamin === "" ||
-      formData.tglLahir === "" ||
-      formData.statusHubungan === "" ||
-      formData.statusPerkawinan === ""
+      formData.no_kk === 0 ||
+      formData.no_kk === "" ||
+      formData.fullname === "" ||
+      formData.gender === "" ||
+      formData.dateof_birth === "" ||
+      formData.family_relationship === "" ||
+      formData.marriage_status === ""
     ) {
       alert("data ada yang masih kosong");
     } else {

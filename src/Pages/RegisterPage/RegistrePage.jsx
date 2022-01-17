@@ -11,35 +11,37 @@ function RegistrePage() {
 
   const [formData, setFormData] = useState({
     email: "",
-    notelp: "",
+    no_hp: "",
     password: "",
     passAgain: "",
-    nokk: "",
+    no_kk: "",
     nik: "",
-    namalengkap: "",
-    jeniskelamin: "",
-    tglLahir: new Date(),
-    statusHubungan: "",
-    statusPerkawinan: "",
-    alamat: "",
-    kelurahan: "",
+    fullname: "",
+    gender: "",
+    dateof_birth: "",
+    family_relationship: "",
+    marriage_status: "",
+    address: "",
+    desa: "",
     kecamatan: "",
-    kabupaten: "",
+    kota: "",
     provinsi: "",
+    role: "user"
   });
 
   const dataAnggota = {
     id: uuidv4(),
-    nokk: "",
+    no_kk: formData.no_kk,
     nik: "",
-    namalengkap: "",
-    jeniskelamin: "Pria",
-    tglLahir: new Date(),
-    statusHubungan: "",
-    statusPerkawinan: "",
+    fullname: "",
+    gender: "Pria",
+    dateof_birth: "",
+    family_relationship: "",
+    marriage_status: "",
+    role: "anggota"
   };
 
-  const [listAnggota, setListAnggota] = useState([dataAnggota]);
+  const [listAnggota, setListAnggota] = useState([]);
 
   const nextStep = () => {
     setstep(step + 1);
@@ -92,11 +94,12 @@ function RegistrePage() {
           listAnggota={listAnggota}
           setListAnggota={setListAnggota}
           dataAnggota={dataAnggota}
+          formDataNoKK={formData.no_kk}
         />
       );
     case 5:
       return (
-        <Submit nextStep={nextStep} prevStep={prevStep} formData={formData} />
+        <Submit nextStep={nextStep} prevStep={prevStep} formData={formData} formdataAnggota={listAnggota}/>
       );
     default:
       <div className="container mx-auto p-0 page-wrapper"></div>;

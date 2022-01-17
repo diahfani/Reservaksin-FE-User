@@ -8,6 +8,8 @@ function FormDataKeluarga({
   id,
   handleInputDataAnggota,
   handleInputTglLahirAnggota,
+  formDataNoKK,
+  setFormData
 }) {
   return (
     <div className="container">
@@ -15,18 +17,16 @@ function FormDataKeluarga({
         <div className="mb-2 ctr-input ">
           <label className="form-label">No. KK *</label>
           <input
+          disabled
             placeholder="Masukkan no. KK"
-            name="nokk"
+            name="no_kk"
             type="number"
-            value={formdataAnggota.nokk}
+            value={formDataNoKK}
             onChange={(e) => {
               handleInputDataAnggota(id, e);
             }}
             className="form-control"
           />
-          <p hidden className="form-text text-danger">
-            No. KK tidak boleh kosong!
-          </p>
         </div>
         <div className="mb-2 ctr-input">
           <label className="form-label">NIK *</label>
@@ -40,25 +40,21 @@ function FormDataKeluarga({
             type="number"
             className="form-control"
           />
-          <p hidden className="form-text text-danger">
-            NIK tidak boleh kosong!
-          </p>
+
         </div>
         <div className="mb-2 ctr-input">
           <label className="form-label">Nama Lengkap *</label>
           <input
             placeholder="Masukkan nama lengkap"
             type="text"
-            value={formdataAnggota.namalengkap}
+            value={formdataAnggota.fullname}
             onChange={(e) => {
               handleInputDataAnggota(id, e);
             }}
-            name="namalengkap"
+            name="fullname"
             className="form-control"
           />
-          <p hidden className="form-text text-danger">
-            Nama lengkap tidak boleh kosong!
-          </p>
+
         </div>
         <div className="mb-2 ctr-input">
           <label className="col-form-label">Jenis Kelamin *</label>
@@ -67,9 +63,9 @@ function FormDataKeluarga({
               <input
                 className="form-check-input"
                 type="radio"
-                name="jeniskelamin"
+                name="gender"
                 value="Pria"
-                checked={formdataAnggota.jeniskelamin === "Pria"}
+                checked={formdataAnggota.gender === "Pria"}
                 onChange={(e) => {
                   handleInputDataAnggota(id, e);
                 }}
@@ -80,9 +76,9 @@ function FormDataKeluarga({
               <input
                 className="form-check-input"
                 type="radio"
-                name="jeniskelamin"
+                name="gender"
                 value="Wanita"
-                checked={formdataAnggota.jeniskelamin === "Wanita"}
+                checked={formdataAnggota.gender === "Wanita"}
                 onChange={(e) => {
                   handleInputDataAnggota(id, e);
                 }}
@@ -90,23 +86,21 @@ function FormDataKeluarga({
               <label className="form-check-label">Wanita</label>
             </div>
           </div>
-          <p hidden className="form-text text-danger mb-0">
-            Pilih salah satu!
-          </p>
+
         </div>
         <div className="mb-2 ctr-input date-input">
           <label className="form-label">Tanggal Lahir *</label>
-          <DatePicker
+          <input
+            type="date"
             className="form-control"
-            name="tglLahir"
-            selected={formdataAnggota.tglLahir}
-            onChange={(date) => {
-              handleInputTglLahirAnggota(id, date);
-            }}
+            name="dateof_birth"
+            selected={formdataAnggota.dateof_birth}
+            onChange={(e) => {handleInputDataAnggota(id, e)}}
+          // onChange={(date) => {
+          //   handleInputTglLahirAnggota(id, date);
+          // }}
           />
-          <p hidden className="form-text text-danger">
-            Tanggal Lahir tidak boleh kosong!
-          </p>
+
         </div>
         <div className="mb-2 ctr-input">
           <label className="form-label">
@@ -114,8 +108,8 @@ function FormDataKeluarga({
           </label>
           <select
             className="form-select"
-            value={formdataAnggota.statusHubungan}
-            name="statusHubungan"
+            value={formdataAnggota.family_relationship}
+            name="family_relationship"
             onChange={(e) => {
               handleInputDataAnggota(id, e);
             }}
@@ -128,16 +122,14 @@ function FormDataKeluarga({
             <option value="istri">Istri</option>
             <option value="mertua">Mertua</option>
           </select>
-          <p hidden className="form-text text-danger">
-            Pilih salah satu!
-          </p>
+
         </div>
         <div className="mb-4 ctr-input">
           <label className="form-label">Status Perkawinan *</label>
           <select
             className="form-select"
-            value={formdataAnggota.statusPerkawinan}
-            name="statusPerkawinan"
+            value={formdataAnggota.marriage_status}
+            name="marriage_status"
             onChange={(e) => {
               handleInputDataAnggota(id, e);
             }}
@@ -150,9 +142,6 @@ function FormDataKeluarga({
             <option value="cerai">Cerai</option>
             <option value="ceraiMati">Cerai Mati</option>
           </select>
-          <p hidden className="form-text text-danger">
-            Pilih salah satu!
-          </p>
         </div>
       </div>
     </div>

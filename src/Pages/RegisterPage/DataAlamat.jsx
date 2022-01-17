@@ -14,16 +14,16 @@ function DataAlamat({ nextStep, prevStep, handleInputData, formData }) {
   const handleValidation = (e) => {
     const name = e.target.name;
 
-    if (name === "alamat") {
-      if (formData.alamat === "") {
+    if (name === "address") {
+      if (formData.address === "") {
         seterrMsgAlamat("Alamat tidak boleh kosong!");
       } else {
         seterrMsgAlamat("");
       }
     }
 
-    if (name === "kelurahan") {
-      if (formData.kelurahan === "") {
+    if (name === "desa") {
+      if (formData.desa === "") {
         seterrMsgKelurahan("NIK tidak boleh kosong!");
       } else {
         seterrMsgKelurahan("");
@@ -38,8 +38,8 @@ function DataAlamat({ nextStep, prevStep, handleInputData, formData }) {
       }
     }
 
-    if (name === "kabupaten") {
-      if (formData.kabupaten !== "") {
+    if (name === "kota") {
+      if (formData.kota !== "") {
         seterrMsgKabupaten("");
       } else {
         seterrMsgKabupaten("Kabupaten tidak boleh kosong!");
@@ -65,10 +65,10 @@ function DataAlamat({ nextStep, prevStep, handleInputData, formData }) {
     ) {
       alert("terdapat data yang tidak sesuai");
     } else if (
-      formData.alamat === "" ||
-      formData.kelurahan === "" ||
+      formData.address === "" ||
+      formData.desa === "" ||
       formData.kecamatan === "" ||
-      formData.kabupaten === "" ||
+      formData.kota === "" ||
       formData.provinsi === ""
     ) {
       alert("data ada yang masih kosong");

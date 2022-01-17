@@ -7,9 +7,11 @@ import KriteriaVaksinSection from "Components/KriteriaVaksinSection/KriteriaVaks
 import CaraVaksinasiSection from "Components/CaraVaksinasiSection/CaraVaksinasiSection";
 import EfekVaksinSection from "Components/EfekVaksinSection/EfekVaksinSection";
 import Footer from "Components/Footer/Footer";
+import {useSelector } from 'react-redux'
 
 export default function LandingPage() {
   const [visible, setVisible] = useState(false);
+  const isLoggedIn = useSelector((state) => state.auth.login)
 
   useEffect(() => {
     const toggleVisible = () => {
@@ -31,9 +33,9 @@ export default function LandingPage() {
 
   return (
     <>
-      <Navbar isLoggedIn={true} />
+      <Navbar isLoggedIn={isLoggedIn} />
       <div className="landing-page container p-0 page-wrapper">
-        <HeroSection isLoggedIn={false} />
+        <HeroSection isLoggedIn={isLoggedIn} />
         <SyaratVaksinSection />
         <KriteriaVaksinSection />
         <CaraVaksinasiSection />
