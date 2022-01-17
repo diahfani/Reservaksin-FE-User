@@ -30,8 +30,8 @@ function FormRegisterAwal({ nextStep, handleInputData, formData }) {
       }
     }
 
-    if (name === "notelp") {
-      if (formData.notelp !== "") {
+    if (name === "no_hp") {
+      if (formData.no_hp !== "") {
         if (regexnotelp.test(value)) {
           seterrMsgNotelp("");
         } else {
@@ -66,6 +66,7 @@ function FormRegisterAwal({ nextStep, handleInputData, formData }) {
   };
 
   const submitFormData = (e) => {
+    console.log(formData)
     e.preventDefault();
     if (
       errMsgEmail !== "" ||
@@ -76,7 +77,7 @@ function FormRegisterAwal({ nextStep, handleInputData, formData }) {
       alert("terdapat data yang tidak sesuai");
     } else if (
       formData.email === "" ||
-      formData.notelp === 0 ||
+      formData.no_hp === 0 ||
       formData.password === "" ||
       formData.passAgain === ""
     ) {
@@ -107,8 +108,8 @@ function FormRegisterAwal({ nextStep, handleInputData, formData }) {
           <label className="form-label">No. Telepon</label>
           <input
             placeholder="Masukkan no. telepon"
-            name="notelp"
-            value={formData.notelp}
+            name="no_hp"
+            value={formData.no_hp}
             onChange={handleInputData}
             onBlur={handleValidation}
             type="number"

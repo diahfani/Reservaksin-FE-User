@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const data = {
     email: "",
-    notelp: 0,
+    no_hp: 0,
     password: "",
     passAgain: "",
     nokk: 0,

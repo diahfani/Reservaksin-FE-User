@@ -17,9 +17,9 @@ function Alamat({
         <label className="form-label">Alamat KTP *</label>
         <input
           placeholder="Masukkan Alamat KTP"
-          name="alamat"
+          name="address"
           type="text"
-          value={formData.alamat}
+          value={formData.address}
           onChange={handleInputData}
           onBlur={handleValidation}
           className="form-control"
@@ -30,8 +30,8 @@ function Alamat({
         <label className="form-label">Kelurahan/Desa *</label>
         <input
           placeholder="Masukkan Kelurahan/Desa"
-          name="kelurahan"
-          value={formData.kelurahan}
+          name="desa"
+          value={formData.desa}
           onChange={handleInputData}
           onBlur={handleValidation}
           type="text"
@@ -57,10 +57,10 @@ function Alamat({
         <input
           placeholder="Masukkan Kabupaten/Kota"
           type="text"
-          value={formData.kabupaten}
+          value={formData.kota}
           onChange={handleInputData}
           onBlur={handleValidation}
-          name="kabupaten"
+          name="kota"
           className="form-control"
         />
         <p className="form-text text-danger">{errMsgKabupaten}</p>

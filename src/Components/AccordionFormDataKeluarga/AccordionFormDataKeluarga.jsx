@@ -8,6 +8,8 @@ function AccordionFormDataKeluarga({
   handleDeleteAnggotaKeluarga,
   handleInputDataAnggota,
   handleInputTglLahirAnggota,
+  formDataNoKK,
+  setFormData
 }) {
   return (
     <div className="container p-0 ">
@@ -38,6 +40,9 @@ function AccordionFormDataKeluarga({
               id={id}
               handleInputDataAnggota={handleInputDataAnggota}
               handleInputTglLahirAnggota={handleInputTglLahirAnggota}
+              formDataNoKK={formDataNoKK}
+              
+              setFormData={setFormData}
             />
             <button
               className="btn btn-danger w-100"

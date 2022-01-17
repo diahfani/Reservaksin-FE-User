@@ -1,5 +1,5 @@
 import React from "react";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../Button.css";
 
@@ -22,9 +22,9 @@ function DataPribadiComponent({
         <label className="form-label">No. KK *</label>
         <input
           placeholder="Masukkan no. KK"
-          name="nokk"
+          name="no_kk"
           type="number"
-          value={formData?.nokk}
+          value={formData?.no_kk}
           onChange={handleInputData}
           onBlur={handleValidation}
           className="form-control"
@@ -49,9 +49,9 @@ function DataPribadiComponent({
         <input
           placeholder="Masukkan nama lengkap"
           type="text"
-          value={formData?.namalengkap}
+          value={formData?.fullname}
           onChange={handleInputData}
-          name="namalengkap"
+          name="fullname"
           onBlur={handleValidation}
           className="form-control"
         />
@@ -64,9 +64,9 @@ function DataPribadiComponent({
             <input
               className="form-check-input"
               type="radio"
-              name="jeniskelamin"
+              name="gender"
               value="Pria"
-              checked={formData?.jeniskelamin === "Pria"}
+              checked={formData?.gender === "Pria"}
               onBlur={handleValidation}
               onChange={handleInputData}
             />
@@ -76,9 +76,9 @@ function DataPribadiComponent({
             <input
               className="form-check-input"
               type="radio"
-              name="jeniskelamin"
+              name="gender"
               value="Wanita"
-              checked={formData?.jeniskelamin === "Wanita"}
+              checked={formData?.gender === "Wanita"}
               onBlur={handleValidation}
               onChange={handleInputData}
             />
@@ -89,14 +89,12 @@ function DataPribadiComponent({
       </div>
       <div className="mb-3">
         <label className="form-label">Tanggal Lahir *</label>
-        <DatePicker
+        <input
+        type="date"
           className="form-control"
-          name="tglLahir"
-          selected={formData?.tglLahir}
-          onChange={(date) => {
-            setFormData({ ...formData, tglLahir: date });
-            console.log(date);
-          }}
+          name="dateof_birth"
+          selected={formData?.dateof_birth}
+          onChange={handleInputData}
           onBlur={handleValidation}
         />
         <p className="form-text text-danger mb-0 p-date">{errMsgTglLahir}</p>
@@ -107,8 +105,8 @@ function DataPribadiComponent({
         </label>
         <select
           className="form-select"
-          name="statusHubungan"
-          defaultValue={formData?.statusHubungan}
+          name="family_relationship"
+          defaultValue={formData?.family_relationship}
           onChange={handleInputData}
           onBlur={handleValidation}
         >
@@ -126,8 +124,8 @@ function DataPribadiComponent({
         <label className="form-label">Status Perkawinan *</label>
         <select
           className="form-select"
-          name="statusPerkawinan"
-          defaultValue={formData?.statusPerkawinan}
+          name="marriage_status"
+          defaultValue={formData?.marriage_status}
           onChange={handleInputData}
           onBlur={handleValidation}
         >
