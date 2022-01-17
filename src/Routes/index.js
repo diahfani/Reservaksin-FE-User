@@ -41,17 +41,14 @@ function Router() {
           element={<ReservationFaskes />}
         ></Route>
         <Route
-          path="/reservasi/faskes/:id"
+          path="/reservasi/faskes/:sessionID"
           element={<ReservasitionPilihTanggal />}
         ></Route>
         <Route
           path="/reservasi-berhasil"
           element={<ReservationBerhasil />}
         ></Route>
-        <Route
-          path="/my-reservation"
-          element={<MyReservation />}
-        ></Route>
+        <Route path="/my-reservation" element={<MyReservation />}></Route>
         <Route
           path="/reservation-details/:id"
           element={<ReservationDetails />}

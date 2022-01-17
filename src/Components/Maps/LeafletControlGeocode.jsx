@@ -21,14 +21,15 @@ export default function LeafletControlGeocoder() {
 
     L.Control.geocoder({
       query: "",
-      placeholder: "Search here...",
+      placeholder: "Masukan nama kota",
       defaultMarkGeocode: false,
       geocoder,
     })
       .on("markgeocode", function (e) {
-          map.flyTo(e.geocode.center, 15)
+        map.flyTo(e.geocode.center, 15);
       })
       .addTo(map);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;

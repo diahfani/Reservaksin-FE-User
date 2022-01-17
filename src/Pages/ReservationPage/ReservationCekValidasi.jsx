@@ -10,6 +10,8 @@ export default function Reservation() {
     "3603222505970002",
   ]);
 
+  // console.log(setNik);
+
   return (
     <div className="container py-4 page-wrapper d-flex flex-column justify-content-between">
       <div>
