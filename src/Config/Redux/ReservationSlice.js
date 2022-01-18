@@ -8,7 +8,7 @@ export const reservationSlice = createSlice({
   },
   reducers: {
     addValidation: (state, action) => {
-      state.isValid = action.payload.valid;
+      state.isValid = action.payload.isValid;
       state.userID = action.payload.userID;
     },
     clearValidation: (state) => {

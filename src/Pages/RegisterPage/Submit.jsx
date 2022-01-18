@@ -14,7 +14,7 @@ function Submit({ prevStep, formData, formdataAnggota }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var API_URL = "https://reservaksin-be.herokuapp.com";
+    var API_URL = process.env.REACT_APP_RESERVAKSIN_API_URL;
     await axios
       .post(`${API_URL}/citizen/register`, {
         email: formData.email,

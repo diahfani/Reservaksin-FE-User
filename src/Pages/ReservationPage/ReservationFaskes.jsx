@@ -5,14 +5,16 @@ import Illustration5 from "Assets/Images/illustration-5.svg";
 import Illustration6 from "Assets/Images/illustration-6.svg";
 
 export default function ReservationFaskes() {
+  // declare new state or new variable below ...
   const [searchParams] = useSearchParams();
   const [dataFaskes, setDataFaskes] = useState(null);
   const [serverError, setServerError] = useState(null);
   const curLoc = Object.fromEntries([...searchParams]);
 
+  // code your handle functions below ...
   const getHealthFacilitiesByLatLng = async () => {
     await fetch(
-      `${process.env.REACT_APP_LOCAL_API}/session/nearest-facilities?lat=${curLoc?.lat}&lng=${curLoc?.lng}`,
+      `${process.env.REACT_APP_RESERVAKSIN_API_URL}/session/nearest-facilities?lat=${curLoc?.lat}&lng=${curLoc?.lng}`,
       { method: "GET" }
     )
       .then((response) => response.text())
@@ -20,6 +22,7 @@ export default function ReservationFaskes() {
       .catch((error) => setServerError(true));
   };
 
+  // execute useEffect below ...
   useEffect(() => {
     getHealthFacilitiesByLatLng();
     // eslint-disable-next-line react-hooks/exhaustive-deps

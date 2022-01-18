@@ -90,13 +90,12 @@ function LoginForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validForm = Object.keys(form).filter((key) => form[key] !== "");
-    var API_URL = "https://reservaksin-be.herokuapp.com";
+    var API_URL = process.env.REACT_APP_RESERVAKSIN_API_URL;
     if (validForm.length < 2) {
       validateOnSubmit();
     } else {
       await axios
         .post(`${API_URL}/citizen/login`, form)
-
         .then((resp) => {
           if (resp.data.meta.status !== 200) {
             setError(resp.data.meta.messages);

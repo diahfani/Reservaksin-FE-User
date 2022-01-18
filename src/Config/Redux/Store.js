@@ -22,6 +22,7 @@ const reducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["reservation"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

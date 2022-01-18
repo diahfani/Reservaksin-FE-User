@@ -6,6 +6,7 @@ import Maps from "Components/Maps/Maps";
 import BackButton from "Components/BackButton/BackButton";
 
 export default function ReservationCekLokasi() {
+  // declare new state or new variable below ...
   Geocode.setApiKey(process.env.REACT_APP_GMAPS_GEOCODE_API_KEY);
   // const [curLoc, setCurLoc] = useState({ lat: -6.1753942, lng: 106.827183 });
   const [curLoc, setCurLoc] = useState(null);
@@ -13,6 +14,7 @@ export default function ReservationCekLokasi() {
   const [dataFaskes, setdataFaskes] = useState([]);
   const navigate = useNavigate();
 
+  // code your handle functions below ...
   const goToPilihFaskes = () =>
     navigate({
       pathname: "/reservasi/pilih-faskes",
@@ -21,7 +23,7 @@ export default function ReservationCekLokasi() {
 
   const getHealthFacilitiesLoc = async () => {
     await fetch(
-      `${process.env.REACT_APP_LOCAL_API}/health-facilities/maps-place`,
+      `${process.env.REACT_APP_RESERVAKSIN_API_URL}/health-facilities/maps-place`,
       { method: "GET" }
     )
       .then((response) => response.text())
@@ -31,6 +33,7 @@ export default function ReservationCekLokasi() {
       );
   };
 
+  // execute useEffect below ...
   useEffect(() => {
     if (curLoc != null) {
       Geocode.fromLatLng(curLoc?.lat, curLoc?.lng).then(

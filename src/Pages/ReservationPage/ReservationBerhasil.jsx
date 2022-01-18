@@ -2,11 +2,17 @@ import React from "react";
 import Illustration4 from "Assets/Images/illustration-4.svg";
 import { Link } from "react-router-dom";
 import LogoApp from "Assets/Images/logo.svg";
+import { useLocation } from "react-router-dom";
 
 export default function ReservationBerhasil() {
+  const { state } = useLocation();
+  console.log(state);
   return (
     <div className="container py-4 page-wrapper d-flex flex-column justify-content-between">
-      <a className="navbar-brand d-flex align-items-center justify-content-center" href="/">
+      <a
+        className="navbar-brand d-flex align-items-center justify-content-center"
+        href="/"
+      >
         <img src={LogoApp} style={{ height: "35px" }} alt="" />
         <p className="mb-0 ms-2" style={{ fontWeight: 500, color: "#0A508D" }}>
           Reservaksin
