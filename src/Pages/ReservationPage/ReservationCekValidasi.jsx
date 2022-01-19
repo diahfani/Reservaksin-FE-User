@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addValidation } from "../../Config/Redux/ReservationSlice";
-import { Toast, ToastContainer } from "react-bootstrap";
+import CustomToast from "Components/CustomToast/CustomToast";
 
 export default function Reservation() {
   // declare new state or new variable below ...
@@ -27,7 +27,7 @@ export default function Reservation() {
     await fetch(
       `${
         process.env.REACT_APP_RESERVAKSIN_API_URL
-      }/citizen/family?nokk=${3603224040409997}`,
+      }/citizen/family?nokk=${3603222340870003}`,
       { method: "GET" }
     )
       .then((response) => response.text())
@@ -101,7 +101,7 @@ export default function Reservation() {
             </option>
             {listAnggota?.map((item, idx) => (
               <option key={idx} value={item?.id}>
-                {item?.nokk}
+                {item?.nik}
               </option>
             ))}
           </select>
@@ -134,37 +134,5 @@ export default function Reservation() {
       </div>
       <CustomToast toast={toast} setToast={setToast} />
     </div>
-  );
-}
-
-function CustomToast({ toast, setToast }) {
-  return (
-    <ToastContainer
-      className="p-3"
-      position={"middle-center"}
-      style={{ display: "" }}
-    >
-      <Toast
-        onClose={() =>
-          setToast({
-            show: false,
-            message: <></>,
-          })
-        }
-        show={toast.show}
-        delay={toast.delay}
-        autohide
-      >
-        <Toast.Header closeButton={false}>
-          <strong className="me-auto">Reservaksin</strong>
-          {toast.headIcon}
-        </Toast.Header>
-        <Toast.Body
-          style={{ height: "5rem", backgroundColor: "rgba(255,255,255,.9)" }}
-        >
-          {toast.body}
-        </Toast.Body>
-      </Toast>
-    </ToastContainer>
   );
 }

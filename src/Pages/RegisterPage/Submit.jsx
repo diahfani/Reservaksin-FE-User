@@ -58,6 +58,7 @@ function Submit({ prevStep, formData, formdataAnggota }) {
       await axios
         .post(`${API_URL}/citizen/register`, {
           nokk: formData.no_kk,
+          nohp: formData.no_hp,
           nik: item.nik,
           fullname: item.fullname,
           gender: item.gender,

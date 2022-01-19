@@ -2,17 +2,16 @@ import BackButton from "Components/BackButton/BackButton";
 import CardFaskes from "Components/CardFaskes/CardFaskes";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Toast, ToastContainer } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { clearValidation } from "../../Config/Redux/ReservationSlice";
 import dayjs from "dayjs";
-import axios from "axios";
 import "dayjs/locale/id";
+import axios from "axios";
+import CustomToast from "Components/CustomToast/CustomToast";
 
 export default function ReservasitionPilihTanggal() {
   // declare new state or new variables below ...
   const reservationCheck = useSelector((state) => state.reservation);
-  console.log(reservationCheck);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { sessionID } = useParams();
@@ -59,7 +58,7 @@ export default function ReservasitionPilihTanggal() {
 
   const submitBookingAPI = async () => {
     await axios
-      .post(`${process.env.REACT_APP_RESERVAKSIN_API_URL}booking`, {
+      .post(`${process.env.REACT_APP_RESERVAKSIN_API_URL}/booking`, {
         citizen_id: formBooking.citizenID,
         session_id: formBooking.SessionID,
         date: formBooking.tanggalVaksin,
@@ -196,37 +195,5 @@ export default function ReservasitionPilihTanggal() {
       </button>
       <CustomToast toast={toast} setToast={setToast} />
     </div>
-  );
-}
-
-function CustomToast({ toast, setToast }) {
-  return (
-    <ToastContainer
-      className="p-3"
-      position={"middle-center"}
-      style={{ display: "" }}
-    >
-      <Toast
-        onClose={() =>
-          setToast({
-            show: false,
-            message: <></>,
-          })
-        }
-        show={toast.show}
-        delay={toast.delay}
-        autohide
-      >
-        <Toast.Header closeButton={false}>
-          <strong className="me-auto">Reservaksin</strong>
-          {toast.headIcon}
-        </Toast.Header>
-        <Toast.Body
-          style={{ height: "auto", backgroundColor: "rgba(255,255,255,.9)" }}
-        >
-          {toast.body}
-        </Toast.Body>
-      </Toast>
-    </ToastContainer>
   );
 }
