@@ -38,13 +38,13 @@ function UserMenu({userid}) {
           <span className="text-menu">Personal Data</span>
         </div>
       </Link>
-      <Link to="/profile/id/family" className="text-decoration-none">
+      <Link to={`/profile/${userid.id}/family`} className="text-decoration-none">
         <div className="item-menu mb-3 p-3">
           <TiGroupOutline size="20" color="#0A508D" />
           <span className="text-menu">Family Member</span>
         </div>
       </Link>
-      <Link to="/profile/id/history" className="text-decoration-none">
+      <Link to={`/profile/${userid.id}/history`} className="text-decoration-none">
         <div className="item-menu mb-3 p-3">
           <RiFolderHistoryLine size="20" color="#0A508D" />
           <span className="text-menu">Histori</span>

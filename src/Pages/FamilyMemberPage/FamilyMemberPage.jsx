@@ -2,8 +2,10 @@ import React from "react";
 import { FamilyData } from "./StaticData";
 import CardFamily from "../../Components/CardFamily/CardFamily";
 import BackButton from "../../Components/BackButton/BackButton";
+import { useParams } from 'react-router-dom'
 
-function FamilyMemberPage(props) {
+function FamilyMemberPage({userid}) {
+  const { id } = useParams()
   return (
     <div className="container py-4 page-wrapper">
       <BackButton title="Family Member" />
