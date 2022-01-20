@@ -7,13 +7,21 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../Config/Redux/LoginSlice";
+import { clearUser } from "../../Config/Redux/UserSlice";
+import { useParams } from 'react-router-dom'
 
-function UserMenu(props) {
+
+function UserMenu({userid}) {
+  // const { id } = useParams()
+  // console.log(id)
+  // console.log(userid.id)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   const onClick = () => {
     dispatch(logout());
+    dispatch(clearUser())
     navigate("/")
     // if (window.location.pathname.includes("profile")) {
     //   navigate("/");
@@ -24,7 +32,7 @@ function UserMenu(props) {
 
   return (
     <div className="mt-5">
-      <Link to="/profile/id/personal" className="text-decoration-none">
+      <Link to={`/profile/${userid.id}/personal`} className="text-decoration-none">
         <div className="item-menu mb-3 p-3">
           <BsFillPersonLinesFill size="20" color="#0A508D" />
           <span className="text-menu">Personal Data</span>

@@ -15,19 +15,22 @@ import ReservasitionPilihTanggal from "Pages/ReservationPage/ReservationPilihTan
 import ReservationBerhasil from "Pages/ReservationPage/ReservationBerhasil";
 import MyReservation from "Pages/MyReservation/MyReservation";
 import ReservationDetails from "Pages/ReservationDetails/ReservationDetails";
+import {useSelector} from 'react-redux'
 
 function Router() {
+  const user = useSelector((state) => state.auth)
+  console.log(user)
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage></LandingPage>}></Route>
-        <Route path="/profile" element={<UserProfilePage />}></Route>
+        <Route path="/profile" element={<UserProfilePage userid={user} />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         {/* <Route path="/profile" element={<UserProfilePage />}></Route> */}
-        <Route path="/profile/id/personal" element={<PersonalData />}></Route>
-        <Route path="/profile/id/family" element={<FamilyMemberPage />}></Route>
-        <Route path="/profile/id/history" element={<History />}></Route>
+        <Route path="/profile/:id/personal" element={<PersonalData userid={user}/>}></Route>
+        <Route path="/profile/:id/family" element={<FamilyMemberPage userid={user}/>}></Route>
+        <Route path="/profile/:id/history" element={<History userid={user}/>}></Route>
         <Route
           path="/reservasi/cek-validasi"
           element={<ReservationCekValidasi />}

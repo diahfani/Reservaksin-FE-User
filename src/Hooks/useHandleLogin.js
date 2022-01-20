@@ -1,18 +1,18 @@
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { login } from "../Config/Redux/LoginSlice"
+import { user } from "../Config/Redux/UserSlice"
 
 export default function useHandleLogin() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleLogin = (res) => {
-        const loginData = {
-            email: res.email,
-            login: true,
-            token: res.token
+        var API_URL = 'https://reservaksin-be.herokuapp.com'
+        let citizenData = {
+            ...res
         }
-        dispatch(login(loginData))
-        navigate("/")
+        console.log(citizenData)
+        console.log(citizenData.DataCitizen.id)
+        dispatch(user({citizenData}))
     }
     return handleLogin
 }

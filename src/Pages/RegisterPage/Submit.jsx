@@ -1,19 +1,22 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Stepper } from "react-form-stepper";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import BrandLogo from "Components/BrandLogo/BrandLogo";
 import { useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { ToastError } from "../../Components/Toast/Toast";
 import axios from 'axios'
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
+// import DropdownItem from "react-bootstrap/esm/DropdownItem";
 
 function Submit({ nextStep, prevStep, formData, formdataAnggota }) {
   const navigate = useNavigate()
   const [error, setError] = useState([])
+  const [isLoaded, setIsLoaded] = useState()
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsLoaded("logging in")
     var API_URL = 'https://reservaksin-be.herokuapp.com'
     await axios.post(`${API_URL}/citizen/register`, {
       email: formData.email,
@@ -26,8 +29,8 @@ function Submit({ nextStep, prevStep, formData, formdataAnggota }) {
       dob: formData.dateof_birth,
       relationship: formData.family_relationship,
       status: formData.marriage_status,
-      current_address:{
-        alamat : formData.address,
+      current_address: {
+        alamat: formData.address,
         kelurahan: formData.desa,
         kecamatan: formData.kecamatan,
         kota: formData.kota,
@@ -36,25 +39,26 @@ function Submit({ nextStep, prevStep, formData, formdataAnggota }) {
       ,
       role: "user"
     })
-    .then((response) => {
-      console.log(response)
-      if(response.data.meta.status !== 200) {
-        setError(response.data.meta.messages)
-      } else {
-        setError(response.data.meta.messages)
-        
-      }
-    })
-    .catch((e) => {
-      console.log(e)
-      if(e.response) {
-        if(e.response.status === 400) {
-          ToastError("bad request")
+      .then((response) => {
+        console.log(response)
+        if (response.data.meta.status !== 200) {
+          setError(response.data.meta.messages)
+        } else {
+          setError(response.data.meta.messages)
+
         }
-      } else if (e.request) {
-        console.log("isi err req", e.request)
-      }
-    })
+      })
+      .catch((e) => {
+        console.log(e)
+        if (e.response) {
+          if (e.response.status === 400) {
+            ToastError("bad request")
+          }
+        } else if (e.request) {
+          console.log("isi err req", e.request)
+        }
+        setIsLoaded()
+      })
     formdataAnggota.map(async (item) => {
       await axios.post(`${API_URL}/citizen/register`, {
         nokk: formData.no_kk,
@@ -64,8 +68,8 @@ function Submit({ nextStep, prevStep, formData, formdataAnggota }) {
         dob: item.dateof_birth,
         relationship: item.family_relationship,
         status: item.marriage_status,
-        current_address:{
-          alamat : formData.address,
+        current_address: {
+          alamat: formData.address,
           kelurahan: formData.desa,
           kecamatan: formData.kecamatan,
           kota: formData.kota,
@@ -74,76 +78,34 @@ function Submit({ nextStep, prevStep, formData, formdataAnggota }) {
         ,
         role: "anggota"
       })
-      .then((response) => {
-        console.log(response)
-        if(response.data.meta.status !== 200) {
-          setError(response.data.meta.messages)
-        } else {
-          setError(response.data.meta.messages)
-        }
-      })
-      .catch((e) => {
-        console.log(e)
-        if(e.response) {
-          if(e.response.status === 400) {
-            ToastError("bad request")
+        .then((response) => {
+          console.log(response)
+          if (response.data.meta.status !== 200) {
+            setError(response.data.meta.messages)
+          } else {
+            setError(response.data.meta.messages)
           }
-        } else if (e.request) {
-          console.log("isi err req", e.request)
-        }
-      })
+        })
+        .catch((e) => {
+          console.log(e)
+          if (e.response) {
+            if (e.response.status === 400) {
+              ToastError("bad request")
+            }
+          } else if (e.request) {
+            console.log("isi err req", e.request)
+          }
+          setIsLoaded()
+
+        })
     })
     navigate("/")
   };
 
-  const handleSubmitAnggota = (e) => {
-    e.preventDefault()
-    var API_URL = 'https://reservaksin-be.herokuapp.com'
-    axios.post(`${API_URL}/citizen/register`, {
-      // email: formData.email,
-      // nohp: formData.no_hp,
-      // password: formData.password,
-      nokk: formData.no_kk,
-      nik: formdataAnggota.nik,
-      fullname: formdataAnggota.fullname,
-      gender: formdataAnggota.gender,
-      dob: formdataAnggota.dateof_birth,
-      relationship: formdataAnggota.family_relationship,
-      status: formdataAnggota.marriage_status,
-      current_address:{
-        alamat : formData.address,
-        kelurahan: formData.desa,
-        kecamatan: formData.kecamatan,
-        kota: formData.kota,
-        provinsi: formData.provinsi,
-      }
-      ,
-      role: "anggota"
-    })
-    .then((response) => {
-      console.log(response)
-      if(response.data.meta.status !== 200) {
-        setError(response.data.meta.messages)
-      } else {
-        setError(response.data.meta.messages)
-        navigate("/")
-      }
-    })
-    .catch((e) => {
-      console.log(e)
-      if(e.response) {
-        if(e.response.status === 401) {
-          ToastError("bad request")
-        }
-      } else if (e.request) {
-        console.log("isi err req", e.request)
-      }
-    })
-  };
 
   return (
     <div className="container mx-auto page-wrapper">
-      <Toaster/>
+      <Toaster />
       <Stepper
         steps={[
           { label: "Data Pribadi" },
@@ -161,7 +123,11 @@ function Submit({ nextStep, prevStep, formData, formdataAnggota }) {
         <form onSubmit={handleSubmit} className="">
           <div className="mt-5 mb-2 p-0">
             <Button type="submit" className="btn-style w-100">
-              Submit
+              {isLoaded === "logging in" ?
+                (<Spinner animation="border" variant="primary" />)
+                :
+                "Submit"
+              }
             </Button>
           </div>
           <div className="mt-2 mb-3 p-0">

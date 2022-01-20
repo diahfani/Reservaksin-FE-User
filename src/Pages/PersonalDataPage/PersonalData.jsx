@@ -1,21 +1,25 @@
 import React, { useState } from "react";
-import DataPribadiComponent from "Components/FormDataPribadi/DataPribadi";
+import PersonalDataForm from "Components/PersonalDataForm/PersonalDataForm";
 import BackButton from "../../Components/BackButton/BackButton";
 import ProfilePic from "../../Components/ProfilePicture/ProfilePic";
+import {useSelector } from 'react-redux'
+import {useParams} from 'react-router-dom'
 
-function PersonalData(props) {
+function PersonalData({userid}) {
+  const { id } = useParams()
+  const isLoggedIn = useSelector((state) => state.auth.login)
   const [formData, setFormData] = useState({
     email: "",
-    notelp: "",
+    no_hp: "",
     password: "",
     passAgain: "",
-    nokk: "",
+    no_kk: "",
     nik: "",
-    namalengkap: "",
-    jeniskelamin: "",
-    tglLahir: new Date(),
-    statusHubungan: "",
-    statusPerkawinan: "",
+    fullname: "",
+    gender: "",
+    dateof_birth: "",
+    family_relationship: "",
+    marriage_status: "",
     alamat: "",
     kelurahan: "",
     kecamatan: "",
@@ -111,17 +115,18 @@ function PersonalData(props) {
       <section className="py-3 form-content">
         <ProfilePic />
         <form>
-          <DataPribadiComponent
-            formData={formData}
-            errMsgNoKK={errMsgNoKK}
-            errMsgNIK={errMsgNIK}
-            errMsgNama={errMsgNama}
-            errMsgJeniKelamin={errMsgJeniKelamin}
-            errMsgStatusHubungan={errMsgStatusHubungan}
-            errMsgTglLahir={errMsgTglLahir}
-            errMsgStatusPerkawinan={errMsgStatusPerkawinan}
-            handleInputData={handleInputData}
-            handleValidation={handleValidation}
+          <PersonalDataForm
+            // formData={formData}
+            // errMsgNoKK={errMsgNoKK}
+            // errMsgNIK={errMsgNIK}
+            // errMsgNama={errMsgNama}
+            // errMsgJeniKelamin={errMsgJeniKelamin}
+            // errMsgStatusHubungan={errMsgStatusHubungan}
+            // errMsgTglLahir={errMsgTglLahir}
+            // errMsgStatusPerkawinan={errMsgStatusPerkawinan}
+            // handleInputData={handleInputData}
+            // handleValidation={handleValidation}
+            // isLoggedIn={isLoggedIn}
           />
           <button className="btn btn-primary w-100 my-3" type="submit">
             Simpan

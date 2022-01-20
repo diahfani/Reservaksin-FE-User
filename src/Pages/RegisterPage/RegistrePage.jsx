@@ -32,6 +32,7 @@ function RegistrePage() {
   const dataAnggota = {
     id: uuidv4(),
     no_kk: formData.no_kk,
+    no_hp: formData.no_hp,
     nik: "",
     fullname: "",
     gender: "Pria",

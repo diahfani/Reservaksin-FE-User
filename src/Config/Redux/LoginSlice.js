@@ -4,10 +4,9 @@ export const loginSlice = createSlice({
 	name: "auth",
 	initialState: {
 		email_or_nik: "",
-		// nik:"",
 		token: "",
 		login: false,
-		id: ""
+		id: "",
 	},
 	reducers: {
 		login: (state, action) => {
@@ -16,15 +15,9 @@ export const loginSlice = createSlice({
 			state.token = action.payload.token
 			state.id = action.payload.id
 		},
-		// loginByNIK: (state, action) => {
-		// 	state.nik = action.payload.nik;
-		// 	state.login = action.payload.login;
-		// 	state.token = action.payload.token
-		// 	state.id = action.payload.id
-		// },
 		logout: (state) => {
 			state.email_or_nik = "";
-			// state.nik ="";
+			state.id = ""
 			state.login = false;
 			state.token = ""
 		},

@@ -2,6 +2,8 @@ import React from "react";
 // import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../Button.css";
+import {useSelector} from 'react-redux'
+// import PropTypes from "prop-types";
 
 function DataPribadiComponent({
   formData,
@@ -14,17 +16,25 @@ function DataPribadiComponent({
   errMsgTglLahir,
   errMsgStatusPerkawinan,
   handleValidation,
-  setFormData,
+  isLoggedIn
 }) {
+  const noKK = useSelector((state) => state.user.nokk)
+  const nik = useSelector((state) => state.user.nik)
+  const fullname = useSelector((state) => state.user.fullname)
+  const gender = useSelector((state) => state.user.gender)
+  const dob = useSelector((state) => state.user.dob)
+  const relationship = useSelector((state) => state.user.relationship)
+  const status = useSelector((state) => state.user.status)
   return (
     <div className="form">
       <div className="mb-3">
         <label className="form-label">No. KK *</label>
-        <input
-          placeholder="Masukkan no. KK"
+          <input
+          placeholder={isLoggedIn? noKK : "Masukkan no. KK"}
+          // defaultValue={noKK}
           name="no_kk"
           type="number"
-          value={formData?.no_kk}
+          value={formData?.nokk}
           onChange={handleInputData}
           onBlur={handleValidation}
           className="form-control"
@@ -34,7 +44,7 @@ function DataPribadiComponent({
       <div className="mb-3">
         <label className="form-label">NIK *</label>
         <input
-          placeholder="Masukkan NIK"
+          placeholder={isLoggedIn? nik : "Masukkan NIK"}
           name="nik"
           value={formData?.nik}
           onChange={handleInputData}
@@ -47,7 +57,7 @@ function DataPribadiComponent({
       <div className="mb-3">
         <label className="form-label">Nama Lengkap *</label>
         <input
-          placeholder="Masukkan nama lengkap"
+          placeholder={isLoggedIn? fullname : "Masukkan nama lengkap"}
           type="text"
           value={formData?.fullname}
           onChange={handleInputData}
@@ -91,6 +101,7 @@ function DataPribadiComponent({
         <label className="form-label">Tanggal Lahir *</label>
         <input
         type="date"
+        placeholder={isLoggedIn? dob : "mm/dd/yyyy"}
           className="form-control"
           name="dateof_birth"
           selected={formData?.dateof_birth}
