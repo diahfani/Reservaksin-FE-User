@@ -87,7 +87,7 @@ function Router() {
           }
         ></Route>
         <Route
-          path="/reservation-details/:id"
+          path={`/reservation-details/${user.id}`}
           element={
             <PrivateRoute>
               <ReservationDetails userid={user}/>

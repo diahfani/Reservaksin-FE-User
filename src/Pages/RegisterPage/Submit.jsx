@@ -108,12 +108,14 @@ function Submit({ nextStep, prevStep, formData, formdataAnggota }) {
       <Toaster />
       <Stepper
         steps={[
-          { label: "Data Pribadi" },
-          { label: "Alamat" },
-          { label: "Data Keluarga" },
+          { label: "Data Pribadi", completed: true },
+          { label: "Alamat", completed: true },
+          { label: "Data Keluarga", completed: true },
         ]}
+        activeStep={2}
+        styleConfig={{ activeBgColor: '#0D5389', completedBgColor: '#031625' }}
         connectorStateColors={true}
-        activeStep={3}
+        // activeStep={3}
       ></Stepper>
       <div className="text-center my-5">
         <BrandLogo></BrandLogo>

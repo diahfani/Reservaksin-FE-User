@@ -121,11 +121,16 @@ function DataPribadi({
       <div className="page-data-pribadi">
         <Stepper
           steps={[
-            { label: "Data Pribadi" },
-            { label: "Alamat" },
-            { label: "Data Keluarga" },
+            { label: "Data Pribadi", active: true },
+            { label: "Alamat", active: false },
+            { label: "Data Keluarga", active: false },
           ]}
-          activeStep={1}
+          styleConfig={{ activeBgColor: '#0D5389', completedBgColor: '#031625' }}
+          activeStep={0}
+          connectorStateColors={true}
+          // activeBgColor='#0D5389'
+          // completedBgColor = '#031625'
+          // disabledColor = '#B0BBDB'
         ></Stepper>
         <form onSubmit={handleSubmit}>
           <DataPribadiComponent

@@ -122,11 +122,16 @@ function DataKeluarga({
     <div className="container mx-auto page-wrapper">
       <Stepper
         steps={[
-          { label: "Data Pribadi" },
-          { label: "Alamat" },
-          { label: "Data Keluarga" },
+          { label: "Data Pribadi", completed: true },
+          { label: "Alamat", completed: true },
+          { label: "Data Keluarga", active: true },
         ]}
-        activeStep={3}
+        activeStep={2}
+        styleConfig={{ activeBgColor: '#0D5389', completedBgColor: '#031625' }}
+        connectorStateColors={true}
+        // activeColor='#0D5389'
+        // completedColor = '#031625'
+        // disabledColor = '#B0BBDB'
       ></Stepper>
       <div className="accordion" id="accordionExample">
         {listAnggota.map((item, idx) => (
