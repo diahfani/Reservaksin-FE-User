@@ -8,32 +8,43 @@ import { ToastError } from "../../Components/Toast/Toast";
 // import {useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Spinner } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { user } from "../../Config/Redux/UserSlice";
+import { data } from "Pages/RegisterPage/Data";
+
+
 
 function PersonalData({ userid }) {
   const { id } = useParams()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   console.log(id)
+  const dataUser = useSelector((state) => state.user)
   // const isLoggedIn = useSelector((state) => state.auth.login)
   const [formData, setFormData] = useState({
-    no_kk: "",
-    nik: "",
-    fullname: "",
-    nohp: "",
-    gender: "",
-    dateof_birth: "",
-    family_relationship: "",
-    marriage_status: "",
-    address: "",
-    kelurahan: "",
-    kecamatan: "",
-    kabupaten: "",
-    provinsi: "",
+    no_kk: dataUser.nokk,
+    nik: dataUser.nik,
+    fullname: dataUser.fullname,
+    nohp: dataUser.nohp,
+    gender: dataUser.gender,
+    dateof_birth: dataUser.dob,
+    family_relationship: dataUser.relationship,
+    marriage_status: dataUser.status,
+    address: dataUser.alamat,
+    kelurahan: dataUser.kelurahan,
+    kecamatan: dataUser.kecamatan,
+    kabupaten: dataUser.kota,
+    provinsi: dataUser.provinsi,
   });
 
+  console.log(formData.no_kk)
   const handleInputData = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    console.log(formData)
   };
 
   const [errMsgNoKK, seterrMsgNoKK] = useState("");
@@ -174,7 +185,7 @@ function PersonalData({ userid }) {
       }
     }
   };
-  const submitFormData = (e) => {
+  const submitFormData = async (e) => {
     console.log(formData)
     e.preventDefault();
     if (
@@ -215,7 +226,7 @@ function PersonalData({ userid }) {
     } else {
       setIsLoaded("updating")
       var API_URL = 'https://reservaksin-be.herokuapp.com'
-      axios.put(`${API_URL}/citizen/${id}`, {
+      await axios.put(`${API_URL}/citizen/${id}`, {
         nohp: formData.nohp,
         nokk: formData.no_kk,
         nik: formData.nik,
@@ -236,12 +247,34 @@ function PersonalData({ userid }) {
       })
         .then((response) => {
           console.log(response)
-          if (response.data.meta.status !== 200) {
-            setError(response.data.meta.messages)
-          } else {
-            setError(response.data.meta.messages)
-          }
-          console.log(error)
+          dispatch(user(({
+            email: response.data.data.email,
+            nik: response.data.data.nik,
+            nohp: response.data.data.nohp,
+            fullname: response.data.data.fullname,
+            nokk: response.data.data.nokk,
+            dob: response.data.data.dob,
+            relationship: response.data.data.relationship,
+            gender: response.data.data.gender,
+            status: response.data.data.status,
+            role: response.data.data.role,
+            alamat: response.data.data.current_Address.alamat,
+            provinsi: response.data.data.current_Address.provinsi,
+            kota: response.data.data.current_Address.kota,
+            kecamatan: response.data.data.current_Address.provinsi,
+            kelurahan: response.data.data.current_Address.kelurahan,
+          })))
+          navigate(-1)
+          // if (response.data.meta.status !== 200) {
+          //   setError(response.data.meta.messages)
+          // } else {
+            
+            
+          //   // setError(response.data.meta.messages)
+          // }
+
+
+          // console.log(error)
         })
         .catch((e) => {
           console.log(e)
@@ -284,11 +317,11 @@ function PersonalData({ userid }) {
             errMsgNoTelp={errMsgNoTelp}
           />
           <button className="btn btn-primary w-100 my-3" type="submit">
-          {isLoaded === "updating" ?
-                (<Spinner animation="border" variant="primary" />)
-                :
-                "Simpan"
-              }
+            {isLoaded === "updating" ?
+              (<Spinner animation="border" variant="primary" />)
+              :
+              "Simpan"
+            }
           </button>
         </form>
       </section>

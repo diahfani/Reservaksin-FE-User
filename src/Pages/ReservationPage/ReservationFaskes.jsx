@@ -1,8 +1,10 @@
 import BackButton from "Components/BackButton/BackButton";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+// import { useParams } from 'react-router-dom'
 
 export default function ReservationFaskes() {
+  const { id } = useParams()
   const faskes = [
     {
       id: 1,

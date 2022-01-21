@@ -2,9 +2,7 @@ import React, { useState } from "react";
 // import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Form.css";
-import { MdDateRange } from "react-icons/md";
-import { GetAge } from "../../Utilities/FormValidation/GetAge";
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 
 function PersonalDataForm({
   formData,
@@ -24,30 +22,18 @@ function PersonalDataForm({
   handleValidation,
   errMsgNoTelp
 }) {
-  const no_kk = useSelector((state) => state.user.nokk)
-  const nik = useSelector((state) => state.user.nik)
-  const fullname = useSelector((state) => state.user.fullname)
-  const nohp = useSelector((state) => state.user.nohp)
-  const gender = useSelector((state) => state.user.gender)
-  const dob = useSelector((state) => state.user.dob)
-  const relationship = useSelector((state) => state.user.relationship)
-  const status = useSelector((state) => state.user.status)
-  const alamat = useSelector((state) => state.user.alamat)
-  const kelurahan = useSelector((state) => state.user.kelurahan)
-  const kecamatan = useSelector((state) => state.user.kecamatan)
-  const provinsi = useSelector((state) => state.user.provinsi)
-  const kota = useSelector((state) => state.user.kota)
-
+  console.log(formData.no_kk)
   return (
     <div className="px-3 mt-3">
       {/* <form className="form" onSubmit={handleSubmit}> */}
         <div className="mb-2 ctr-input ">
           <label className="form-label">No. KK *</label>
           <input
-            placeholder={no_kk}
+            placeholder="Masukkan nomor kk"
             name="no_kk"
             type="number"
             value={formData.no_kk}
+            // value={no_kk}
             onChange={handleInputData}
             onBlur={handleValidation}
             className="form-control"
@@ -57,7 +43,7 @@ function PersonalDataForm({
         <div className="mb-2 ctr-input">
           <label className="form-label">NIK *</label>
           <input
-            placeholder={nik}
+            placeholder="Masukkan nomor kk"
             name="nik"
             value={formData?.nik}
             onChange={handleInputData}
@@ -70,7 +56,7 @@ function PersonalDataForm({
         <div className="mb-2 ctr-input">
           <label className="form-label">Nama Lengkap *</label>
           <input
-            placeholder={fullname}
+            placeholder="Masukkan nama lengkap"
             type="text"
             value={formData?.fullname}
             onChange={handleInputData}
@@ -83,7 +69,7 @@ function PersonalDataForm({
         <div className="mb-2 ctr-input">
           <label className="form-label">No. Telepon</label>
           <input
-            placeholder={nohp}
+            placeholder="Masukkan nomor telepon"
             name="nohp"
             value={formData.nohp}
             onChange={handleInputData}
@@ -129,6 +115,7 @@ function PersonalDataForm({
             type="date"
             className="form-control"
             name="dateof_birth"
+            value={formData?.dateof_birth}
             selected={formData?.dateof_birth}
             onChange={handleInputData}
             onBlur={handleValidation}
@@ -178,7 +165,7 @@ function PersonalDataForm({
         <div className="mb-3">
           <label className="form-label">Alamat KTP *</label>
           <input
-            placeholder={alamat}
+            placeholder={formData.alamat}
             name="address"
             type="text"
             value={formData.address}
@@ -192,7 +179,7 @@ function PersonalDataForm({
         <div className="mb-3">
           <label className="form-label">Kelurahan/Desa *</label>
           <input
-            placeholder={kelurahan}
+            placeholder="Masukkan nomor kk"
             name="kelurahan"
             value={formData.kelurahan}
             onChange={handleInputData}
@@ -205,7 +192,7 @@ function PersonalDataForm({
         <div className="mb-3">
           <label className="form-label">Kecamatan *</label>
           <input
-            placeholder={kecamatan}
+            placeholder="Masukkan nomor kk"
             type="text"
             value={formData.kecamatan}
             onChange={handleInputData}
@@ -218,7 +205,7 @@ function PersonalDataForm({
         <div className="mb-3">
           <label className="form-label">Kabupaten/Kota *</label>
           <input
-            placeholder={kota}
+            placeholder="Masukkan nomor kk"
             type="text"
             value={formData.kabupaten}
             onChange={handleInputData}
@@ -231,7 +218,7 @@ function PersonalDataForm({
         <div className="mb-3">
           <label className="form-label">Provinsi *</label>
           <input
-            placeholder={provinsi}
+            placeholder="Masukkan nomor kk"
             type="text"
             value={formData.provinsi}
             onChange={handleInputData}

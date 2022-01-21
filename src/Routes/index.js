@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-
 import LandingPage from "../Pages/LandingPage/LandingPage";
 import Login from "../Pages/LoginPage/LoginPage";
 import UserProfilePage from "../Pages/UserProfilePage/UserProfilePage";
@@ -15,37 +14,65 @@ import ReservasitionPilihTanggal from "Pages/ReservationPage/ReservationPilihTan
 import ReservationBerhasil from "Pages/ReservationPage/ReservationBerhasil";
 import MyReservation from "Pages/MyReservation/MyReservation";
 import ReservationDetails from "Pages/ReservationDetails/ReservationDetails";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
+import PrivateRoute from "Utilities/PrivateRoute/PrivateRoute";
 
 function Router() {
-  const user = useSelector((state) => state.auth)
-  console.log(user)
+  const user = useSelector((state) => state.auth);
+  console.log(user);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage></LandingPage>}></Route>
-        <Route path="/profile" element={<UserProfilePage userid={user} />}></Route>
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <UserProfilePage userid={user} />
+            </PrivateRoute>
+          }
+        ></Route>
+
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         {/* <Route path="/profile" element={<UserProfilePage />}></Route> */}
-        <Route path="/profile/:id/personal" element={<PersonalData userid={user}/>}></Route>
-        <Route path="/profile/:id/family" element={<FamilyMemberPage userid={user}/>}></Route>
-        <Route path="/profile/:id/history" element={<History userid={user}/>}></Route>
+        <Route path="/profile/:id/personal" element={<PersonalData />}></Route>
+        <Route
+          path="/profile/:id/family"
+          element={<FamilyMemberPage />}
+        ></Route>
+        <Route path="/profile/:id/history" element={<History />}></Route>
         <Route
           path="/reservasi/cek-validasi"
-          element={<ReservationCekValidasi />}
+          element={
+            <PrivateRoute>
+              <ReservationCekValidasi />
+            </PrivateRoute>
+          }
         ></Route>
         <Route
           path="/reservasi/cek-lokasi"
-          element={<ReservationCekLokasi />}
+          element={
+            <PrivateRoute>
+              <ReservationCekLokasi />
+            </PrivateRoute>
+          }
         ></Route>
         <Route
           path="/reservasi/pilih-faskes"
-          element={<ReservationFaskes />}
+          element={
+            <PrivateRoute>
+              <ReservationFaskes />
+            </PrivateRoute>
+          }
         ></Route>
         <Route
           path="/reservasi/faskes/:id"
-          element={<ReservasitionPilihTanggal />}
+          element={
+            <PrivateRoute>
+              <ReservasitionPilihTanggal userid={user} />
+            </PrivateRoute>
+          }
         ></Route>
         <Route
           path="/reservasi-berhasil"
@@ -53,11 +80,19 @@ function Router() {
         ></Route>
         <Route
           path="/my-reservation"
-          element={<MyReservation />}
+          element={
+            <PrivateRoute>
+              <MyReservation />
+            </PrivateRoute>
+          }
         ></Route>
         <Route
           path="/reservation-details/:id"
-          element={<ReservationDetails />}
+          element={
+            <PrivateRoute>
+              <ReservationDetails userid={user}/>
+            </PrivateRoute>
+          }
         ></Route>
       </Routes>
     </BrowserRouter>
