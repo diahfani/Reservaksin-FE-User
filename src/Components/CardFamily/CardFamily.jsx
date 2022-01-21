@@ -1,36 +1,29 @@
 import React from "react";
-import { MdOutlineEdit, MdDelete } from "react-icons/md";
 import "./Card.css";
+import { useNavigate } from "react-router-dom";
+import { GetAge, ToCapitalize } from "Utilities/utils";
 
-function CardFamily({ data }) {
+export default function CardFamily({ data }) {
+  // declare new state or new variable below ...
+  const navigate = useNavigate();
+
+  // code your handle functions below ...
+  const toEditFamilyData = () => {
+    navigate("/family-member/edit", { state: { dataFamily: data } });
+  };
+
   return (
-    <div>
-      <div className="card card-family mb-3">
-        <div className="d-flex justify-content-between p-2">
-          <div className="card-text p-3">
-                {data.nama}
-            <span className="px-2">{data.status}</span>
-          </div>
-          <div className="card-actions my-auto">
-            <button
-              className="btn btn-success rounded-circle mx-2"
-              onClick={() => {;
-              }}
-            >
-              <MdOutlineEdit style={{ color: "white" }} />
-            </button>
-            <button
-              className="btn btn-danger rounded-circle mx-2"
-              onClick={() => {
-              }}
-            >
-              <MdDelete style={{ color: "white" }} />
-            </button>
-          </div>
+    <div className="card card-family mb-4 shadow-sm" onClick={toEditFamilyData}>
+      <div className="card-body">
+        <span className="text-status st-waiting">
+          {ToCapitalize(data?.relationship)}
+        </span>
+        <div>
+          <h5>{data?.fullname}</h5>
+          <p>NIK. {data?.nik}</p>
+          <small>Usia {GetAge(data?.dob)} thn</small>
         </div>
       </div>
-      </div>
+    </div>
   );
 }
-
-export default CardFamily;

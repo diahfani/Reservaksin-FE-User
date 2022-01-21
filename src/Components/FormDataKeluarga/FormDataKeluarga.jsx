@@ -9,7 +9,7 @@ function FormDataKeluarga({
   formDataNoKK,
 }) {
   return (
-    <div className="form overflow-auto">
+    <div className="form">
       <div className="mb-2 ctr-input ">
         <label className="form-label">No. KK *</label>
         <input
