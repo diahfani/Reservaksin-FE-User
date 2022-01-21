@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Form.css";
 import { MdDateRange } from "react-icons/md";
-import { GetAge } from "../../Utilities/FormValidation/GetAge";
+import { GetAge } from "../../Utilities/utils";
 
 function DataPribadiComponent({ data }) {
   const errMsgInit = {
@@ -122,16 +122,16 @@ function DataPribadiComponent({ data }) {
     const validForm = Object.keys(formData).filter(
       (key) => formData[key] !== ""
     );
-    
-    if (validForm.length >=6) {
+
+    if (validForm.length >= 6) {
       const newData = {
-        noKK:formData.NoKK,
+        noKK: formData.NoKK,
         nik: formData.NIK,
         nama: formData.NamaLengkap,
         jk: formData.JenisKelamin,
         ttl: formData.TglLahir,
         statusHubungan: formData.StatusHubungan,
-        statusPerkawinan: formData.StatusPerkawinan
+        statusPerkawinan: formData.StatusPerkawinan,
       };
       console.log("data masuk:", newData);
     } else {
@@ -214,7 +214,7 @@ function DataPribadiComponent({ data }) {
             dateFormat="dd-MM-yyyy"
             selected={formData?.TglLahir}
             onChange={(date) => {
-              setFormData({...formData, 'TglLahir': date });
+              setFormData({ ...formData, TglLahir: date });
               console.log(date);
             }}
           />

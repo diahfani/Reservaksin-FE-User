@@ -3,6 +3,7 @@ import "./Card.css";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import "dayjs/locale/id";
+import { CustomUTC } from "Utilities/utils";
 
 export default function CardBookings({ data }) {
   const navigate = useNavigate();
@@ -42,12 +43,15 @@ export default function CardBookings({ data }) {
           <tbody className="text-hist-detail">
             <tr>
               <td>
-                {dayjs(data?.session?.date)
+                {dayjs(CustomUTC(data?.session?.date))
                   .locale("id")
                   .format("dddd, DD MMMM YYYY")}
               </td>
               <td>
-                Jam {dayjs(data?.session_time).locale("id").format("HH:mm")}
+                Jam{" "}
+                {dayjs(CustomUTC(data?.session_time))
+                  .locale("id")
+                  .format("HH:mm")}
               </td>
             </tr>
             <tr>

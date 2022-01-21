@@ -38,7 +38,9 @@ export default function MyReservation() {
     await axios
       .get(`${process.env.REACT_APP_RESERVAKSIN_API_URL}/booking/nokk/${noKK}`)
       .then(function (response) {
-        setDataBookings(response.data.data);
+        setDataBookings(
+          response?.data?.data?.filter((item) => item?.status === "booked")
+        );
         setToast({
           show: false,
           body: <></>,
