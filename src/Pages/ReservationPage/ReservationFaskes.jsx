@@ -1,8 +1,10 @@
 import BackButton from "Components/BackButton/BackButton";
 import React, { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Illustration5 from "Assets/Images/illustration-5.svg";
 import Illustration6 from "Assets/Images/illustration-6.svg";
+import dayjs from "dayjs";
+import { CustomUTC } from "Utilities/utils";
 
 export default function ReservationFaskes() {
   // declare new state or new variable below ...
@@ -58,6 +60,7 @@ export default function ReservationFaskes() {
                   id={item?.session?.id}
                   title={item?.session?.health_facilities?.name_facilities}
                   distance={item?.distance}
+                  data={item}
                 ></FaskesItem>
               ))
             ) : (
@@ -84,29 +87,32 @@ export default function ReservationFaskes() {
 }
 
 function FaskesItem(props) {
+  const navigate = useNavigate();
+  const toDetailSession = () => {
+    navigate(`/reservasi/faskes/${props?.id}`, {
+      state: { dataSession: props?.data?.session },
+    });
+  };
+
   return (
-    <Link
-      className="text-decoration-none"
-      to={"/reservasi/faskes/" + props?.id}
+    <div
+      className="w-100 mb-3 rounded border p-3 shadow-sm"
+      onClick={toDetailSession}
     >
-      <div className="w-100 mb-3 rounded border p-3">
-        <div className="d-flex justify-content-between align-items-center">
-          <div>
-            <h6 style={{ fontSize: "1.2rem" }}>{props?.title}</h6>
-            <p className="m-0" style={{ fontSize: "0.9rem" }}>
-              Jarak Lokasi {(props?.distance).toFixed(2)} Km
-            </p>
-          </div>
-          <div>
-            <span
-              className="material-icons-outlined"
-              style={{ fontSize: "35px" }}
-            >
-              navigate_next
-            </span>
-          </div>
+      <div className="d-flex justify-content-between align-items-center">
+        <div>
+          <h6 style={{ fontSize: "1.2rem" }}>{props?.title}</h6>
+          <p className="m-0">
+            {dayjs(CustomUTC(props?.data?.session?.date))
+              .locale("id")
+              .format("DD MMMM YYYY")}
+          </p>
+          <p>{props?.data?.session?.vaccine?.nama_vaksin}</p>
+          <p className="m-0" style={{ fontSize: "0.9rem" }}>
+            Jarak Lokasi {(props?.distance).toFixed(2)} Km
+          </p>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

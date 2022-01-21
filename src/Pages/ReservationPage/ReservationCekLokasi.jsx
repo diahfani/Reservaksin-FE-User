@@ -28,9 +28,7 @@ export default function ReservationCekLokasi() {
     )
       .then((response) => response.text())
       .then((result) => setdataFaskes(JSON.parse(result).data))
-      .catch((error) =>
-        console.log("error, gagal fetching data lokasi faskes")
-      );
+      .catch((error) => console.log(error));
   };
 
   // execute useEffect below ...
@@ -41,7 +39,9 @@ export default function ReservationCekLokasi() {
           const address = response.results[0].formatted_address;
           setAddress(address);
         },
-        (error) => {}
+        (error) => {
+          console.log(error);
+        }
       );
     }
   }, [curLoc]);
@@ -70,8 +70,11 @@ export default function ReservationCekLokasi() {
           {address}
         </div>
       </div>
-      <button className="mt-5 btn btn-primary w-100" onClick={goToPilihFaskes}>
-        Simpan
+      <button
+        className={`mt-5 btn btn-primary w-100 ${curLoc ? null : "disabled"}`}
+        onClick={goToPilihFaskes}
+      >
+        Lanjut
       </button>
     </div>
   );

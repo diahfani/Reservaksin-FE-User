@@ -1,11 +1,12 @@
 import React from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/id";
+import { CustomUTC } from "Utilities/utils";
 
 export default function CardFaskes({ sessionData }) {
   return (
     <div
-      className="border rounded px-3 py-4"
+      className="border rounded px-3 py-4 shadow-sm"
       style={{ background: "#E0EAF6", color: "#160D9A" }}
     >
       <h3 className="mb-3">
@@ -32,24 +33,37 @@ export default function CardFaskes({ sessionData }) {
       <small>Tanggal Pelaksanaan</small>
       <p className="m-0">
         <b>
-          {dayjs(sessionData?.start_session).locale("id").format("D MMMM")}
-          {dayjs(sessionData?.start_session)
+          {dayjs(CustomUTC(sessionData?.start_session))
+            .locale("id")
+            .format("D MMMM")}
+          {dayjs(CustomUTC(sessionData?.start_session))
             .locale("id")
             .format("D MMMM YYYY") ===
-          dayjs(sessionData?.end_session).locale("id").format("D MMMM YYYY")
+          dayjs(CustomUTC(sessionData?.end_session))
+            .locale("id")
+            .format("D MMMM YYYY")
             ? null
             : " - " +
-              dayjs(sessionData?.end_session).locale("id").format("D MMMM")}
-          {" " + dayjs(sessionData?.start_session).locale("id").format("YYYY")}
+              dayjs(CustomUTC(sessionData?.end_session))
+                .locale("id")
+                .format("D MMMM")}
+          {" " +
+            dayjs(CustomUTC(sessionData?.start_session))
+              .locale("id")
+              .format("YYYY")}
         </b>
       </p>
       <p>
         <b>
           Jam
           {" " +
-            dayjs(sessionData?.start_session).locale("id").format("HH:mm") +
+            dayjs(CustomUTC(sessionData?.start_session))
+              .locale("id")
+              .format("HH:mm") +
             " - " +
-            dayjs(sessionData?.end_session).locale("id").format("HH:mm")}
+            dayjs(CustomUTC(sessionData?.end_session))
+              .locale("id")
+              .format("HH:mm")}
         </b>
       </p>
       <small>Vaksin yang tersedia</small>

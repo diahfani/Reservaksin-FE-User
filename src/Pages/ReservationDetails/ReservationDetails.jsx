@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/id";
 import axios from "axios";
 import CustomToast from "Components/CustomToast/CustomToast";
+import { CustomUTC } from "Utilities/utils";
 
 export default function ReservationDetails() {
   // declare new state or new variables below ...
@@ -96,7 +97,7 @@ export default function ReservationDetails() {
             <p>Kode Reservasi</p>
             <h2>{dataBooking?.booking_id?.toUpperCase()}</h2>
             <small>
-              {dayjs(dataBooking?.created_at)
+              {dayjs(CustomUTC(dataBooking?.created_at))
                 .locale("id")
                 .format("dddd, DD MMMM YYYY, HH:mm")}
             </small>
@@ -111,13 +112,13 @@ export default function ReservationDetails() {
               {dataBooking?.session?.health_facilities?.name_facilities}
             </h6>
             <small>
-              {`${dayjs(dataBooking?.date)
+              {`${dayjs(CustomUTC(dataBooking?.date))
                 .locale("id")
                 .format("dddd, DD MMMM YYYY")}, 
-                ${dayjs(dataBooking?.session?.start_session)
+                ${dayjs(CustomUTC(dataBooking?.session?.start_session))
                   .locale("id")
-                  .format("HH:mm")}-
-                  ${dayjs(dataBooking?.session?.end_session)
+                  .format("HH:mm")} -
+                  ${dayjs(CustomUTC(dataBooking?.session?.end_session))
                     .locale("id")
                     .format("HH:mm")}`}
             </small>

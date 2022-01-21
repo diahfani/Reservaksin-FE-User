@@ -1,7 +1,7 @@
 import BackButton from "Components/BackButton/BackButton";
 import CardFaskes from "Components/CardFaskes/CardFaskes";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearValidation } from "../../Config/Redux/ReservationSlice";
 import dayjs from "dayjs";
@@ -12,12 +12,12 @@ import CustomToast from "Components/CustomToast/CustomToast";
 export default function ReservasitionPilihTanggal() {
   // declare new state or new variables below ...
   const reservationCheck = useSelector((state) => state.reservation);
+  const { state } = useLocation();
+  const sessionData = state?.dataSession;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { sessionID } = useParams();
-  const [sessionData, setSessionData] = useState({});
   const [formBooking, setFormBooking] = useState({
-    SessionID: sessionID,
+    SessionID: sessionData?.id,
     citizenID: reservationCheck.userID,
     tanggalVaksin: "",
     jamVaksin: "",
@@ -41,15 +41,6 @@ export default function ReservasitionPilihTanggal() {
     } else {
       setErrMsg({ ...errMsg, [e.target.name]: false });
     }
-  };
-
-  const getSessionDetails = async () => {
-    fetch(`${process.env.REACT_APP_RESERVAKSIN_API_URL}/session/${sessionID}`, {
-      method: "GET",
-    })
-      .then((response) => response.text())
-      .then((result) => setSessionData(JSON.parse(result).data))
-      .catch((error) => console.log("error", error));
   };
 
   const handleChange = (e) => {
@@ -128,12 +119,6 @@ export default function ReservasitionPilihTanggal() {
       await submitBookingAPI();
     }
   };
-
-  // execute useEffect below ...
-  useEffect(() => {
-    getSessionDetails();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className="container py-4 page-wrapper d-flex flex-column justify-content-between">

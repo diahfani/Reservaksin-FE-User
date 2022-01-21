@@ -7,6 +7,7 @@ import CustomToast from "Components/CustomToast/CustomToast";
 
 export default function Reservation() {
   // declare new state or new variable below ...
+  const noKK = "3603222340870003";
   const [listAnggota, setListAnggota] = useState([]);
   const [formValidate, setFormValidate] = useState({
     citizenID: "",
@@ -25,9 +26,7 @@ export default function Reservation() {
   // code your handle functions below ...
   const fetchListAnggota = async () => {
     await fetch(
-      `${
-        process.env.REACT_APP_RESERVAKSIN_API_URL
-      }/citizen/family?nokk=${3603222340870003}`,
+      `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/family?nokk=${noKK}`,
       { method: "GET" }
     )
       .then((response) => response.text())
