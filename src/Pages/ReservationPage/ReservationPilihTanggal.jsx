@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/id";
 import axios from "axios";
 import CustomToast from "Components/CustomToast/CustomToast";
+import { CustomUTC } from "Utilities/utils";
 
 export default function ReservasitionPilihTanggal() {
   // declare new state or new variables below ...
@@ -56,10 +57,10 @@ export default function ReservasitionPilihTanggal() {
         session_time: `${formBooking.tanggalVaksin} ${formBooking.jamVaksin}`,
       })
       .then(function (response) {
-        dispatch(clearValidation());
         navigate("/reservasi-berhasil", {
           state: { dataBooking: response.data.data },
         });
+        dispatch(clearValidation());
       })
       .catch(function (error) {
         console.log(error);
@@ -136,10 +137,10 @@ export default function ReservasitionPilihTanggal() {
                 value={formBooking.tanggalVaksin}
                 onChange={handleChange}
                 onBlur={validate}
-                min={dayjs(sessionData?.start_session)
+                min={dayjs(CustomUTC(sessionData?.start_session))
                   .locale("id")
                   .format("YYYY-MM-DD")}
-                max={dayjs(sessionData?.end_session)
+                max={dayjs(CustomUTC(sessionData?.end_session))
                   .locale("id")
                   .format("YYYY-MM-DD")}
               />

@@ -15,7 +15,7 @@ export default function AddFamilyPage() {
     nohp: "",
     fullname: "",
     password: "",
-    nokk: "3603222340870003",
+    nokk: "3603445678980002",
     nik: "",
     dob: "",
     relationship: "",
@@ -36,7 +36,6 @@ export default function AddFamilyPage() {
     delay: 0,
     headIcon: <></>,
   });
-  console.log(formDataKeluarga);
 
   // code your handle functions below ...
   const handleInput = (e) => {
@@ -239,10 +238,10 @@ export default function AddFamilyPage() {
               <option value="" disabled>
                 Status perkawinan
               </option>
-              <option value="belumKawin">Belum Kawin</option>
-              <option value="kawin">Kawin</option>
-              <option value="cerai">Cerai</option>
-              <option value="ceraiMati">Cerai Mati</option>
+              <option value="Belum Kawin">Belum Kawin</option>
+              <option value="Kawin">Kawin</option>
+              <option value="Cerai">Cerai</option>
+              <option value="Cerai Mati">Cerai Mati</option>
             </Form.Select>
             <Form.Control.Feedback type="invalid">
               Pilih salah satu
@@ -301,7 +300,7 @@ export default function AddFamilyPage() {
                 <div className="mb-3 ctr-input">
                   <Form.Label>Kecamatan*</Form.Label>
                   <Form.Control
-                    placeholder="Masukkan NIK"
+                    placeholder="Masukkan kelurahan/desa"
                     name="kecamatan"
                     value={formDataKeluarga?.current_address?.kecamatan}
                     onChange={(e) => handleInput(e)}
@@ -315,7 +314,7 @@ export default function AddFamilyPage() {
                 <div className="mb-3 ctr-input">
                   <Form.Label>Kabupaten/Kota*</Form.Label>
                   <Form.Control
-                    placeholder="Masukkan NIK"
+                    placeholder="Masukkan kota/kabupaten"
                     name="kota"
                     value={formDataKeluarga?.current_address?.kota}
                     onChange={(e) => handleInput(e)}
@@ -329,7 +328,7 @@ export default function AddFamilyPage() {
                 <div className="mb-3 ctr-input">
                   <Form.Label>Provinsi*</Form.Label>
                   <Form.Control
-                    placeholder="Masukkan NIK"
+                    placeholder="Masukkan provinsi"
                     name="provinsi"
                     value={formDataKeluarga?.current_address?.provinsi}
                     onChange={(e) => handleInput(e)}

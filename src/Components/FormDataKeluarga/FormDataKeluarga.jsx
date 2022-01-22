@@ -127,10 +127,10 @@ function FormDataKeluarga({
           <option value="" disabled>
             Status perkawinan
           </option>
-          <option value="belumKawin">Belum Kawin</option>
-          <option value="kawin">Kawin</option>
-          <option value="cerai">Cerai</option>
-          <option value="ceraiMati">Cerai Mati</option>
+          <option value="Belum Kawin">Belum Kawin</option>
+          <option value="Kawin">Kawin</option>
+          <option value="Cerai">Cerai</option>
+          <option value="Cerai Mati">Cerai Mati</option>
         </select>
       </div>
     </div>

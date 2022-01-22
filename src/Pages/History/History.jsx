@@ -9,7 +9,7 @@ import CustomToast from "Components/CustomToast/CustomToast";
 
 export default function History() {
   // declare new state or new variables below ...
-  const noKK = "3603222340870003";
+  const noKK = "3603445678980002";
   const [dataBookings, setDataBookings] = useState(null);
   const [serverError, setServerError] = useState(null);
   const navigate = useNavigate();
@@ -61,7 +61,7 @@ export default function History() {
   };
 
   const toReservasiVaksin = () => {
-    navigate("/reservasi/cek-validasi");
+    navigate("/my-reservation");
   };
 
   // execute useEffect below ...
@@ -91,13 +91,13 @@ export default function History() {
         <div className="text-center" style={{ marginTop: "6rem" }}>
           <img src={Illustration6} className="img-fluid" alt="" />
           <p className="mt-4" style={{ color: "#0A508D" }}>
-            Reservasi vaksin anda kosong :)
+            Riwayat reservasi vaksin anda kosong :)
           </p>
           <button
             className="btn btn-primary w-100 shadow"
             onClick={toReservasiVaksin}
           >
-            Reservasi Sekarang
+            Cek Jadwal Reservasi Anda
           </button>
         </div>
       )}

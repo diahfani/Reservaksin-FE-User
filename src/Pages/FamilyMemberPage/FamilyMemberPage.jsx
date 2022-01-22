@@ -3,12 +3,32 @@ import CardFamily from "../../Components/CardFamily/CardFamily";
 import BackButton from "../../Components/BackButton/BackButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CustomToast from "Components/CustomToast/CustomToast";
 
 export default function FamilyMemberPage() {
   // declare new state or new variable below ...
-  const noKK = "3603222340870003";
+  const noKK = "3603445678980002";
   const [listAnggota, setListAnggota] = useState([]);
   const navigate = useNavigate();
+  const [toast, setToast] = useState({
+    show: true,
+    body: (
+      <div className="text-center">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+        <p style={{ fontSize: "1rem", marginTop: "1rem" }}>
+          Mohon tunggu sebentar :))
+        </p>
+      </div>
+    ),
+    delay: 10000,
+    headIcon: (
+      <span className="material-icons-outlined text-secondary">
+        hourglass_top
+      </span>
+    ),
+  });
 
   // code your handle functions below ...
   const fetchListAnggota = async () => {
@@ -16,11 +36,17 @@ export default function FamilyMemberPage() {
       .get(
         `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/family?nokk=${noKK}`
       )
-      .then((response) =>
+      .then((response) => {
+        setToast({
+          show: false,
+          body: <></>,
+          delay: 0,
+          headIcon: <></>,
+        });
         setListAnggota(
           response?.data?.data?.filter((item) => item.role === "anggota")
-        )
-      )
+        );
+      })
       .catch((error) => console.log(error));
   };
 
@@ -45,6 +71,7 @@ export default function FamilyMemberPage() {
       >
         Tambah Anggota
       </button>
+      <CustomToast toast={toast} setToast={setToast} />
     </div>
   );
 }

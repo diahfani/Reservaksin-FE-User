@@ -132,15 +132,22 @@ export default function ReservationDetails() {
             <small>{dataBooking?.session?.health_facilities?.no_telp}</small>
           </div>
         </div>
-      </div>
-      <button
-        className={`btn btn-danger w-100 shadow ${
-          dataBooking?.status === "canceled" ? "disabled" : null
-        }`}
-        onClick={() => handleCancel()}
-      >
-        Batalkan Reservasi
-      </button>
+      </div>{" "}
+      {dataBooking?.status !== "canceled" ? (
+        <button
+          className="btn btn-danger w-100 shadow"
+          onClick={() => handleCancel()}
+        >
+          Batalkan
+        </button>
+      ) : dataBooking.status === "canceled" ? (
+        <div className="btn btn-danger disabled w-100">Dibatalkan</div>
+      ) : (
+        <div className="btn btn-success w-100" style={{ cursor: "default" }}>
+          <b>Vaksin Diterima </b>
+          <span className="material-icons-outlined">verified</span>
+        </div>
+      )}
       <CustomToast toast={toast} setToast={setToast}></CustomToast>
     </div>
   );
