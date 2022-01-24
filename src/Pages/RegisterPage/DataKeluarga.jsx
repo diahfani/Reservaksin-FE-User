@@ -117,7 +117,7 @@ function DataKeluarga({
     setListAnggota(filt);
   };
 
-  console.log(listAnggota);
+  // console.log(listAnggota);
   return (
     <div className="container mx-auto page-wrapper">
       <Stepper

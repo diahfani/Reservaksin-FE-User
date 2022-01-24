@@ -22,7 +22,7 @@ function PersonalDataForm({
   handleValidation,
   errMsgNoTelp
 }) {
-  console.log(formData.no_kk)
+  // console.log(formData.no_kk)
   return (
     <div className="px-3 mt-3">
       {/* <form className="form" onSubmit={handleSubmit}> */}

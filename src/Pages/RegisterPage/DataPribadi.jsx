@@ -110,7 +110,7 @@ function DataPribadi({
     ) {
       alert("data ada yang masih kosong");
     } else {
-      console.log(formData);
+      // console.log(formData);
       nextStep();
     }
     e.preventDefault();

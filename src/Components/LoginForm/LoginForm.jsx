@@ -72,7 +72,6 @@ function LoginForm() {
       [name]: value,
     });
   };
-  console.log(form)
 
   const validateOnSubmit = () => {
     setErrMsg(() => {
@@ -116,8 +115,8 @@ function LoginForm() {
 
           } else {
             
-            console.log(resp.data.data.DataCitizen.current_Address.alamat)
-            console.log(resp.data.data.DataCitizen.current_Address.provinsi)
+            // console.log(resp.data.data.DataCitizen.current_Address.alamat)
+            // console.log(resp.data.data.DataCitizen.current_Address.provinsi)
             // handleLogin(resp.data.data)
             var userToken = jwt(resp.data.data.token)
             // console.log(user)
@@ -150,7 +149,7 @@ function LoginForm() {
           }
         })
         .catch((e) => {
-          console.log(e)
+          // console.log(e)
           if (e.response) {
             if (e.response.status === 401) {
               ToastError("email/nik atau password salah!")

@@ -10,8 +10,8 @@ export default function useHandleLogin() {
         let citizenData = {
             ...res
         }
-        console.log(citizenData)
-        console.log(citizenData.DataCitizen.id)
+        // console.log(citizenData)
+        // console.log(citizenData.DataCitizen.id)
         dispatch(user({citizenData}))
     }
     return handleLogin

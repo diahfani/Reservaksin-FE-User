@@ -3,7 +3,7 @@ import './UserProfile.css'
 import { useSelector } from 'react-redux'
 function UserAvatar(props) {
     const fullname = useSelector((state)=> state.user.fullname)
-    console.log(fullname)
+    // console.log(fullname)
     return (
         <div className="mt-3">
             <img

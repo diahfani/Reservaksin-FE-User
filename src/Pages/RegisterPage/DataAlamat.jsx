@@ -73,7 +73,7 @@ function DataAlamat({ nextStep, prevStep, handleInputData, formData }) {
     ) {
       alert("data ada yang masih kosong");
     } else {
-      console.log(formData);
+      // console.log(formData);
       nextStep();
     }
     e.preventDefault();

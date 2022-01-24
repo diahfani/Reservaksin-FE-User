@@ -19,7 +19,7 @@ function PersonalData({ userid }) {
   const { id } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  console.log(id)
+  // console.log(id)
   const dataUser = useSelector((state) => state.user)
   // const isLoggedIn = useSelector((state) => state.auth.login)
   const [formData, setFormData] = useState({
@@ -38,13 +38,13 @@ function PersonalData({ userid }) {
     provinsi: dataUser.provinsi,
   });
 
-  console.log(formData.no_kk)
+  // console.log(formData.no_kk)
   const handleInputData = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-    console.log(formData)
+    // console.log(formData)
   };
 
   const [errMsgNoKK, seterrMsgNoKK] = useState("");
@@ -186,7 +186,7 @@ function PersonalData({ userid }) {
     }
   };
   const submitFormData = async (e) => {
-    console.log(formData)
+    // console.log(formData)
     e.preventDefault();
     if (
       errMsgNoKK !== "" ||
@@ -246,7 +246,7 @@ function PersonalData({ userid }) {
         role: "user"
       })
         .then((response) => {
-          console.log(response)
+          // console.log(response)
           dispatch(user(({
             email: response.data.data.email,
             nik: response.data.data.nik,

@@ -19,7 +19,7 @@ import PrivateRoute from "Utilities/PrivateRoute/PrivateRoute";
 
 function Router() {
   const user = useSelector((state) => state.auth);
-  console.log(user);
+  // console.log(user);
   return (
     <BrowserRouter>
       <Routes>
@@ -70,7 +70,7 @@ function Router() {
           path="/reservasi/faskes/:id"
           element={
             <PrivateRoute>
-              <ReservasitionPilihTanggal userid={user} />
+              <ReservasitionPilihTanggal />
             </PrivateRoute>
           }
         ></Route>
