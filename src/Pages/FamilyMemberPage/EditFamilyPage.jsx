@@ -5,9 +5,11 @@ import { Form } from "react-bootstrap";
 import "./EditFamily.scss";
 import axios from "axios";
 import CustomToast from "Components/CustomToast/CustomToast";
+import { useSelector } from "react-redux";
 
 export default function EditFamilyPage() {
   // declare new state or new variable below ...
+  const { data: dataUser } = useSelector((state) => state.user);
   const [validated, setValidated] = useState(false);
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -57,7 +59,7 @@ export default function EditFamilyPage() {
     await axios
       .put(
         `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/${state?.dataFamily?.id}`,
-        formDataKeluarga
+        { ...formDataKeluarga, nohp: dataUser?.nohp }
       )
       .then(() => {
         navigate(-1);

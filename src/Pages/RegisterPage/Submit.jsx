@@ -10,10 +10,13 @@ import axios from "axios";
 function Submit({ prevStep, formData, formdataAnggota }) {
   const navigate = useNavigate();
   const [error, setError] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   console.log(error);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoaded(true);
     var API_URL = process.env.REACT_APP_RESERVAKSIN_API_URL;
     await axios
       .post(`${API_URL}/citizen/register`, {
@@ -37,7 +40,6 @@ function Submit({ prevStep, formData, formdataAnggota }) {
         role: "user",
       })
       .then((response) => {
-        console.log(response);
         if (response.data.meta.status !== 200) {
           setError(response.data.meta.messages);
         } else {
@@ -52,6 +54,7 @@ function Submit({ prevStep, formData, formdataAnggota }) {
           }
         } else if (e.request) {
           console.log("isi err req", e.request);
+          setIsLoaded(false);
         }
       });
     formdataAnggota.map(async (item) => {
@@ -90,9 +93,11 @@ function Submit({ prevStep, formData, formdataAnggota }) {
             }
           } else if (e.request) {
             console.log("isi err req", e.request);
+            setIsLoaded(false);
           }
         });
     });
+    setIsLoaded(false);
     navigate("/");
   };
 
@@ -116,7 +121,13 @@ function Submit({ prevStep, formData, formdataAnggota }) {
         <form onSubmit={handleSubmit} className="">
           <div className="mt-5 mb-2 p-0">
             <Button type="submit" className="btn-style w-100">
-              Submit
+              {isLoaded ? (
+                <div className="spinner-border text-primary" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                "Submit"
+              )}
             </Button>
           </div>
           <div className="mt-2 mb-3 p-0">

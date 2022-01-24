@@ -34,7 +34,7 @@ export default function Router() {
           }
         ></Route>
         <Route
-          path="/profile/id/personal"
+          path="/profile/:id/personal"
           element={
             <PrivateRoute>
               <PersonalData />
@@ -42,7 +42,7 @@ export default function Router() {
           }
         ></Route>
         <Route
-          path="/profile/id/family"
+          path="/profile/:id/family"
           element={
             <PrivateRoute>
               <FamilyMemberPage />
@@ -66,7 +66,7 @@ export default function Router() {
           }
         ></Route>
         <Route
-          path="/profile/id/history"
+          path="/profile/:id/history"
           element={
             <PrivateRoute>
               <History />

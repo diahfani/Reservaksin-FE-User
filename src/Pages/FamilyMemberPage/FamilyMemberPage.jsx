@@ -4,10 +4,11 @@ import BackButton from "../../Components/BackButton/BackButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CustomToast from "Components/CustomToast/CustomToast";
+import { useSelector } from "react-redux";
 
 export default function FamilyMemberPage() {
   // declare new state or new variable below ...
-  const noKK = "3603445678980002";
+  const { data: dataUser } = useSelector((state) => state.user);
   const [listAnggota, setListAnggota] = useState([]);
   const navigate = useNavigate();
   const [toast, setToast] = useState({
@@ -34,7 +35,7 @@ export default function FamilyMemberPage() {
   const fetchListAnggota = async () => {
     await axios
       .get(
-        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/family?nokk=${noKK}`
+        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/family?nokk=${dataUser?.nokk}`
       )
       .then((response) => {
         setToast({
@@ -53,6 +54,7 @@ export default function FamilyMemberPage() {
   // execute useEffect below ...
   useEffect(() => {
     fetchListAnggota();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -6,10 +6,11 @@ import Illustration5 from "Assets/Images/illustration-5.svg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CustomToast from "Components/CustomToast/CustomToast";
+import { useSelector } from "react-redux";
 
 export default function History() {
   // declare new state or new variables below ...
-  const noKK = "3603445678980002";
+  const { data: dataUser } = useSelector((state) => state.user);
   const [dataBookings, setDataBookings] = useState(null);
   const [serverError, setServerError] = useState(null);
   const navigate = useNavigate();
@@ -36,7 +37,9 @@ export default function History() {
   // code your handle functions below ...
   const getDataBookings = async () => {
     await axios
-      .get(`${process.env.REACT_APP_RESERVAKSIN_API_URL}/booking/nokk/${noKK}`)
+      .get(
+        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/booking/nokk/${dataUser?.nokk}`
+      )
       .then(function (response) {
         setDataBookings(
           response?.data?.data?.filter((item) => item?.status !== "booked")
@@ -67,6 +70,7 @@ export default function History() {
   // execute useEffect below ...
   useEffect(() => {
     getDataBookings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

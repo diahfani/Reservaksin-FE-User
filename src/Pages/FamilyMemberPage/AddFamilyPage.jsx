@@ -5,17 +5,19 @@ import { Form } from "react-bootstrap";
 import "./EditFamily.scss";
 import axios from "axios";
 import CustomToast from "Components/CustomToast/CustomToast";
+import { useSelector } from "react-redux";
 
 export default function AddFamilyPage() {
   // declare new state or new variable below ...
+  const { data: dataUser } = useSelector((state) => state.user);
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
   const [formDataKeluarga, setFormDataKeluarga] = useState({
     email: "",
-    nohp: "",
+    nohp: dataUser?.nohp,
     fullname: "",
     password: "",
-    nokk: "3603445678980002",
+    nokk: dataUser?.nokk,
     nik: "",
     dob: "",
     relationship: "",

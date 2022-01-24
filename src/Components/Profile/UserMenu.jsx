@@ -7,36 +7,33 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../Config/Redux/LoginSlice";
+import { clearUser } from "Config/Redux/UserSlice";
 
-function UserMenu(props) {
+function UserMenu({ userID }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onClick = () => {
     dispatch(logout());
-    navigate("/")
-    // if (window.location.pathname.includes("profile")) {
-    //   navigate("/");
-    // } else {
-    //   window.location.reload();
-    // }
+    dispatch(clearUser());
+    navigate("/");
   };
 
   return (
     <div className="mt-5">
-      <Link to="/profile/id/personal" className="text-decoration-none">
+      <Link to={`/profile/${userID}/personal`} className="text-decoration-none">
         <div className="item-menu mb-3 p-3">
           <BsFillPersonLinesFill size="20" color="#0A508D" />
           <span className="text-menu">Personal Data</span>
         </div>
       </Link>
-      <Link to="/profile/id/family" className="text-decoration-none">
+      <Link to={`/profile/${userID}/family`} className="text-decoration-none">
         <div className="item-menu mb-3 p-3">
           <TiGroupOutline size="20" color="#0A508D" />
           <span className="text-menu">Family Member</span>
         </div>
       </Link>
-      <Link to="/profile/id/history" className="text-decoration-none">
+      <Link to={`/profile/${userID}/history`} className="text-decoration-none">
         <div className="item-menu mb-3 p-3">
           <RiFolderHistoryLine size="20" color="#0A508D" />
           <span className="text-menu">Histori</span>

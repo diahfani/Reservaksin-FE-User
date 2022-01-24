@@ -3,6 +3,7 @@ import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 import loginSlice from "./LoginSlice";
 import reservationSlice from "./ReservationSlice";
+import UserSlice from "./UserSlice";
 import {
   persistStore,
   persistReducer,
@@ -17,6 +18,7 @@ import {
 const reducer = combineReducers({
   auth: loginSlice,
   reservation: reservationSlice,
+  user: UserSlice,
 });
 
 const persistConfig = {

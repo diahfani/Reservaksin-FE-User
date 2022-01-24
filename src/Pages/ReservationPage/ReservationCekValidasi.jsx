@@ -7,7 +7,7 @@ import CustomToast from "Components/CustomToast/CustomToast";
 
 export default function Reservation() {
   // declare new state or new variable below ...
-  const noKK = "3603445678980002";
+  const { data: dataUser } = useSelector((state) => state.user);
   const [listAnggota, setListAnggota] = useState([]);
   const [formValidate, setFormValidate] = useState({
     citizenID: "",
@@ -26,7 +26,7 @@ export default function Reservation() {
   // code your handle functions below ...
   const fetchListAnggota = async () => {
     await fetch(
-      `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/family?nokk=${noKK}`,
+      `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/family?nokk=${dataUser?.nokk}`,
       { method: "GET" }
     )
       .then((response) => response.text())
@@ -78,6 +78,7 @@ export default function Reservation() {
   // execute useEffect below ...
   useEffect(() => {
     fetchListAnggota();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
