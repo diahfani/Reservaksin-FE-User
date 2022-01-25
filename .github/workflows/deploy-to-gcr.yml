@@ -27,10 +27,10 @@ jobs:
       - name: Use cached node_modules
         uses: actions/cache@master
         with:
-          path: node_modules
-          key: nodeModules-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          key: nodeModules-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            nodeModules-
+            npm-
       - name: Install dependencies
         run: npm install --frozen-lockfile
         env:
@@ -44,7 +44,7 @@ jobs:
           EOF
 
       - name: Build Development
-        run: npm build
+        run: npm run-script build
 
       - name: Archive Production Artifact
         uses: actions/upload-artifact@main
