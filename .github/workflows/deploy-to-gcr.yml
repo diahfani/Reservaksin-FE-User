@@ -63,7 +63,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: .docker/build
+          path: ./docker/build
 
       - name: Setup GCloud Auth
         id: auth
@@ -80,7 +80,7 @@ jobs:
           gcloud builds submit \
             --quiet \
             --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
-        working-directory: .docker
+        working-directory: .
 
       # Deploy image to Cloud Run
       - name: Deploy GCR
