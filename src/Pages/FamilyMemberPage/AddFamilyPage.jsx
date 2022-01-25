@@ -76,7 +76,7 @@ export default function AddFamilyPage() {
   const postToAPI = async () => {
     await axios
       .post(
-        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/register`,
+        `https://reservaksin-be.herokuapp.com/citizen/register`,
         formDataKeluarga
       )
       .then(() => {

@@ -36,10 +36,10 @@ jobs:
 
       - name: Create env file
         run: |
-          cat << EOF > .env
-          REACT_APP_GMAPS_GEOCODE_API_KEY=${{ secrets.GMAPS_GEOCODE_API_KEY }}
-          REACT_APP_RESERVAKSIN_API_URL=${{ secrets.RESERVAKSIN_API_URL }}
-          EOF
+          touch .env
+          echo REACT_APP_GMAPS_GEOCODE_API_KEY=${{ secrets.GMAPS_GEOCODE_API_KEY }} >> .env
+          echo REACT_APP_RESERVAKSIN_API_URL=${{ secrets.RESERVAKSIN_API_URL }} >> .env
+          cat .env
 
       - name: Build Development
         run: CI="" npm run build
@@ -63,7 +63,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: ./docker/build
+          path: .
 
       - name: Setup GCloud Auth
         id: auth

@@ -26,7 +26,7 @@ export default function Reservation() {
   // code your handle functions below ...
   const fetchListAnggota = async () => {
     await fetch(
-      `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/family?nokk=${dataUser?.nokk}`,
+      `https://reservaksin-be.herokuapp.com/citizen/family?nokk=${dataUser?.nokk}`,
       { method: "GET" }
     )
       .then((response) => response.text())

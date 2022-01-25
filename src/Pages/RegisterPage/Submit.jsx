@@ -17,9 +17,8 @@ function Submit({ prevStep, formData, formdataAnggota }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoaded(true);
-    var API_URL = process.env.REACT_APP_RESERVAKSIN_API_URL;
     await axios
-      .post(`${API_URL}/citizen/register`, {
+      .post(`https://reservaksin-be.herokuapp.com/citizen/register`, {
         email: formData.email,
         nohp: formData.no_hp,
         password: formData.password,
@@ -59,7 +58,7 @@ function Submit({ prevStep, formData, formdataAnggota }) {
       });
     formdataAnggota.map(async (item) => {
       await axios
-        .post(`${API_URL}/citizen/register`, {
+        .post(`https://reservaksin-be.herokuapp.com/citizen/register`, {
           nokk: formData.no_kk,
           nohp: formData.no_hp,
           nik: item.nik,

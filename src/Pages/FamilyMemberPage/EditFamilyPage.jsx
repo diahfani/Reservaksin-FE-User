@@ -58,7 +58,7 @@ export default function EditFamilyPage() {
   const updateToAPI = async () => {
     await axios
       .put(
-        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/${state?.dataFamily?.id}`,
+        `https://reservaksin-be.herokuapp.com/citizen/${state?.dataFamily?.id}`,
         { ...formDataKeluarga, nohp: dataUser?.nohp }
       )
       .then(() => {

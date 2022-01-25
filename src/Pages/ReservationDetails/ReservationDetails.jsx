@@ -25,7 +25,7 @@ export default function ReservationDetails() {
   const cancelToAPI = async () => {
     await axios
       .patch(
-        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/booking/status/${dataBooking?.booking_id}`,
+        `https://reservaksin-be.herokuapp.com/booking/status/${dataBooking?.booking_id}`,
         {
           status: "canceled",
         }

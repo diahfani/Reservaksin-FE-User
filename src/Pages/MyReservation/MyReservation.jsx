@@ -38,7 +38,7 @@ export default function MyReservation() {
   const getDataBookings = async () => {
     await axios
       .get(
-        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/booking/nokk/${dataUser?.nokk}`
+        `https://reservaksin-be.herokuapp.com/booking/nokk/${dataUser?.nokk}`
       )
       .then(function (response) {
         setDataBookings(

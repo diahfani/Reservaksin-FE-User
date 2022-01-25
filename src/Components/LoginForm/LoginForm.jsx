@@ -96,7 +96,7 @@ export default function LoginForm() {
 
   const loginToAPI = async () => {
     await axios
-      .post(`${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/login`, form)
+      .post(`https://reservaksin-be.herokuapp.com/citizen/login`, form)
       .then((resp) => {
         var user = jwt(resp?.data?.data?.token);
         dispatch(

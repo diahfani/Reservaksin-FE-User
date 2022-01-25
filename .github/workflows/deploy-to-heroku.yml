@@ -1,46 +1,46 @@
-# name: Heroku Run Deploy
-# # https://github.com/google-github-actions/setup-gcloud
-# on:
-#   push:
-#     branches:
-#       - development
+name: Heroku Run Deploy
+# https://github.com/google-github-actions/setup-gcloud
+on:
+  push:
+    branches:
+      - development
 
-# jobs:
-#   build:
-#     name: Build React App
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    name: Build React App
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout Repo
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
 
-#       - name: Create env file
-#         run: |
-#           cat << EOF > .env
-#           REACT_APP_GMAPS_GEOCODE_API_KEY=${{ secrets.GMAPS_GEOCODE_API_KEY }}
-#           REACT_APP_RESERVAKSIN_API_URL=${{ secrets.RESERVAKSIN_API_URL }}
-#           EOF
+      - name: Create env file
+        run: |
+          cat << EOF > .env
+          REACT_APP_GMAPS_GEOCODE_API_KEY=${{ secrets.GMAPS_GEOCODE_API_KEY }}
+          REACT_APP_RESERVAKSIN_API_URL=${{ secrets.RESERVAKSIN_API_URL }}
+          EOF
 
-#       - name: docker login
-#         env:
-#           DOCKER_USER: ${{ secrets.DOCKER_HUB_USERNAME }}
-#           DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
-#         run: |
-#           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-#       - name: docker build
-#         run: |
-#           docker build . -t fadhilansyah25/reservaksin-fe-user:latest
-#       - name: docker push
-#         run: |
-#           docker push fadhilansyah25/reservaksin-fe-user:latest
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: docker build
+        run: |
+          docker build . -t fadhilansyah25/reservaksin-fe-user:latest
+      - name: docker push
+        run: |
+          docker push fadhilansyah25/reservaksin-fe-user:latest
 
-#       - name: Build, Push and Release a Docker container to Heroku.
-#         uses: gonuit/heroku-docker-deploy@v1.3.3
-#         with:
-#           email: ${{ secrets.HEROKU_EMAIL }}
-#           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-#           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-#           dockerfile_directory: ./
-#           dockerfile_name: Dockerfile
-#           docker_options: "--no-cache"
-#           process_type: web
+      - name: Build, Push and Release a Docker container to Heroku.
+        uses: gonuit/heroku-docker-deploy@v1.3.3
+        with:
+          email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          dockerfile_directory: ./
+          dockerfile_name: Dockerfile
+          docker_options: "--no-cache"
+          process_type: web

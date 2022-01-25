@@ -60,10 +60,10 @@ export default function PersonalData() {
 
   const updateToAPI = async () => {
     await axios
-      .put(
-        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/${formDataUser?.id}`,
-        { ...formDataUser, nohp: dataUser?.nohp }
-      )
+      .put(`https://reservaksin-be.herokuapp.com/citizen/${formDataUser?.id}`, {
+        ...formDataUser,
+        nohp: dataUser?.nohp,
+      })
       .then((response) => {
         dispatch(setUser(response?.data?.data));
         navigate(-1);
