@@ -39,11 +39,10 @@ jobs:
           cat << EOF > .env
           REACT_APP_GMAPS_GEOCODE_API_KEY=${{ secrets.GMAPS_GEOCODE_API_KEY }}
           REACT_APP_RESERVAKSIN_API_URL=${{ secrets.RESERVAKSIN_API_URL }}
-          CI=false
           EOF
 
       - name: Build Development
-        run: npm run build
+        run: CI="" npm run build
 
       - name: Archive Production Artifact
         uses: actions/upload-artifact@main
