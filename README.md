@@ -27,6 +27,11 @@
 <strong><a href="https://admin.reservaksin.live">Reservaksin Admin</a></strong>
 </p>
 
+## Preview
+| Admin | User |
+| ----------- | ----------- |
+| <img src="./Dashboard-admin.svg" alt="preview admin">| <img src="./Landing Page- Before Login.svg" alt="preview user"> |
+
 ## 🎯 Project Goal
 The goal of the project is to help the government’s goal of Covid-19 vaccinations
 by facilitating users to **book vaccination sessions easily** and creating a proper
