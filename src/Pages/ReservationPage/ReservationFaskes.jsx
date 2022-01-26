@@ -1,36 +1,4 @@
 import BackButton from "Components/BackButton/BackButton";
-// import React from "react";
-// import { Link, useParams } from "react-router-dom";
-// // import { useParams } from 'react-router-dom'
-
-// export default function ReservationFaskes() {
-//   const { id } = useParams()
-//   const faskes = [
-//     {
-//       id: 1,
-//       namaFaskes: "RS. Karya Medika",
-//     },
-//     {
-//       id: 2,
-//       namaFaskes: "Siloam Hospital",
-//     },
-//     {
-//       id: 3,
-//       namaFaskes: "Omni International Hospital",
-//     },
-//     {
-//       id: 4,
-//       namaFaskes: "RS. Bethesda",
-//     },
-//     {
-//       id: 5,
-//       namaFaskes: "RS. Mentari",
-//     },
-//     {
-//       id: 6,
-//       namaFaskes: "Puskesmas Bojong Gede",
-//     },
-//   ];
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Illustration5 from "Assets/Images/illustration-5.svg";

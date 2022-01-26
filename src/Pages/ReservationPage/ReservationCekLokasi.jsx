@@ -8,7 +8,6 @@ import BackButton from "Components/BackButton/BackButton";
 export default function ReservationCekLokasi() {
   // declare new state or new variable below ...
   Geocode.setApiKey("AIzaSyCMr2bqceHoujWHUmAN_83KxKLxkhJoSBI");
-  // const [curLoc, setCurLoc] = useState({ lat: -6.1753942, lng: 106.827183 });
   const [curLoc, setCurLoc] = useState(null);
   const [address, setAddress] = useState("");
   const [dataFaskes, setdataFaskes] = useState([]);

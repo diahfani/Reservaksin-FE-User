@@ -73,7 +73,6 @@ function DataAlamat({ nextStep, prevStep, handleInputData, formData }) {
     ) {
       alert("data ada yang masih kosong");
     } else {
-      // console.log(formData);
       nextStep();
     }
     e.preventDefault();
@@ -90,9 +89,6 @@ function DataAlamat({ nextStep, prevStep, handleInputData, formData }) {
         activeStep={1}
         styleConfig={{ activeBgColor: '#0D5389', completedBgColor: '#031625' }}
         connectorStateColors={true}
-        // activeColor='#0D5389'
-        // completedColor = '#031625'
-        // disabledColor = '#B0BBDB'
       ></Stepper>
       <form onSubmit={handleSubmit}>
         <Alamat

@@ -10,7 +10,6 @@ export const data = {
     namalengkap: "",
     jeniskelamin: "",
     tglLahir: (new Date()),
-    // tglLahir: "",
     statusHubungan: "",
     statusPerkawinan: "",
     alamat: "",

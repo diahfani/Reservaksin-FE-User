@@ -6,7 +6,7 @@ import {Toaster} from 'react-hot-toast';
 describe('LoginForm', () =>{
     test('renders LoginForm component', () => {
         render(<LoginForm/>)
-        // screen.debug();
+        
         expect(screen.getByText(/Username/)).toBeInTheDocument();
         expect(screen.getByText(/Password/)).toBeInTheDocument();
     });

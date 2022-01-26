@@ -41,7 +41,6 @@ function DataKeluarga({
     setListAnggota(filt);
   };
 
-  // console.log(listAnggota);
   return (
     <div className="container mx-auto page-wrapper">
       <Stepper
@@ -53,9 +52,6 @@ function DataKeluarga({
         activeStep={2}
         styleConfig={{ activeBgColor: '#0D5389', completedBgColor: '#031625' }}
         connectorStateColors={true}
-        // activeColor='#0D5389'
-        // completedColor = '#031625'
-        // disabledColor = '#B0BBDB'
       ></Stepper>
       <div className="accordion" id="accordionExample">
         {listAnggota.map((item, idx) => (

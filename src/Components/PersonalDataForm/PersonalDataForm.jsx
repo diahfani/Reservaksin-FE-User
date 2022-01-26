@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-// import DatePicker from "react-datepicker";
+import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Form.css";
-// import { useSelector } from 'react-redux'
 
 function PersonalDataForm({
   formData,
@@ -22,10 +20,8 @@ function PersonalDataForm({
   handleValidation,
   errMsgNoTelp
 }) {
-  // console.log(formData.no_kk)
   return (
     <div className="px-3 mt-3">
-      {/* <form className="form" onSubmit={handleSubmit}> */}
         <div className="mb-2 ctr-input ">
           <label className="form-label">No. KK *</label>
           <input
@@ -33,7 +29,6 @@ function PersonalDataForm({
             name="no_kk"
             type="number"
             value={formData.no_kk}
-            // value={no_kk}
             onChange={handleInputData}
             onBlur={handleValidation}
             className="form-control"
@@ -171,7 +166,6 @@ function PersonalDataForm({
             value={formData.address}
             onChange={handleInputData}
             onBlur={handleValidation}
-            // onBlur={handleValidation}
             className="form-control"
           />
           <p className="form-text text-danger">{errMsgAddress}</p>
@@ -222,16 +216,11 @@ function PersonalDataForm({
             type="text"
             value={formData.provinsi}
             onChange={handleInputData}
-            // onBlur={handleValidation}
             name="provinsi"
             className="form-control"
           />
           <p className="form-text text-danger">{errMsgProvinsi}</p>
         </div>
-        {/* <button className="btn btn-primary w-100 my-3" type="submit">
-          Simpan
-        </button> */}
-      {/* </form> */}
     </div>
   );
 }

@@ -186,7 +186,6 @@ function DataPribadiComponent({ data }) {
                 type="radio"
                 name="JenisKelamin"
                 value="Pria"
-                // checked={formData.JenisKelamin === "Pria"}
                 onChange={handleInputData}
                 checked
               />
@@ -198,7 +197,6 @@ function DataPribadiComponent({ data }) {
                 type="radio"
                 name="JenisKelamin"
                 value="Wanita"
-                // checked={formData?.JenisKelamin === "Wanita"}
                 onChange={handleInputData}
               />
               <label className="form-check-label">Wanita</label>

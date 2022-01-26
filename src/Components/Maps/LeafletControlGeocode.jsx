@@ -29,7 +29,6 @@ export default function LeafletControlGeocoder() {
         map.flyTo(e.geocode.center, 15);
       })
       .addTo(map);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;

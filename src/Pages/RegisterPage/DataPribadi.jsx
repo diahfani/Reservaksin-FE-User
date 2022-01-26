@@ -127,9 +127,6 @@ function DataPribadi({
           styleConfig={{ activeBgColor: '#0D5389', completedBgColor: '#031625' }}
           activeStep={0}
           connectorStateColors={true}
-          // activeBgColor='#0D5389'
-          // completedBgColor = '#031625'
-          // disabledColor = '#B0BBDB'
         ></Stepper>
         <form onSubmit={handleSubmit}>
           <DataPribadiComponent

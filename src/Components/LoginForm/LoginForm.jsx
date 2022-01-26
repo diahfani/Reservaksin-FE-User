@@ -3,36 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../Config/Redux/LoginSlice";
-// import { user } from "../../Config/Redux/UserSlice";
-// import { Toaster } from "react-hot-toast";
-// import { ToastError } from "../Toast/Toast";
-// import axios from 'axios'
-// import jwt from 'jwt-decode';
-// import jwt_decode from "jwt-decode";
-// // import useHandleLogin from '../../Hooks/useHandleLogin'
-// import { Spinner } from 'react-bootstrap'
-
-
-// function LoginForm() {
-//   const navigate = useNavigate();
-//   const dispatch = useDispatch();
-//   // const handleLogin = useHandleLogin()
-//   const formKosong = {
-//     email_or_nik: "",
-//     // nik:"",
-//     password: "",
-
-//   };
-//   const formError = {
-//     username: "",
-//     password: "",
-//   };
-
-//   //init state
-//   const [form, setForm] = useState(formKosong);
-//   const [errMsg, setErrMsg] = useState(formError);
-//   const [error, setError] = useState([])
-//   const [isLoaded, setIsLoaded] = useState()
 import { setUser } from "../../Config/Redux/UserSlice";
 import { Toaster } from "react-hot-toast";
 import { ToastError } from "../Toast/Toast";
@@ -124,71 +94,6 @@ export default function LoginForm() {
     });
   };
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const validForm = Object.keys(form).filter((key) => form[key] !== "");
-  //   // const has
-  //   var API_URL = 'https://reservaksin-be.herokuapp.com'
-  //   if (validForm.length < 2) {
-  //     validateOnSubmit();
-  //   } else {
-    
-  //     setIsLoaded("logging in")
-
-  //     await axios
-  //       .post(`${API_URL}/citizen/login`, form)
-
-  //       .then((resp) => {
-  //         if (resp.data.meta.status !== 200) {
-  //           setError(resp.data.meta.messages)
-
-
-  //         } else {
-            
-  //           // console.log(resp.data.data.DataCitizen.current_Address.alamat)
-  //           // console.log(resp.data.data.DataCitizen.current_Address.provinsi)
-  //           // handleLogin(resp.data.data)
-  //           var userToken = jwt(resp.data.data.token)
-  //           // console.log(user)
-  //           dispatch(login(({
-  //             email_or_nik: form.email_or_nik,
-  //             login: true,
-  //             token: jwt_decode(resp.data.data.token),
-  //             id: userToken.id
-  //           })))
-  //           dispatch(user(({
-  //             email: resp.data.data.DataCitizen.email,
-  //             nik: resp.data.data.DataCitizen.nik,
-  //             nohp: resp.data.data.DataCitizen.nohp,
-  //             fullname: resp.data.data.DataCitizen.fullname,
-  //             nokk: resp.data.data.DataCitizen.nokk,
-  //             dob: resp.data.data.DataCitizen.dob,
-  //             relationship: resp.data.data.DataCitizen.relationship,
-  //             gender: resp.data.data.DataCitizen.gender,
-  //             status: resp.data.data.DataCitizen.status,
-  //             role: resp.data.data.DataCitizen.role,
-  //             alamat: resp.data.data.DataCitizen.current_Address.alamat,
-  //             provinsi: resp.data.data.DataCitizen.current_Address.provinsi,
-  //             kota: resp.data.data.DataCitizen.current_Address.kota,
-  //             kecamatan: resp.data.data.DataCitizen.current_Address.provinsi,
-  //             kelurahan: resp.data.data.DataCitizen.current_Address.kelurahan,
-  //           })))
-            
-  //           // handleLogin(resp.data.data)
-  //           navigate("/")
-  //         }
-  //       })
-  //       .catch((e) => {
-  //         // console.log(e)
-  //         if (e.response) {
-  //           if (e.response.status === 401) {
-  //             ToastError("email/nik atau password salah!")
-  //           }
-  //         } else if (e.request) {
-  //           console.log("isi err req", e.request)
-  //         }
-  //         setIsLoaded()
-  //       })
   const loginToAPI = async () => {
     await axios
       .post(`https://reservaksin-be.herokuapp.com/citizen/login`, form)
@@ -297,11 +202,6 @@ export default function LoginForm() {
           </a>
         </div>
         <button className="btn btn-primary w-100" type="submit">
-        {/* {isLoaded === "logging in" ?
-        (<Spinner animation="border" variant="primary" />)
-        : 
-      "Login"
-      } */}
 
           {isLoaded ? (
             <div className="spinner-border text-primary" role="status">

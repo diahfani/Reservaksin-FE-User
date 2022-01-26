@@ -1,9 +1,7 @@
 import React from "react";
-// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../Button.css";
 import { useSelector } from 'react-redux'
-// import PropTypes from "prop-types";
 
 function DataPribadiComponent({
   formData,
@@ -21,17 +19,13 @@ function DataPribadiComponent({
   const noKK = useSelector((state) => state.user.nokk)
   const nik = useSelector((state) => state.user.nik)
   const fullname = useSelector((state) => state.user.fullname)
-  const gender = useSelector((state) => state.user.gender)
   const dob = useSelector((state) => state.user.dob)
-  const relationship = useSelector((state) => state.user.relationship)
-  const status = useSelector((state) => state.user.status)
   return (
     <div className="form">
       <div className="mb-3">
         <label className="form-label">No. KK *</label>
         <input
           placeholder={isLoggedIn ? noKK : "Masukkan no. KK"}
-          // defaultValue={noKK}
           name="no_kk"
           type="number"
           value={formData?.nokk}

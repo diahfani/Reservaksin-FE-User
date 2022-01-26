@@ -1,5 +1,4 @@
 import React from "react";
-// import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LandingPage from "../Pages/LandingPage/LandingPage";
@@ -15,12 +14,6 @@ import ReservasitionPilihTanggal from "Pages/ReservationPage/ReservationPilihTan
 import ReservationBerhasil from "Pages/ReservationPage/ReservationBerhasil";
 import MyReservation from "Pages/MyReservation/MyReservation";
 import ReservationDetails from "Pages/ReservationDetails/ReservationDetails";
-// import { useSelector } from "react-redux";
-// import PrivateRoute from "Utilities/PrivateRoute/PrivateRoute";
-
-// function Router() {
-//   const user = useSelector((state) => state.auth);
-  // console.log(user);
 import EditFamilyPage from "Pages/FamilyMemberPage/EditFamilyPage";
 import FamilyMemberPage from "Pages/FamilyMemberPage/FamilyMemberPage";
 import AddFamilyPage from "Pages/FamilyMemberPage/AddFamilyPage";
@@ -30,29 +23,6 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage></LandingPage>}></Route>
-        {/* <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <UserProfilePage userid={user} />
-            </PrivateRoute>
-          }
-        ></Route>
-
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<RegisterPage />}></Route>
-        {/* <Route path="/profile" element={<UserProfilePage />}></Route> */}
-        {/* <Route path="/profile/:id/personal" element={<PersonalData />}></Route>
-        <Route
-          path="/profile/:id/family"
-          element={<FamilyMemberPage />}
-        ></Route>
-        <Route path="/profile/:id/history" element={<History />}></Route>
-        <Route
-          path="/reservasi/cek-validasi"
-          element={
-            <PrivateRoute>
-              <ReservationCekValidasi /> */}
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route
@@ -64,10 +34,6 @@ export default function Router() {
           }
         ></Route>
         <Route
-          // path="/reservasi/cek-lokasi"
-          // element={
-          //   <PrivateRoute>
-          //     <ReservationCekLokasi />
           path="/profile/:id/personal"
           element={
             <PrivateRoute>
@@ -76,10 +42,6 @@ export default function Router() {
           }
         ></Route>
         <Route
-          // path="/reservasi/pilih-faskes"
-          // element={
-          //   <PrivateRoute>
-          //     <ReservationFaskes />
           path="/profile/:id/family"
           element={
             <PrivateRoute>
@@ -88,10 +50,6 @@ export default function Router() {
           }
         ></Route>
         <Route
-          // path="/reservasi/faskes/:id"
-          // element={
-          //   <PrivateRoute>
-          //     <ReservasitionPilihTanggal />
           path="/family-member/edit"
           element={
             <PrivateRoute>
@@ -124,10 +82,6 @@ export default function Router() {
           }
         ></Route>
         <Route
-          // path={`/reservation-details/${user.id}`}
-          // element={
-          //   <PrivateRoute>
-          //     <ReservationDetails userid={user}/>
           path="/reservation-details/:id"
           element={
             <PrivateRoute>
