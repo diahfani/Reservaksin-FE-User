@@ -1,0 +1,95 @@
+{
+    "dataVaksin": {
+        "sinovac": {
+            "Jenis Vaksin": "Sinovac",
+            "Interval Antar Dosis": "28 Hari",
+            "dosis": [
+                {
+                    "Dosis Ke-": 1,
+                    "KTP": "Seluruh Indonesia",
+                    "Domisili": "Seluruh Indonesia",
+                    "12-17 tahun": "Ya",
+                    "18+ tahun": "Ya",
+                    "Ibu Hamil": "Ya"
+                },
+                {
+                    "Dosis Ke-": 2,
+                    "KTP": "Seluruh Indonesia",
+                    "Domisili": "Seluruh Indonesia",
+                    "12-17 tahun": "Ya",
+                    "18+ tahun": "Ya",
+                    "Ibu Hamil": "Ya"
+                }
+            ]
+        },
+        "moderna": {
+            "Jenis Vaksin": "Moderna",
+            "Interval Antar Dosis": "28 Hari",
+            "dosis": [
+                {
+                    "Dosis Ke-": 1,
+                    "KTP": "Seluruh Indonesia",
+                    "Domisili": "Seluruh Indonesia",
+                    "12-17 tahun": "Tidak",
+                    "18+ tahun": "Ya",
+                    "Ibu Hamil": "Ya"
+                },
+                {
+                    "Dosis Ke-": 2,
+                    "KTP": "Seluruh Indonesia",
+                    "Domisili": "Seluruh Indonesia",
+                    "12-17 tahun": "Tidak",
+                    "18+ tahun": "Ya",
+                    "Ibu Hamil": "Ya"
+                }
+            ]
+        },
+        "pfizer": {
+            "Jenis Vaksin": "Pfizer",
+            "Interval Antar Dosis": "21-28 Hari",
+            "dosis": [
+                {
+                    "Dosis Ke-": 1,
+                    "KTP": "Seluruh Indonesia",
+                    "Domisili": "Seluruh Indonesia",
+                    "12-17 tahun": "Ya",
+                    "18+ tahun": "Ya",
+                    "Ibu Hamil": "Ya"
+                },
+                {
+                    "Dosis Ke-": 2,
+                    "KTP": "Seluruh Indonesia",
+                    "Domisili": "Seluruh Indonesia",
+                    "12-17 tahun": "Ya",
+                    "18+ tahun": "Ya",
+                    "Ibu Hamil": "Ya"
+                }
+            ]
+        },
+        "astraZeneca": {
+            "Jenis Vaksin": "AstraZeneca",
+            "Interval Antar Dosis": "12 Minggu",
+            "dosis": [
+                {
+                    "Dosis Ke-": 1,
+                    "KTP": "Seluruh Indonesia",
+                    "Domisili": "Seluruh Indonesia",
+                    "12-17 tahun": "Tidak",
+                    "18+ tahun": "Ya",
+                    "Ibu Hamil": "Tidak"
+                },
+                {
+                    "Dosis Ke-": 2,
+                    "KTP": "Seluruh Indonesia",
+                    "Domisili": "Seluruh Indonesia",
+                    "12-17 tahun": "Tidak",
+                    "18+ tahun": "Ya",
+                    "Ibu Hamil": "Tidak"
+                }
+            ]
+        }
+    },
+    "noteKriteriaVaksin": [
+        "Penggunaan AstraZenecca dan Moderna untuk dosis 1 menyesuaikan dengan stok di fasilitas kesehatan."
+    ]
+}

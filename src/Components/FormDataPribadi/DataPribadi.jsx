@@ -1,100 +1,151 @@
-import React, { useState } from 'react'
-// import { Button } from 'react-bootstrap'
-import DatePicker from 'react-datepicker'
+import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import '../DataDiriDanKeluarga.css'
-import '../Button.css'
-import { MdDateRange } from "react-icons/md"
+import "../Button.css";
+import { useSelector } from 'react-redux'
 
-function DataPribadiComponent({ 
-    formData, 
-    handleInputData, 
-    errMsgNoKK, 
-    errMsgNIK,
-    errMsgNama,
-    errMsgJeniKelamin,
-    errMsgStatusHubungan,
-    errMsgTglLahir,
-    errMsgStatusPerkawinan,
-    handleValidation,
-    setFormData 
-    // handleInputDataTglLahir,
-    // setFormData
+function DataPribadiComponent({
+  formData,
+  handleInputData,
+  errMsgNoKK,
+  errMsgNIK,
+  errMsgNama,
+  errMsgJeniKelamin,
+  errMsgStatusHubungan,
+  errMsgTglLahir,
+  errMsgStatusPerkawinan,
+  handleValidation,
+  isLoggedIn
 }) {
-    console.log(formData)
-    return (
-        <div className='container'>
-            <div className='form'>
-                <div className="mb-2 ctr-input " >
-                    <label className="form-label">No. KK *</label>
-                    <input placeholder="Masukkan no. KK" name="nokk" type="number" value={formData.nokk} onChange={handleInputData} onBlur={handleValidation} className="form-control" />
-                    <p className="form-text text-danger mb-0">{errMsgNoKK}</p>
-                </div>
-                <div className="mb-2 ctr-input" >
-                    <label className="form-label">NIK *</label>
-                    <input placeholder="Masukkan NIK" name="nik" value={formData.nik} onChange={handleInputData} type="number" onBlur={handleValidation} className="form-control" />
-                    <p  className="form-text text-danger mb-0">{errMsgNIK}</p>
-                </div>
-                <div className="mb-2 ctr-input" >
-                    <label className="form-label">Nama Lengkap *</label>
-                    <input placeholder="Masukkan nama lengkap" type="text" value={formData.namalengkap} onChange={handleInputData} name="namalengkap" onBlur={handleValidation} className="form-control" />
-                    <p  className="form-text text-danger mb-0">{errMsgNama}</p>
-                </div>
-                <div className="mb-2 ctr-input" >
-                    <label className="col-form-label">Jenis Kelamin *</label>
-                    <div className='d-flex'>
-                        <div className="form-check form-check-inline me-5">
-                            <input className="form-check-input" type="radio" name="jeniskelamin" value="Pria" checked={formData.jeniskelamin === "Pria"} onBlur={handleValidation}  onChange={handleInputData} />
-                            <label className="form-check-label">Pria</label>
-                        </div>
-                        <div className="form-check form-check-inline ms-5">
-                            <input className="form-check-input" type="radio" name="jeniskelamin" value="Wanita" checked={formData.jeniskelamin === "Wanita"} onBlur={handleValidation} onChange={handleInputData} />
-                            <label className="form-check-label">Wanita</label>
-                        </div>
-                    </div>
-                    <p className='form-text text-danger mb-0'>{errMsgJeniKelamin}</p>
-                </div>
-                <div className="mb-2 ctr-input date-input">
-                    <label className="form-label">Tanggal Lahir *</label>
-                    {/* <MdDateRange/> */}
-                    <DatePicker name="tglLahir" selected={formData.tglLahir} onChange={
-                        (date) => {
-                            setFormData({...formData, 'tglLahir' : date})
-                            console.log(date)
-                        }
-                    }
-                        onBlur={handleValidation} />
-                    {/* <input placeholder="HH/BB/TTTT" type="text" value={formData.tglLahir} onChange={handleInputData} name="tglLahir" onBlur={handleValidation} className="form-control" /> */}
-                    <MdDateRange className="icon-date" />
-                    <p className="form-text text-danger mb-0 p-date">{errMsgTglLahir}</p>
-                </div>
-                <div className="mb-2 ctr-input" >
-                    <label className="form-label">Status Hubungan dalam Kartu Keluarga *</label>
-                    <select className="form-select ctr-input" name="statusHubungan" defaultValue={formData.statusHubungan} onChange={handleInputData} onBlur={handleValidation} >
-                        <option value="" disabled >Hubungan keluarga</option>
-                        <option value="anak">Anak</option>
-                        <option value="suami">Suami</option>
-                        <option value="istri">Istri</option>
-                        <option value="mertua">Mertua</option>
-                    </select>
-                    <p  className="form-text text-danger">{errMsgStatusHubungan}</p>
-                </div>
-                <div className="mb-2 ctr-input" >
-                    <label className="form-label">Status Perkawinan *</label>
-                    <select className="form-select" name="statusPerkawinan" defaultValue={formData?.statusPerkawinan} onChange={handleInputData} onBlur={handleValidation} >
-                        <option value="" disabled >Status perkawinan</option>
-                        <option value="belumKawin">Belum Kawin</option>
-                        <option value="kawin">Kawin</option>
-                        <option value="cerai">Cerai</option>
-                        <option value="ceraiMati">Cerai Mati</option>
-                    </select>
-                    <p  className="form-text text-danger">{errMsgStatusPerkawinan}</p>
-                </div>
-            </div>
-
-
+  const noKK = useSelector((state) => state.user.nokk)
+  const nik = useSelector((state) => state.user.nik)
+  const fullname = useSelector((state) => state.user.fullname)
+  const dob = useSelector((state) => state.user.dob)
+  return (
+    <div className="form">
+      <div className="mb-3">
+        <label className="form-label">No. KK *</label>
+        <input
+          placeholder={isLoggedIn ? noKK : "Masukkan no. KK"}
+          name="no_kk"
+          type="number"
+          value={formData?.nokk}
+          onChange={handleInputData}
+          onBlur={handleValidation}
+          className="form-control"
+        />
+        <p className="form-text text-danger mb-0">{errMsgNoKK}</p>
+      </div>
+      <div className="mb-3">
+        <label className="form-label">NIK *</label>
+        <input
+          placeholder={isLoggedIn ? nik : "Masukkan NIK"}
+          name="nik"
+          value={formData?.nik}
+          onChange={handleInputData}
+          type="number"
+          onBlur={handleValidation}
+          className="form-control"
+        />
+        <p className="form-text text-danger mb-0">{errMsgNIK}</p>
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Nama Lengkap *</label>
+        <input
+          placeholder={isLoggedIn ? fullname : "Masukkan nama lengkap"}
+          type="text"
+          value={formData?.fullname}
+          onChange={handleInputData}
+          name="fullname"
+          onBlur={handleValidation}
+          className="form-control"
+        />
+        <p className="form-text text-danger mb-0">{errMsgNama}</p>
+      </div>
+      <div className="mb-3">
+        <label className="col-form-label">Jenis Kelamin *</label>
+        <div className="d-flex">
+          <div className="form-check form-check-inline me-5">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="gender"
+              value="Pria"
+              checked={formData?.gender === "Pria"}
+              onBlur={handleValidation}
+              onChange={handleInputData}
+            />
+            <label className="form-check-label">Pria</label>
+          </div>
+          <div className="form-check form-check-inline ms-5">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="gender"
+              value="Wanita"
+              checked={formData?.gender === "Wanita"}
+              onBlur={handleValidation}
+              onChange={handleInputData}
+            />
+            <label className="form-check-label">Wanita</label>
+          </div>
         </div>
-    )
+        <p className="form-text text-danger mb-0">{errMsgJeniKelamin}</p>
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Tanggal Lahir *</label>
+        <input
+          type="date"
+          placeholder={isLoggedIn ? dob : "mm/dd/yyyy"}
+          className="form-control"
+          name="dateof_birth"
+          selected={formData?.dateof_birth}
+          onChange={handleInputData}
+          onBlur={handleValidation}
+        />
+        <p className="form-text text-danger mb-0 p-date">{errMsgTglLahir}</p>
+      </div>
+      <div className="mb-3">
+        <label className="form-label">
+          Status Hubungan dalam Kartu Keluarga *
+        </label>
+        <select
+          className="form-select"
+          name="family_relationship"
+          defaultValue={formData?.family_relationship}
+          onChange={handleInputData}
+          onBlur={handleValidation}
+        >
+          <option value="" disabled>
+            Hubungan keluarga
+          </option>
+          <option value="anak">Anak</option>
+          <option value="suami">Suami</option>
+          <option value="istri">Istri</option>
+          <option value="mertua">Mertua</option>
+        </select>
+        <p className="form-text text-danger">{errMsgStatusHubungan}</p>
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Status Perkawinan *</label>
+        <select
+          className="form-select"
+          name="marriage_status"
+          defaultValue={formData?.marriage_status}
+          onChange={handleInputData}
+          onBlur={handleValidation}
+        >
+          <option value="" disabled>
+            Status perkawinan
+          </option>
+          <option value="Belum Kawin">Belum Kawin</option>
+          <option value="Kawin">Kawin</option>
+          <option value="Cerai">Cerai</option>
+          <option value="Cerai Mati">Cerai Mati</option>
+        </select>
+        <p className="form-text text-danger">{errMsgStatusPerkawinan}</p>
+      </div>
+    </div>
+  );
 }
 
-export default DataPribadiComponent
+export default DataPribadiComponent;

@@ -1,0 +1,12 @@
+{
+    "syaratVaksin": [
+        "Berusia 12 tahun keatas",
+        "Sehat",
+        "Memiliki KTP/Kartu Keluarga",
+        "Tidak Sedang Positif COVID-19"
+    ],
+    "noteSyaratVaksin": [
+        "Wajib memiliki surat rekomendasi dokter bagi penderita komorbid berat, autoimun, atau pasien terapi imunosupresan.",
+        "Penyintas COVID-19 dapat divaksin minimal 1 bulan (bagi gejala ringan) atau 3 bulan (bagi gejala berat) setelah dinyatakan sembuh"
+    ]
+}
