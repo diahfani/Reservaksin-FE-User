@@ -23,13 +23,19 @@
   display: block;
 }
 
-.page-wrapper{
+.page-wrapper {
   max-width: 480px;
   background-color: white;
   min-height: 100vh;
 }
-.btn-primary{
-  background-color: #0A3E66 !important;
-  border-color: #0A3E66;
+.btn-primary {
+  background-color: #0a3e66 !important;
+  border-color: #0a3e66;
   color: white;
+}
+
+.btn-outline-primary {
+  background-color: white !important;
+  border-color: #0a3e66;
+  color: #0a3e66;
 }

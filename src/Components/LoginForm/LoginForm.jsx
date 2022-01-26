@@ -3,36 +3,65 @@ import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../Config/Redux/LoginSlice";
-import { user } from "../../Config/Redux/UserSlice";
+// import { user } from "../../Config/Redux/UserSlice";
+// import { Toaster } from "react-hot-toast";
+// import { ToastError } from "../Toast/Toast";
+// import axios from 'axios'
+// import jwt from 'jwt-decode';
+// import jwt_decode from "jwt-decode";
+// // import useHandleLogin from '../../Hooks/useHandleLogin'
+// import { Spinner } from 'react-bootstrap'
+
+
+// function LoginForm() {
+//   const navigate = useNavigate();
+//   const dispatch = useDispatch();
+//   // const handleLogin = useHandleLogin()
+//   const formKosong = {
+//     email_or_nik: "",
+//     // nik:"",
+//     password: "",
+
+//   };
+//   const formError = {
+//     username: "",
+//     password: "",
+//   };
+
+//   //init state
+//   const [form, setForm] = useState(formKosong);
+//   const [errMsg, setErrMsg] = useState(formError);
+//   const [error, setError] = useState([])
+//   const [isLoaded, setIsLoaded] = useState()
+import { setUser } from "../../Config/Redux/UserSlice";
 import { Toaster } from "react-hot-toast";
 import { ToastError } from "../Toast/Toast";
-import axios from 'axios'
-import jwt from 'jwt-decode';
-import jwt_decode from "jwt-decode";
-// import useHandleLogin from '../../Hooks/useHandleLogin'
-import { Spinner } from 'react-bootstrap'
+import axios from "axios";
+import jwt from "jwt-decode";
+import CustomToast from "Components/CustomToast/CustomToast";
 
+const formKosong = {
+  email_or_nik: "",
+  password: "",
+};
+const formError = {
+  username: "",
+  password: "",
+};
 
-function LoginForm() {
+export default function LoginForm() {
+  //init state
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const handleLogin = useHandleLogin()
-  const formKosong = {
-    email_or_nik: "",
-    // nik:"",
-    password: "",
-
-  };
-  const formError = {
-    username: "",
-    password: "",
-  };
-
-  //init state
+  const [toast, setToast] = useState({
+    show: false,
+    body: <></>,
+    delay: 0,
+    headIcon: <></>,
+  });
   const [form, setForm] = useState(formKosong);
   const [errMsg, setErrMsg] = useState(formError);
-  const [error, setError] = useState([])
-  const [isLoaded, setIsLoaded] = useState()
+  const [isLoaded, setIsLoaded] = useState(false);
 
   //regex for validation
   const isEmail =
@@ -42,7 +71,7 @@ function LoginForm() {
 
   //validation function
   const validateFormValue = (name, value) => {
-    //validate username
+    //validate email or nik
     if (name === "email_or_nik") {
       if (isEmail.test(value) || isNIK.test(value)) {
         setErrMsg({ ...formError, username: "" });
@@ -77,8 +106,9 @@ function LoginForm() {
     setErrMsg(() => {
       const errorMessageArr = Object.keys(errMsg).map((key) => {
         if (form[key] === "") {
-          const err = `${key.charAt(0).toUpperCase() + key.slice(1)
-            } tidak boleh kosong`;
+          const err = `${
+            key.charAt(0).toUpperCase() + key.slice(1)
+          } tidak boleh kosong`;
 
           return { [key]: err };
         }
@@ -94,71 +124,131 @@ function LoginForm() {
     });
   };
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const validForm = Object.keys(form).filter((key) => form[key] !== "");
+  //   // const has
+  //   var API_URL = 'https://reservaksin-be.herokuapp.com'
+  //   if (validForm.length < 2) {
+  //     validateOnSubmit();
+  //   } else {
+    
+  //     setIsLoaded("logging in")
+
+  //     await axios
+  //       .post(`${API_URL}/citizen/login`, form)
+
+  //       .then((resp) => {
+  //         if (resp.data.meta.status !== 200) {
+  //           setError(resp.data.meta.messages)
+
+
+  //         } else {
+            
+  //           // console.log(resp.data.data.DataCitizen.current_Address.alamat)
+  //           // console.log(resp.data.data.DataCitizen.current_Address.provinsi)
+  //           // handleLogin(resp.data.data)
+  //           var userToken = jwt(resp.data.data.token)
+  //           // console.log(user)
+  //           dispatch(login(({
+  //             email_or_nik: form.email_or_nik,
+  //             login: true,
+  //             token: jwt_decode(resp.data.data.token),
+  //             id: userToken.id
+  //           })))
+  //           dispatch(user(({
+  //             email: resp.data.data.DataCitizen.email,
+  //             nik: resp.data.data.DataCitizen.nik,
+  //             nohp: resp.data.data.DataCitizen.nohp,
+  //             fullname: resp.data.data.DataCitizen.fullname,
+  //             nokk: resp.data.data.DataCitizen.nokk,
+  //             dob: resp.data.data.DataCitizen.dob,
+  //             relationship: resp.data.data.DataCitizen.relationship,
+  //             gender: resp.data.data.DataCitizen.gender,
+  //             status: resp.data.data.DataCitizen.status,
+  //             role: resp.data.data.DataCitizen.role,
+  //             alamat: resp.data.data.DataCitizen.current_Address.alamat,
+  //             provinsi: resp.data.data.DataCitizen.current_Address.provinsi,
+  //             kota: resp.data.data.DataCitizen.current_Address.kota,
+  //             kecamatan: resp.data.data.DataCitizen.current_Address.provinsi,
+  //             kelurahan: resp.data.data.DataCitizen.current_Address.kelurahan,
+  //           })))
+            
+  //           // handleLogin(resp.data.data)
+  //           navigate("/")
+  //         }
+  //       })
+  //       .catch((e) => {
+  //         // console.log(e)
+  //         if (e.response) {
+  //           if (e.response.status === 401) {
+  //             ToastError("email/nik atau password salah!")
+  //           }
+  //         } else if (e.request) {
+  //           console.log("isi err req", e.request)
+  //         }
+  //         setIsLoaded()
+  //       })
+  const loginToAPI = async () => {
+    await axios
+      .post(`https://reservaksin-be.herokuapp.com/citizen/login`, form)
+      .then((resp) => {
+        var user = jwt(resp?.data?.data?.token);
+        dispatch(
+          login({
+            email_or_nik: form.email_or_nik,
+            login: true,
+            token: resp.data.data.token,
+            id: user.id,
+          })
+        );
+        dispatch(setUser(resp?.data?.data?.DataCitizen));
+        navigate("/");
+        setIsLoaded(false);
+      })
+      .catch((e) => {
+        if (e.response) {
+          if (e.response.status === 401) {
+            setToast({
+              show: false,
+              body: <></>,
+              delay: 0,
+              headIcon: <></>,
+            });
+            ToastError("email/nik atau password salah!");
+          }
+        } else if (e.request) {
+          console.log("isi err req", e.request);
+        }
+        setIsLoaded(false);
+      });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validForm = Object.keys(form).filter((key) => form[key] !== "");
-    // const has
-    var API_URL = 'https://reservaksin-be.herokuapp.com'
     if (validForm.length < 2) {
       validateOnSubmit();
     } else {
-    
-      setIsLoaded("logging in")
-
-      await axios
-        .post(`${API_URL}/citizen/login`, form)
-
-        .then((resp) => {
-          if (resp.data.meta.status !== 200) {
-            setError(resp.data.meta.messages)
-
-
-          } else {
-            
-            // console.log(resp.data.data.DataCitizen.current_Address.alamat)
-            // console.log(resp.data.data.DataCitizen.current_Address.provinsi)
-            // handleLogin(resp.data.data)
-            var userToken = jwt(resp.data.data.token)
-            // console.log(user)
-            dispatch(login(({
-              email_or_nik: form.email_or_nik,
-              login: true,
-              token: jwt_decode(resp.data.data.token),
-              id: userToken.id
-            })))
-            dispatch(user(({
-              email: resp.data.data.DataCitizen.email,
-              nik: resp.data.data.DataCitizen.nik,
-              nohp: resp.data.data.DataCitizen.nohp,
-              fullname: resp.data.data.DataCitizen.fullname,
-              nokk: resp.data.data.DataCitizen.nokk,
-              dob: resp.data.data.DataCitizen.dob,
-              relationship: resp.data.data.DataCitizen.relationship,
-              gender: resp.data.data.DataCitizen.gender,
-              status: resp.data.data.DataCitizen.status,
-              role: resp.data.data.DataCitizen.role,
-              alamat: resp.data.data.DataCitizen.current_Address.alamat,
-              provinsi: resp.data.data.DataCitizen.current_Address.provinsi,
-              kota: resp.data.data.DataCitizen.current_Address.kota,
-              kecamatan: resp.data.data.DataCitizen.current_Address.provinsi,
-              kelurahan: resp.data.data.DataCitizen.current_Address.kelurahan,
-            })))
-            
-            // handleLogin(resp.data.data)
-            navigate("/")
-          }
-        })
-        .catch((e) => {
-          // console.log(e)
-          if (e.response) {
-            if (e.response.status === 401) {
-              ToastError("email/nik atau password salah!")
-            }
-          } else if (e.request) {
-            console.log("isi err req", e.request)
-          }
-          setIsLoaded()
-        })
+      setToast({
+        show: true,
+        body: (
+          <div className="text-center">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+            <p style={{ fontSize: "1rem", marginTop: "1rem" }}>Login ...</p>
+          </div>
+        ),
+        delay: 10000,
+        headIcon: (
+          <span className="material-icons-outlined text-secondary">
+            hourglass_top
+          </span>
+        ),
+      });
+      setIsLoaded(true);
+      await loginToAPI();
     }
   };
 
@@ -207,12 +297,19 @@ function LoginForm() {
           </a>
         </div>
         <button className="btn btn-primary w-100" type="submit">
-        {isLoaded === "logging in" ?
+        {/* {isLoaded === "logging in" ?
         (<Spinner animation="border" variant="primary" />)
         : 
       "Login"
-      }
+      } */}
 
+          {isLoaded ? (
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          ) : (
+            "Login"
+          )}
         </button>
       </form>
       <div className="text-center btnact-container">
@@ -222,8 +319,7 @@ function LoginForm() {
           Daftar sekarang
         </Link>
       </div>
+      <CustomToast toast={toast} setToast={setToast} />
     </div>
   );
 }
-
-export default LoginForm;

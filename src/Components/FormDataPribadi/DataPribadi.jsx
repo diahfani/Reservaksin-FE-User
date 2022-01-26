@@ -2,7 +2,7 @@ import React from "react";
 // import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../Button.css";
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 // import PropTypes from "prop-types";
 
 function DataPribadiComponent({
@@ -29,8 +29,8 @@ function DataPribadiComponent({
     <div className="form">
       <div className="mb-3">
         <label className="form-label">No. KK *</label>
-          <input
-          placeholder={isLoggedIn? noKK : "Masukkan no. KK"}
+        <input
+          placeholder={isLoggedIn ? noKK : "Masukkan no. KK"}
           // defaultValue={noKK}
           name="no_kk"
           type="number"
@@ -44,7 +44,7 @@ function DataPribadiComponent({
       <div className="mb-3">
         <label className="form-label">NIK *</label>
         <input
-          placeholder={isLoggedIn? nik : "Masukkan NIK"}
+          placeholder={isLoggedIn ? nik : "Masukkan NIK"}
           name="nik"
           value={formData?.nik}
           onChange={handleInputData}
@@ -57,7 +57,7 @@ function DataPribadiComponent({
       <div className="mb-3">
         <label className="form-label">Nama Lengkap *</label>
         <input
-          placeholder={isLoggedIn? fullname : "Masukkan nama lengkap"}
+          placeholder={isLoggedIn ? fullname : "Masukkan nama lengkap"}
           type="text"
           value={formData?.fullname}
           onChange={handleInputData}
@@ -100,8 +100,8 @@ function DataPribadiComponent({
       <div className="mb-3">
         <label className="form-label">Tanggal Lahir *</label>
         <input
-        type="date"
-        placeholder={isLoggedIn? dob : "mm/dd/yyyy"}
+          type="date"
+          placeholder={isLoggedIn ? dob : "mm/dd/yyyy"}
           className="form-control"
           name="dateof_birth"
           selected={formData?.dateof_birth}
@@ -143,10 +143,10 @@ function DataPribadiComponent({
           <option value="" disabled>
             Status perkawinan
           </option>
-          <option value="belumKawin">Belum Kawin</option>
-          <option value="kawin">Kawin</option>
-          <option value="cerai">Cerai</option>
-          <option value="ceraiMati">Cerai Mati</option>
+          <option value="Belum Kawin">Belum Kawin</option>
+          <option value="Kawin">Kawin</option>
+          <option value="Cerai">Cerai</option>
+          <option value="Cerai Mati">Cerai Mati</option>
         </select>
         <p className="form-text text-danger">{errMsgStatusPerkawinan}</p>
       </div>
