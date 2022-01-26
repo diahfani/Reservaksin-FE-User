@@ -1,0 +1,26 @@
+.cara-vaksinasi {
+    background: white;
+    color: #4986cb;
+}
+
+.cara-vaksinasi h1 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.cara-vaksinasi span.material-icons-outlined {
+    color: #5caf08 !important;
+}
+
+.cara-vaksinasi .list-syarat {
+    column-gap: 4%;
+    row-gap: 1rem;
+}
+
+.cara-vaksinasi .list-syarat .list-syarat-card {
+    border: 1px solid #4986cb;
+    border-radius: 5px;
+    width: 48%;
+    padding: 10px;
+    color: #0a3e66;
+}

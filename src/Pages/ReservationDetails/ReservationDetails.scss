@@ -1,0 +1,41 @@
+.detail-booking {
+    color: navy;
+
+    .vaccine-ticket {
+        border-radius: 10px;
+        border: 1px solid;
+
+        p {
+            margin: 0.3rem 0
+        }
+
+        h2,
+        h6 {
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .details-ticket {
+            padding: 1rem 1rem 1rem 1rem;
+
+            &:not(:last-child) {
+                border-bottom: 1.6px dashed navy;
+            }
+        }
+    }
+
+    .btn-success {
+        background-color: rgb(23, 220, 23);
+        border-color: rgb(23, 220, 23);
+    }
+
+    .material-icons-outlined {
+        font-size: 1.2rem;
+        display: inline;
+        vertical-align: auto;
+    }
+}

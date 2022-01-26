@@ -1,0 +1,24 @@
+.lewati-button {
+  position: static;
+  width: 54px;
+  height: 24px;
+  left: 140.5px;
+  top: 0px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+  text-decoration-line: underline;
+  margin: auto;
+
+  color: #0a3e66;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
