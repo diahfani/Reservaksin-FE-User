@@ -61,9 +61,6 @@ system for health facilities.
 ## 💻 Tecnology That We Used
 * High Level Architecture
 <img src="./HLA Reservaksin-HLA.svg" alt="HLA diagram">
-  
-
-# Getting Started with Create React App
 
 ## Available Scripts
 
