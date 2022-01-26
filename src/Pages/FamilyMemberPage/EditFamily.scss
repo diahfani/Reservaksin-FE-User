@@ -1,0 +1,13 @@
+.edit-family {
+
+    .form-control.is-valid,
+    .was-validated .form-control:valid {
+        background-image: none !important;
+        padding-right: .75em;
+    }
+
+    .form-select.is-valid,
+    .was-validated .form-select:valid {
+        background-image: none !important;
+    }
+}

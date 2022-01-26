@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./LandingPage.css";
 import Navbar from "Components/Navbar/Navbar";
 import HeroSection from "Components/HeroSection/HeroSection";
@@ -13,20 +13,23 @@ export default function LandingPage() {
   const [visible, setVisible] = useState(false);
   const isLoggedIn = useSelector((state) => state.auth.login)
 
-  const toggleVisible = () => {
-    const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 1000) {
-      setVisible(true);
-    } else if (scrolled <= 1000) {
-      setVisible(false);
-    }
-  };
+  useEffect(() => {
+    const toggleVisible = () => {
+      const scrolled = document.documentElement.scrollTop;
+      if (scrolled > 1000) {
+        setVisible(true);
+      } else if (scrolled <= 1000) {
+        setVisible(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisible);
+
+    return () => window.removeEventListener("scroll", toggleVisible);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  window.addEventListener("scroll", toggleVisible);
 
   return (
     <>

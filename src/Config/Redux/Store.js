@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 import loginSlice from "./LoginSlice";
-import userSlice from "./UserSlice"
+import reservationSlice from "./ReservationSlice";
+import UserSlice from "./UserSlice";
 import {
   persistStore,
   persistReducer,
@@ -16,12 +17,14 @@ import {
 
 const reducer = combineReducers({
   auth: loginSlice,
-  user: userSlice,
+  reservation: reservationSlice,
+  user: UserSlice,
 });
 
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["reservation"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

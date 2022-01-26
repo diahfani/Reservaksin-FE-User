@@ -1,11 +1,10 @@
-import React, { useMemo, useState, useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-export default function MapsMarker(props) {
-  const [position, setPosition] = useState(props.position);
+export default function MapsMarker({ position, setPosition }) {
   const markerRef = useRef(null);
   const eventHandlers = useMemo(
     () => ({
@@ -16,6 +15,7 @@ export default function MapsMarker(props) {
         }
       },
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 

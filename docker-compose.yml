@@ -1,12 +1,10 @@
-version: "3.8"
+version: "3.7"
+
 services:
   app:
+    container_name: reservaksin-fe-user
     build:
       context: .
-    volumes:
-      - .:/app
+      dockerfile: dockerfile
     ports:
-      - "3000:3000"
-    image: app:react
-    container_name: react_container
-    command: npm start
+      - "1337:80"

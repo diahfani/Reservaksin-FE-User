@@ -10,7 +10,6 @@ function Alamat({
   errMsgProvinsi,
   handleValidation,
 }) {
-  console.log(formData);
   return (
     <div className="form">
       <div className="mb-3">

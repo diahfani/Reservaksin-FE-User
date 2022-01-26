@@ -7,7 +7,10 @@ import PropTypes from "prop-types";
 export default function HeroSection({ isLoggedIn }) {
 
   return (
-    <section className="hero-section container gradient-blue py-5 mt-5">
+    <section
+      className="hero-section container gradient-blue py-5 mt-5"
+      style={{ minHeight: "100vh" }}
+    >
       <div className="d-flex flex-column justify-content-center">
         <img src={Illustrations1} alt="" />
         <h1 className="text-center mt-5">
