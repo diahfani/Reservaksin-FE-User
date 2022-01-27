@@ -6,6 +6,6 @@ services:
     container_name: reservaksin-fe-user
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - '1337:80'
