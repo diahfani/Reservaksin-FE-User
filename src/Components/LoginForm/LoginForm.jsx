@@ -96,7 +96,7 @@ export default function LoginForm() {
 
   const loginToAPI = async () => {
     await axios
-      .post(`https://reservaksin-be.herokuapp.com/citizen/login`, form)
+      .post(`${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/login`, form)
       .then((resp) => {
         var user = jwt(resp?.data?.data?.token);
         dispatch(
@@ -123,7 +123,7 @@ export default function LoginForm() {
             ToastError("email/nik atau password salah!");
           }
         } else if (e.request) {
-          console.log("isi err req", e.request);
+          console.log("error:", e.request);
         }
         setIsLoaded(false);
       });

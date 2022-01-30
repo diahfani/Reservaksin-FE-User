@@ -18,7 +18,7 @@ function Submit({ prevStep, formData, formdataAnggota }) {
     e.preventDefault();
     setIsLoaded(true);
     await axios
-      .post(`https://reservaksin-be.herokuapp.com/citizen/register`, {
+      .post(`${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/register`, {
         email: formData.email,
         nohp: formData.no_hp,
         password: formData.password,
@@ -52,13 +52,13 @@ function Submit({ prevStep, formData, formdataAnggota }) {
             ToastError("bad request");
           }
         } else if (e.request) {
-          console.log("isi err req", e.request);
+          console.log("error", e.request);
           setIsLoaded(false);
         }
       });
     formdataAnggota.map(async (item) => {
       await axios
-        .post(`https://reservaksin-be.herokuapp.com/citizen/register`, {
+        .post(`${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/register`, {
           nokk: formData.no_kk,
           nohp: formData.no_hp,
           nik: item.nik,
@@ -91,7 +91,7 @@ function Submit({ prevStep, formData, formdataAnggota }) {
               ToastError("bad request");
             }
           } else if (e.request) {
-            console.log("isi err req", e.request);
+            console.log("error:", e.request);
             setIsLoaded(false);
           }
         });

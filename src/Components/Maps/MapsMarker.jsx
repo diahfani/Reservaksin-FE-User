@@ -38,11 +38,11 @@ export default function MapsMarker({ position, setPosition }) {
         })
       }
     >
-      <Popup minWidth={90}>
+      {/* <Popup minWidth={90}>
         <span>
           lat: {position?.lat}, lng: {position?.lng}
         </span>
-      </Popup>
+      </Popup> */}
     </Marker>
   ) : null;
 }

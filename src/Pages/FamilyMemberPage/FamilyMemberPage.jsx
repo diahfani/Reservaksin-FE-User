@@ -35,7 +35,7 @@ export default function FamilyMemberPage() {
   const fetchListAnggota = async () => {
     await axios
       .get(
-        `https://reservaksin-be.herokuapp.com/citizen/family?nokk=${dataUser?.nokk}`
+        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/family?nokk=${dataUser?.nokk}`
       )
       .then((response) => {
         setToast({

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -7,7 +7,6 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { Toaster } from "react-hot-toast";
 import markerIconPng from "Assets/hospital-marker.png";
 import { Icon } from "leaflet";
 
@@ -25,55 +24,49 @@ function ZoomTracker({ setZoom }) {
 
 export default function Maps({ position, setPosition, placeMarkData }) {
   const [zoom, setZoom] = useState(15);
+  const [map, setMap] = useState(null);
 
-  const getCoords = async () => {
+  const getCurrentCoords = async () => {
     const pos = await new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject);
     });
-
     setPosition({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-    return {
-      long: pos.coords.longitude,
-      lat: pos.coords.latitude,
-    };
+    map.flyTo({ lat: pos.coords.latitude, lng: pos.coords.longitude });
   };
 
-  useEffect(() => {
-    getCoords();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return position?.lat ? (
-    <MapContainer
-      center={{ lat: position?.lat, lng: position?.lng }}
-      zoom={15}
-      style={{ height: "40rem", width: "100wh" }}
-    >
-      <ZoomTracker setZoom={setZoom} />
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      ></TileLayer>
-      <MapsMarker position={position} setPosition={setPosition}></MapsMarker>
-      {placeMarkData?.map((data, idx) => (
-        <StaticMarker
-          key={idx}
-          position={{ lat: data?.lat, lng: data?.lng }}
-          placeName={data?.name_facilities}
-          zoom={zoom}
-        />
-      ))}
-      <LeafletControlGeocoder></LeafletControlGeocoder>
-    </MapContainer>
-  ) : (
     <>
-      <Toaster />
-      <div className="d-flex flex-column align-items-center">
-        <div className="spinner-border text-primary" role="status"></div>
-        <p className="mt-3">Generate maps ... </p>
-        <p>Mohon Nyalakan GPS Kemudian Refresh</p>
-      </div>
+      <MapContainer
+        center={{ lat: -6.1753942, lng: 106.827183 }}
+        zoom={15}
+        style={{ height: "40rem", width: "100wh" }}
+        whenCreated={setMap}
+      >
+        <ZoomTracker setZoom={setZoom} />
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        ></TileLayer>
+        <MapsMarker position={position} setPosition={setPosition}></MapsMarker>
+        {placeMarkData?.map((data, idx) => (
+          <StaticMarker
+            key={idx}
+            position={{ lat: data?.lat, lng: data?.lng }}
+            placeName={data?.name_facilities}
+            zoom={zoom}
+          />
+        ))}
+        <LeafletControlGeocoder></LeafletControlGeocoder>
+      </MapContainer>
+      <button className="btn btn-primary w-100 mt-3" onClick={getCurrentCoords}>
+        Cek Lokasi Kamu
+      </button>
     </>
+  ) : (
+    <div className="d-flex flex-column align-items-center">
+      <div className="spinner-border text-primary" role="status"></div>
+      <p className="mt-3">Generate maps ... </p>
+    </div>
   );
 }
 
@@ -89,9 +82,21 @@ function StaticMarker({ position, placeName, zoom }) {
         })
       }
     >
-      {zoom > 13 ? (
-        <Tooltip permanent={true} direction="top" offset={[0, -20]} opacity={1}>
-          {placeName}
+      {zoom > 12 ? (
+        <Tooltip
+          interactive={true}
+          permanent={true}
+          direction="top"
+          offset={[0, -20]}
+          opacity={1}
+        >
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${position?.lat},${position?.lng}`}
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            {placeName}
+          </a>
         </Tooltip>
       ) : null}
     </Marker>

@@ -41,14 +41,20 @@ jobs:
           echo REACT_APP_RESERVAKSIN_API_URL=${{ secrets.RESERVAKSIN_API_URL }} >> .env
           cat .env
 
-      - name: Build Development
-        run: CI="" npm run build
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: build
+      - name: docker build
+        run: |
+          docker build -t fadhilansyah25/reservaksin-fe-user:latest -f ./docker/Dockerfile .
+
+      - name: docker push images
+        run: |
+          docker push fadhilansyah25/reservaksin-fe-user:latest
 
   deploy-gcr:
     name: Deploy to GCR
@@ -59,11 +65,13 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Download Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build
-          path: .
+      - name: docker pull images
+        run: |
+          docker pull fadhilansyah25/reservaksin-fe-user:latest
+
+      - name: docker tagging images
+        run: |
+          docker tag fadhilansyah25/reservaksin-fe-user:latest gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
 
       - name: Setup GCloud Auth
         id: auth
@@ -74,13 +82,14 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.1
 
-      # Build and push image to Google Container Registry
-      - name: Build & Push
-        run: |-
-          gcloud builds submit \
-            --quiet \
-            --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
-        working-directory: .
+      # Configure docker to use the gcloud command-line tool as a credential helper
+      - run: |
+          gcloud auth configure-docker -q
+
+      # push image to Google Container Registry
+      - name: Push images
+        run: |
+          docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
 
       # Deploy image to Cloud Run
       - name: Deploy GCR

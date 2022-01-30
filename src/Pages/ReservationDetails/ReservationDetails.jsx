@@ -26,7 +26,7 @@ export default function ReservationDetails() {
   const cancelToAPI = async () => {
     await axios
       .patch(
-        `https://reservaksin-be.herokuapp.com/booking/status/${dataBooking?.booking_id}`,
+        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/booking/status/${dataBooking?.booking_id}`,
         {
           status: "canceled",
         }
@@ -74,6 +74,13 @@ export default function ReservationDetails() {
       ),
     });
     await cancelToAPI();
+  };
+
+  const directToGmaps = () => {
+    window.open(
+      `https://www.google.com/maps/search/?api=1&query=${dataBooking?.session?.health_facilities?.current_Address?.lat},${dataBooking?.session?.health_facilities?.current_Address?.lng}`,
+      "_blank"
+    );
   };
 
   return (
@@ -133,6 +140,14 @@ export default function ReservationDetails() {
             <small>{dataBooking?.session?.health_facilities?.no_telp}</small>
           </div>
         </div>
+        {dataBooking?.status === "booked" ? (
+          <button
+            className="btn btn-primary w-100 shadow-sm mt-3"
+            onClick={directToGmaps}
+          >
+            Cek Lokasi Di Google Maps
+          </button>
+        ) : null}
       </div>
       {dataBooking?.status === "booked" ? (
         <button

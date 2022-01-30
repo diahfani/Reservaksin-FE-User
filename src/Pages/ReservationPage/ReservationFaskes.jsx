@@ -13,12 +13,11 @@ export default function ReservationFaskes() {
   const [dataFaskes, setDataFaskes] = useState(null);
   const [serverError, setServerError] = useState(null);
   const curLoc = Object.fromEntries([...searchParams]);
-  console.log(dataFaskes);
 
   // code your handle functions below ...
   const getHealthFacilitiesByLatLng = async () => {
     await fetch(
-      `https://reservaksin-be.herokuapp.com/session/nearest-facilities?lat=${curLoc?.lat}&lng=${curLoc?.lng}`,
+      `${process.env.REACT_APP_RESERVAKSIN_API_URL}/session/nearest-facilities?lat=${curLoc?.lat}&lng=${curLoc?.lng}`,
       { method: "GET" }
     )
       .then((response) => response.text())

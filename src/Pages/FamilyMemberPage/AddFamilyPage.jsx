@@ -76,7 +76,7 @@ export default function AddFamilyPage() {
   const postToAPI = async () => {
     await axios
       .post(
-        `https://reservaksin-be.herokuapp.com/citizen/register`,
+        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/register`,
         formDataKeluarga
       )
       .then(() => {
@@ -92,7 +92,6 @@ export default function AddFamilyPage() {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      console.log("ngga valid");
     } else {
       event.preventDefault();
       setToast({

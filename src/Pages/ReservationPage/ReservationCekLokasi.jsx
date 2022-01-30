@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, createSearchParams } from "react-router-dom";
-import Geocode from "react-geocode";
+// import Geocode from "react-geocode";
 
 import Maps from "Components/Maps/Maps";
 import BackButton from "Components/BackButton/BackButton";
+// import axios from "axios";
 
 export default function ReservationCekLokasi() {
   // declare new state or new variable below ...
-  Geocode.setApiKey("AIzaSyCMr2bqceHoujWHUmAN_83KxKLxkhJoSBI");
-  // const [curLoc, setCurLoc] = useState({ lat: -6.1753942, lng: 106.827183 });
-  const [curLoc, setCurLoc] = useState(null);
-  const [address, setAddress] = useState("");
+  // Geocode.setApiKey(process.env.REACT_APP_GMAPS_GEOCODE_API_KEY);
+  const [curLoc, setCurLoc] = useState({ lat: -6.1753942, lng: 106.827183 });
+  // const [curLoc, setCurLoc] = useState(null);
+  // const [address, setAddress] = useState("");
   const [dataFaskes, setdataFaskes] = useState([]);
   const navigate = useNavigate();
 
@@ -23,7 +24,7 @@ export default function ReservationCekLokasi() {
 
   const getHealthFacilitiesLoc = async () => {
     await fetch(
-      `https://reservaksin-be.herokuapp.com/health-facilities/maps-place`,
+      `${process.env.REACT_APP_RESERVAKSIN_API_URL}/health-facilities/maps-place`,
       { method: "GET" }
     )
       .then((response) => response.text())
@@ -31,21 +32,35 @@ export default function ReservationCekLokasi() {
       .catch((error) => console.log(error));
   };
 
+  const geocodeReverseLatLng = async () => {
+    // /* googleMaps geocode API, with package geocode */
+    //     Geocode.fromLatLng(curLoc?.lat, curLoc?.lng).then(
+    //       (response) => {
+    //         const address = response.results[0].formatted_address;
+    //         setAddress(address);
+    //       },
+    //       (error) => {
+    //         console.log(error);
+    //       }
+    //     );
+    // /* nominatim API */
+    // await axios
+    //   .get(
+    //     `https://nominatim.openstreetmap.org/reverse?format=json&lat=${curLoc.lat}&lon=${curLoc.lng}&zoom=20&addressdetails=1`
+    //   )
+    //   .then((response) => setAddress(response.data))
+    //   .catch((error) => console.log(error));
+  };
+
   // execute useEffect below ...
+  /* useEffect geocoding, convert lat lng to address */
   useEffect(() => {
     if (curLoc != null) {
-      Geocode.fromLatLng(curLoc?.lat, curLoc?.lng).then(
-        (response) => {
-          const address = response.results[0].formatted_address;
-          setAddress(address);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      geocodeReverseLatLng();
     }
   }, [curLoc]);
 
+  /* useEffect get healt facilities data from Rest-API, for render marker to the map */
   useEffect(() => {
     getHealthFacilitiesLoc();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -63,12 +78,12 @@ export default function ReservationCekLokasi() {
             placeMarkData={dataFaskes}
           />
         </div>
-        <div
+        {/* <div
           className="border mt-2 px-3 py-2"
           style={{ height: "5rem", padding: "1rem", overflow: "auto" }}
         >
           {address}
-        </div>
+        </div> */}
       </div>
       <button
         className={`mt-5 btn btn-primary w-100 ${curLoc ? null : "disabled"}`}

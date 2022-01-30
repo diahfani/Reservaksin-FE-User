@@ -29,7 +29,7 @@
 ## Preview
 | Admin | User |
 | ----------- | ----------- |
-| <img src="./Dashboard-admin.svg" alt="preview admin">| <img src="./Landing Page- Before Login.svg" alt="preview user"> |
+| <img src="./docs/Dashboard-admin.svg" alt="preview admin">| <img src="./docs/Landing Page- Before Login.svg" alt="preview user"> |
 
 ## 🎯 Project Goal
 The goal of the project is to help the government’s goal of Covid-19 vaccinations
@@ -52,7 +52,7 @@ system for health facilities.
 * [Wireframe Figma](https://www.figma.com/file/awRtiv9eHKf0fJ0rRhKAGr/Wireframe---Mockup?node-id=6%3A8)
 * [Mockup Figma](https://www.figma.com/file/awRtiv9eHKf0fJ0rRhKAGr/Wireframe---Mockup?node-id=38%3A20)
 * [Prototype Figma](https://www.figma.com/proto/awRtiv9eHKf0fJ0rRhKAGr/Wireframe-Mockup?node-id=6%3A8&scaling=scale-down&page-id=6%3A8)
-* Usecase Diagram <img src="./HLA Reservaksin-MVP usecase.drawio.svg" alt="Usecase-Vaccine-Booking-Team-5-Alttera">
+* Usecase Diagram <img src="./docs/HLA Reservaksin-MVP usecase.drawio.svg" alt="Usecase-Vaccine-Booking-Team-5-Alttera">
   
 ## 📑 Backend Documentation
 * [Swagger](https://app.swaggerhub.com/apis/diahfani/Vaccine/1.0.0)
@@ -60,4 +60,4 @@ system for health facilities.
 
 ## 💻 Tecnology That We Used
 * High Level Architecture
-<img src="./HLA Reservaksin-HLA.svg" alt="HLA diagram">
+<img src="./docs/HLA Reservaksin-HLA.svg" alt="HLA diagram">
