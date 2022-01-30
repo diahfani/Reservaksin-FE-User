@@ -20,7 +20,6 @@ export default function ReservationDetails() {
     headIcon: <></>,
   });
   const navigate = useNavigate();
-  console.log(dataBooking);
 
   // code your handle functions below ...
   const cancelToAPI = async () => {
@@ -78,7 +77,9 @@ export default function ReservationDetails() {
 
   const directToGmaps = () => {
     window.open(
-      `https://www.google.com/maps/search/?api=1&query=${dataBooking?.session?.health_facilities?.current_Address?.lat},${dataBooking?.session?.health_facilities?.current_Address?.lng}`,
+      `https://www.google.com/maps/search/?api=1&query=
+      ${dataBooking?.session?.health_facilities?.current_Address?.lat},
+      ${dataBooking?.session?.health_facilities?.current_Address?.lng}`,
       "_blank"
     );
   };

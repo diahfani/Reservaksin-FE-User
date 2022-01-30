@@ -25,7 +25,9 @@ export default function CardFaskes({ sessionData }) {
       <a
         className="nav-link p-0 mt-2"
         href={`
-        https://www.google.com/maps/search/?api=1&query=${sessionData?.health_facilities?.current_Address?.lat},${sessionData?.health_facilities?.current_Address?.lng}`}
+        https://www.google.com/maps/search/?api=1&query=
+        ${sessionData?.health_facilities?.current_Address?.lat},
+        ${sessionData?.health_facilities?.current_Address?.lng}`}
         target={"_blank"}
       >
         Cek Lokasi di Google Maps
