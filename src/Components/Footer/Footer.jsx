@@ -1,61 +1,39 @@
 import React from "react";
 import LogoApp from "Assets/Images/logo.svg";
 import { Link } from "react-router-dom";
-import "./Footer.css"
+import "./Footer.css";
 
 export default function Footer() {
   return (
     <footer className="footer py-4">
       <div className="d-flex justify-content-between container">
-        <div>
+        <div className="me-3">
           <img className="img-fluid" src={LogoApp} alt="" />
         </div>
         <div>
           <ul className="nav flex-column">
-            <li className="nav-item">
-              <Link to="/" className="nav-link py-0">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link py-0">
-                Bantuan
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link py-0">
-                Darurat
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link py-0">
-                News
-              </Link>
-            </li>
+            <Link to="/" className="text-decoration-none">
+              Home
+            </Link>
+            <Link to="/" className="text-decoration-none">
+              Lokasi Faskes
+            </Link>
+            <Link to="/" className="text-decoration-none">
+              News
+            </Link>
           </ul>
         </div>
         <div>
           <ul className="nav flex-column">
-            <li className="nav-item">
-              <Link to="/" className="nav-link py-0">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link py-0">
-                Bantuan
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link py-0">
-                Darurat
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link py-0">
-                News
-              </Link>
-            </li>
+            <Link to="/" className="text-decoration-none">
+              Syarat & Ketentuan
+            </Link>
+            <Link to="/" className="text-decoration-none">
+              Darurat
+            </Link>
+            <Link to="/" className="text-decoration-none">
+              News
+            </Link>
           </ul>
         </div>
       </div>

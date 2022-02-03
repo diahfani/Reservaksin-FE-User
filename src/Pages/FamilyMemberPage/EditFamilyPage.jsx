@@ -58,7 +58,7 @@ export default function EditFamilyPage() {
   const updateToAPI = async () => {
     await axios
       .put(
-        `https://reservaksin-be.herokuapp.com/citizen/${state?.dataFamily?.id}`,
+        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/${state?.dataFamily?.id}`,
         { ...formDataKeluarga, nohp: dataUser?.nohp }
       )
       .then(() => {
@@ -74,7 +74,6 @@ export default function EditFamilyPage() {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      console.log("ngga valid");
     } else {
       event.preventDefault();
       setToast({

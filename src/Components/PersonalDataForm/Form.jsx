@@ -133,7 +133,6 @@ function DataPribadiComponent({ data }) {
         statusHubungan: formData.StatusHubungan,
         statusPerkawinan: formData.StatusPerkawinan,
       };
-      console.log("data masuk:", newData);
     } else {
       validateOnSubmit();
     }

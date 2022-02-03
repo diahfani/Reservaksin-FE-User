@@ -25,7 +25,7 @@ export default function ReservationDetails() {
   const cancelToAPI = async () => {
     await axios
       .patch(
-        `https://reservaksin-be.herokuapp.com/booking/status/${dataBooking?.booking_id}`,
+        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/booking/status/${dataBooking?.booking_id}`,
         {
           status: "canceled",
         }
@@ -75,6 +75,15 @@ export default function ReservationDetails() {
     await cancelToAPI();
   };
 
+  const directToGmaps = () => {
+    window.open(
+      `https://www.google.com/maps/search/?api=1&query=
+      ${dataBooking?.session?.health_facilities?.current_Address?.lat},
+      ${dataBooking?.session?.health_facilities?.current_Address?.lng}`,
+      "_blank"
+    );
+  };
+
   return (
     <div className="detail-booking container py-4 page-wrapper d-flex flex-column justify-content-between">
       <div>
@@ -97,7 +106,7 @@ export default function ReservationDetails() {
             <p>Kode Reservasi</p>
             <h2>{dataBooking?.booking_id?.toUpperCase()}</h2>
             <small>
-              {dayjs(CustomUTC(dataBooking?.created_at))
+              {dayjs(dataBooking?.created_at)
                 .locale("id")
                 .format("dddd, DD MMMM YYYY, HH:mm")}
             </small>
@@ -123,27 +132,38 @@ export default function ReservationDetails() {
                     .format("HH:mm")}`}
             </small>
             <p className="pt-1" style={{ fontSize: "0.85rem" }}>{`
-            ${dataBooking?.session?.health_facilities?.current_Address?.alamat}, 
-            ${dataBooking?.session?.health_facilities?.current_Address?.kelurahan}, 
-            ${dataBooking?.session?.health_facilities?.current_Address?.kecamatan}, 
-            ${dataBooking?.session?.health_facilities?.current_Address?.kota}, 
+            ${dataBooking?.session?.health_facilities?.current_Address?.alamat} 
+            ${dataBooking?.session?.health_facilities?.current_Address?.kelurahan} 
+            ${dataBooking?.session?.health_facilities?.current_Address?.kecamatan} 
+            ${dataBooking?.session?.health_facilities?.current_Address?.kota} 
             ${dataBooking?.session?.health_facilities?.current_Address?.provinsi}
             `}</p>
             <small>{dataBooking?.session?.health_facilities?.no_telp}</small>
           </div>
         </div>
-      </div>{" "}
-      {dataBooking?.status !== "canceled" ? (
+        {dataBooking?.status === "booked" ? (
+          <button
+            className="btn btn-primary w-100 shadow-sm mt-3"
+            onClick={directToGmaps}
+          >
+            Cek Lokasi Di Google Maps
+          </button>
+        ) : null}
+      </div>
+      {dataBooking?.status === "booked" ? (
         <button
-          className="btn btn-danger w-100 shadow"
+          className="btn btn-danger w-100 shadow mt-3"
           onClick={() => handleCancel()}
         >
           Batalkan
         </button>
       ) : dataBooking.status === "canceled" ? (
-        <div className="btn btn-danger disabled w-100">Dibatalkan</div>
+        <div className="btn btn-danger disabled w-100 mt-3">Dibatalkan</div>
       ) : (
-        <div className="btn btn-success w-100" style={{ cursor: "default" }}>
+        <div
+          className="btn btn-success w-100 mt-3"
+          style={{ cursor: "default" }}
+        >
           <b>Vaksin Diterima </b>
           <span className="material-icons-outlined">verified</span>
         </div>

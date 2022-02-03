@@ -50,7 +50,7 @@ export default function ReservasitionPilihTanggal() {
 
   const submitBookingAPI = async () => {
     await axios
-      .post(`https://reservaksin-be.herokuapp.com/booking`, {
+      .post(`${process.env.REACT_APP_RESERVAKSIN_API_URL}/booking`, {
         citizen_id: formBooking.citizenID,
         session_id: formBooking.SessionID,
         date: formBooking.tanggalVaksin,

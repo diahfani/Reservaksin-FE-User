@@ -59,10 +59,13 @@ export default function PersonalData() {
 
   const updateToAPI = async () => {
     await axios
-      .put(`https://reservaksin-be.herokuapp.com/citizen/${formDataUser?.id}`, {
-        ...formDataUser,
-        nohp: dataUser?.nohp,
-      })
+      .put(
+        `${process.env.REACT_APP_RESERVAKSIN_API_URL}/citizen/${formDataUser?.id}`,
+        {
+          ...formDataUser,
+          nohp: dataUser?.nohp,
+        }
+      )
       .then((response) => {
         dispatch(setUser(response?.data?.data));
         navigate(-1);
@@ -77,7 +80,6 @@ export default function PersonalData() {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      console.log("ngga valid");
     } else {
       event.preventDefault();
       setToast({

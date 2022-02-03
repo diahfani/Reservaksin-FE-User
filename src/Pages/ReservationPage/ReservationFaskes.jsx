@@ -5,6 +5,7 @@ import Illustration5 from "Assets/Images/illustration-5.svg";
 import Illustration6 from "Assets/Images/illustration-6.svg";
 import dayjs from "dayjs";
 import { CustomUTC } from "Utilities/utils";
+import { KuotaProgressBar } from "Components/KuotaProgressBar/KuotaProgressBar";
 
 export default function ReservationFaskes() {
   // declare new state or new variable below ...
@@ -16,7 +17,7 @@ export default function ReservationFaskes() {
   // code your handle functions below ...
   const getHealthFacilitiesByLatLng = async () => {
     await fetch(
-      `https://reservaksin-be.herokuapp.com/session/nearest-facilities?lat=${curLoc?.lat}&lng=${curLoc?.lng}`,
+      `${process.env.REACT_APP_RESERVAKSIN_API_URL}/session/nearest-facilities?lat=${curLoc?.lat}&lng=${curLoc?.lng}`,
       { method: "GET" }
     )
       .then((response) => response.text())
@@ -96,23 +97,65 @@ function FaskesItem(props) {
 
   return (
     <div
-      className="w-100 mb-3 rounded border p-3 shadow-sm"
-      onClick={toDetailSession}
+      className={`faskes-item w-100 mb-3 rounded border p-3 shadow-sm ${
+        props?.data?.session?.capacity -
+          props?.data?.session?.capacity_fulfilled ===
+        0
+          ? "disabled-item"
+          : null
+      }`}
+      onClick={
+        props?.data?.session?.capacity -
+          props?.data?.session?.capacity_fulfilled ===
+        0
+          ? null
+          : toDetailSession
+      }
     >
-      <div className="d-flex justify-content-between align-items-center">
-        <div>
-          <h6 style={{ fontSize: "1.2rem" }}>{props?.title}</h6>
-          <p className="m-0">
-            {dayjs(CustomUTC(props?.data?.session?.date))
-              .locale("id")
-              .format("DD MMMM YYYY")}
-          </p>
-          <p>{props?.data?.session?.vaccine?.nama_vaksin}</p>
-          <p className="m-0" style={{ fontSize: "0.9rem" }}>
-            Jarak Lokasi {(props?.distance).toFixed(2)} Km
-          </p>
-        </div>
-      </div>
+      <h6 style={{ fontSize: "1.2rem" }}>{props?.title}</h6>
+      <p className="m-0" style={{ fontSize: "0.9rem" }}>
+        Jarak Lokasi {(props?.distance).toFixed(2)} Km
+      </p>
+      <table className="table table-borderless mt-2" style={{ padding: 0 }}>
+        <tbody>
+          <tr>
+            <td>
+              <small className="p-0 m-0">Tanggal Pelaksanaan</small>
+            </td>
+            <td>
+              <small className="p-0 m-0">Jenis Vaksin</small>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <small className="m-0 p-0">
+                <b>
+                  {dayjs(CustomUTC(props?.data?.session?.date))
+                    .locale("id")
+                    .format("DD MMMM YYYY")}
+                </b>
+              </small>
+            </td>
+            <td>
+              <small className="p-0 m-0">
+                <b>{props?.data?.session?.vaccine?.nama_vaksin}</b>
+              </small>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <small>
+        <b>
+          Sisa Kuota{" "}
+          {props?.data?.session?.capacity -
+            props?.data?.session?.capacity_fulfilled}
+          /{props?.data?.session?.capacity}
+        </b>
+      </small>
+      <KuotaProgressBar
+        capacity={props?.data?.session?.capacity}
+        fulfilled={props?.data?.session?.capacity_fulfilled}
+      ></KuotaProgressBar>
     </div>
   );
 }
